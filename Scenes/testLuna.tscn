@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dia3ul64746cp"]
 
-[ext_resource type="Script" path="res://Scripts/game.gd" id="1_444ip"]
-[ext_resource type="PackedScene" uid="uid://1gn4fx4hgtc6" path="res://Scenes/player.tscn" id="1_r4iu0"]
-[ext_resource type="Texture2D" uid="uid://dxrkx4xh1kw6u" path="res://Art/cecilia.jpg" id="3_h0v4c"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_evsrw"]
+[ext_resource type="PackedScene" uid="uid://1gn4fx4hgtc6" path="res://Scenes/player.tscn" id="2_omwes"]
+[ext_resource type="Texture2D" uid="uid://dxrkx4xh1kw6u" path="res://Art/cecilia.jpg" id="3_tkd3n"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_kvkaq"]
 a = Vector2(-489, 18.77)
@@ -13,9 +13,9 @@ a = Vector2(462, -556)
 b = Vector2(463, 551)
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_444ip")
+script = ExtResource("1_evsrw")
 
-[node name="Player" parent="." instance=ExtResource("1_r4iu0")]
+[node name="Player" parent="." instance=ExtResource("2_omwes")]
 position = Vector2(-4, -2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -24,12 +24,12 @@ position_smoothing_enabled = true
 [node name="portraitLeft" type="Sprite2D" parent="."]
 position = Vector2(-721.5, 3.5083)
 scale = Vector2(1.70432, 1.70432)
-texture = ExtResource("3_h0v4c")
+texture = ExtResource("3_tkd3n")
 
 [node name="portraitRight" type="Sprite2D" parent="."]
 position = Vector2(721.189, 6.8644)
 scale = Vector2(-1.69442, 1.69442)
-texture = ExtResource("3_h0v4c")
+texture = ExtResource("3_tkd3n")
 
 [node name="Area2D" type="Area2D" parent="."]
 
