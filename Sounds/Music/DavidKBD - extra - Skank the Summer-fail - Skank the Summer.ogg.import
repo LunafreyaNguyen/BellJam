@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dg2fq80dmk5t6"
+path="res://.godot/imported/DavidKBD - extra - Skank the Summer-fail - Skank the Summer.ogg-18ec7e61f6df11bd6bedad66df959047.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Music/DavidKBD - extra - Skank the Summer-fail - Skank the Summer.ogg"
+dest_files=["res://.godot/imported/DavidKBD - extra - Skank the Summer-fail - Skank the Summer.ogg-18ec7e61f6df11bd6bedad66df959047.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

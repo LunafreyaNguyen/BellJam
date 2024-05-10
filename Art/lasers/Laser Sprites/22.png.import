@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://durxosjbmweoq"
-path="res://.godot/imported/cecilia_closeup_temp.jpg-1cbc1e4b7e958dc1b9489e14f7f9e25f.ctex"
+uid="uid://cd34fxweubtfy"
+path="res://.godot/imported/22.png-c31f6f6a6786554acb10159ff21203e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/cecilia_closeup_temp.jpg"
-dest_files=["res://.godot/imported/cecilia_closeup_temp.jpg-1cbc1e4b7e958dc1b9489e14f7f9e25f.ctex"]
+source_file="res://Art/lasers/Laser Sprites/22.png"
+dest_files=["res://.godot/imported/22.png-c31f6f6a6786554acb10159ff21203e6.ctex"]
 
 [params]
 

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxd3k1hjlvmd3"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_82aos"]
+[ext_resource type="Texture2D" uid="uid://co72rq18uxj0b" path="res://Art/lasers/Laser Sprites/01.png" id="2_02sy7"]
+[ext_resource type="AudioStream" uid="uid://d3sf1ifaydom4" path="res://Sounds/SFX/Poof.wav" id="3_yncjd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx118"]
+radius = 15.0333
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_82aos")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(2.08165e-12, 2.08165e-12)
+rotation = -1.5708
+texture = ExtResource("2_02sy7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wx118")
+debug_color = Color(0.968627, 0, 0, 0.419608)
+
+[node name="Poof" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yncjd")
+volume_db = -20.0
+autoplay = true
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yncjd")
+volume_db = -57.622
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

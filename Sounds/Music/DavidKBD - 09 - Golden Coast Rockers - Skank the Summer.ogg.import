@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d3wnub7cy3yqr"
+path="res://.godot/imported/DavidKBD - 09 - Golden Coast Rockers - Skank the Summer.ogg-00950ac64eb91d932d1693cd356b0bca.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Music/DavidKBD - 09 - Golden Coast Rockers - Skank the Summer.ogg"
+dest_files=["res://.godot/imported/DavidKBD - 09 - Golden Coast Rockers - Skank the Summer.ogg-00950ac64eb91d932d1693cd356b0bca.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

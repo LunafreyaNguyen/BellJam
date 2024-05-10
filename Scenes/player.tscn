@@ -7,6 +7,7 @@
 radius = 20.0998
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 5
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_lohyg")
 
@@ -17,3 +18,12 @@ texture = ExtResource("2_8fxnh")
 position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_5owib")
 debug_color = Color(0.988235, 0, 0, 0.419608)
+
+[node name="bulletSpawn1" type="Node2D" parent="."]
+position = Vector2(0, -53.3333)
+
+[node name="bulletSpawn2" type="Node2D" parent="."]
+position = Vector2(-63.3333, -53.3333)
+
+[node name="bulletSpawn3" type="Node2D" parent="."]
+position = Vector2(63.333, -53.333)
