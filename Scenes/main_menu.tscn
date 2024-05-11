@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://buv8r0ehewl2v"]
 
-[ext_resource type="Texture2D" uid="uid://br5qulxp2etkk" path="res://Art/Backgrounds/hell.png" id="1_eu4x8"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_nhryt"]
+[ext_resource type="Texture2D" uid="uid://bm7gwcl34sw6w" path="res://Art/Backgrounds/titlescreenblue_notext.jpg" id="2_sf0q8"]
 [ext_resource type="PackedScene" uid="uid://c10kr0eryd2vk" path="res://Scenes/options_menu.tscn" id="3_ysnaf"]
 
 [sub_resource type="SystemFont" id="SystemFont_614q2"]
@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_eu4x8")
+texture = ExtResource("2_sf0q8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -42,7 +42,8 @@ theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 300
+size_flags_horizontal = 0
+theme_override_constants/separation = 130
 
 [node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -53,18 +54,23 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 24
 theme_override_fonts/font = SubResource("SystemFont_614q2")
-theme_override_font_sizes/font_size = 64
-text = "Epic Chuuni BELL FR FR on G"
+theme_override_font_sizes/font_size = 300
+text = "Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 250
 alignment = 1
+
+[node name="Seperator" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 650
+theme_override_constants/separation = 300
 alignment = 1
 
 [node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -72,6 +78,7 @@ layout_mode = 2
 
 [node name="Buttons" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons"]
 layout_mode = 1
@@ -85,24 +92,24 @@ grow_horizontal = 2
 theme_override_constants/separation = 16
 
 [node name="Start Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(120, 32)
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_iayro")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 64
 text = "Start"
 
 [node name="Options Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(120, 32)
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_iayro")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 64
 text = "Options"
 
 [node name="Quit Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(120, 32)
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_iayro")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 64
 text = "Quit"
 
 [node name="Options Menu" parent="." instance=ExtResource("3_ysnaf")]
