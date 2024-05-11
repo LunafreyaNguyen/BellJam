@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://durxosjbmweoq"
-path="res://.godot/imported/cecilia_closeup_temp.jpg-9fa3f9b9d0acd8c852a3038ac8285e9e.ctex"
+path="res://.godot/imported/cecilia_closeup_temp.jpg-bb4a4305dae6a6559ff9fa308badebde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Portraits/cecilia_closeup_temp.jpg"
-dest_files=["res://.godot/imported/cecilia_closeup_temp.jpg-9fa3f9b9d0acd8c852a3038ac8285e9e.ctex"]
+source_file="res://Art/portraits/cecilia_closeup_temp.jpg"
+dest_files=["res://.godot/imported/cecilia_closeup_temp.jpg-bb4a4305dae6a6559ff9fa308badebde.ctex"]
 
 [params]
 
