@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 
 # Character's stats
-@export var speed = 500.0
+@export var speed = 700.0
 @export var fireRate = .1
 var dead: bool = false
 var timer = 0
@@ -47,8 +47,8 @@ func _physics_process(delta):
 				bulletSpawnL.position.x = -40
 				bulletSpawnR.position.x = 40
 			else:
-				bulletSpawnL.position.x = 65
-				bulletSpawnR.position.x = -65
+				bulletSpawnL.position.x = 85
+				bulletSpawnR.position.x = -85
 			temp1.global_position = bulletSpawnM.get("global_position")
 			temp2.global_position = bulletSpawnL.get("global_position")
 			temp3.global_position = bulletSpawnR.get("global_position")

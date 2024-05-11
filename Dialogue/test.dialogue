@@ -1,0 +1,34 @@
+~ this_is_a_node_title
+do set_background("hell")
+~ startREAL
+do add_portrait("cecilia", 0)
+Cecilia: What's up, bitch? This is some dialogue.
+Cecilia: Pick a choice.
+- First one
+	Cecilia: Why would you pick the first one?
+	Cecilia: Default Andy?
+	Cecilia: Bro picked the first choice??
+	Cecilia: I went to "picked the first option" town and they said you're the mayor???
+	=> startREAL
+- Second one
+	Cecilia: You picked the first option before this, didn't you?
+- Huh?
+	Cecilia: Are you deaf? I said...
+	=> startREAL
+Cecilia: You're lame as hell.
+do add_portrait("shiki", 1)
+Cecilia: HOLY
+Shiki: guess
+- 3
+	Shiki: wrong amount of apples
+- 9
+	Shiki: wrong amount of apples
+- 10
+	Shiki: wrong amount of apples
+Shiki: you win dying
+Cecilia: NOOOOO
+do remove_portrait("cecilia")
+Shiki: good bye
+do remove_portrait("shiki")
+
+=> END

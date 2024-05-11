@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://caa5w5nl2op15"]
 
-[ext_resource type="Texture2D" uid="uid://dxrkx4xh1kw6u" path="res://Art/portraits/cecilia.jpg" id="1_efm0f"]
+[ext_resource type="Texture2D" uid="uid://dxrkx4xh1kw6u" path="res://Art/Portraits/cecilia.jpg" id="1_h7r0a"]
 
 [node name="LevelUi" type="Control"]
 layout_mode = 3
@@ -27,7 +27,7 @@ offset_top = 13.0
 offset_right = 509.0
 offset_bottom = -15.0
 grow_vertical = 2
-texture = ExtResource("1_efm0f")
+texture = ExtResource("1_h7r0a")
 expand_mode = 1
 
 [node name="EnemyArt" type="TextureRect" parent="ArtBG"]
@@ -43,7 +43,7 @@ offset_right = -18.0
 offset_bottom = -14.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("1_efm0f")
+texture = ExtResource("1_h7r0a")
 expand_mode = 1
 flip_h = true
 

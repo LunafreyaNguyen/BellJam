@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="3_64bdx"]
 [ext_resource type="PackedScene" uid="uid://dmcd6ywtgi20u" path="res://Scenes/bounds.tscn" id="4_v6oj6"]
 [ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullet.tscn" id="5_xq422"]
-[ext_resource type="AudioStream" uid="uid://buf4i7hphdtuf" path="res://Sounds/Music/DavidKBD - 06 - Summers Breeze - Skank the Summer.ogg" id="6_y5bnu"]
+[ext_resource type="AudioStream" uid="uid://qw20kds2ppvs" path="res://Sounds/Music/Battle-Furious-GUITAR_loop.ogg" id="6_sk6e3"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_evsrw")
@@ -29,6 +29,5 @@ metadata/_edit_group_ = true
 [node name="Bullet" parent="." instance=ExtResource("5_xq422")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_y5bnu")
-volume_db = -20.0
-autoplay = true
+stream = ExtResource("6_sk6e3")
+volume_db = -10.0
