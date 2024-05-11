@@ -6,6 +6,7 @@ extends Control
 @onready var quit_button = $"MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer/Quit Button" as Button
 @onready var options_menu = $"Options Menu" as OptionsMenu
 @onready var margin_container = $"MarginContainer" as MarginContainer
+@onready var bg = $BG
 
 @export var start_level = preload("res://Scenes/testLuna.tscn") as PackedScene
 #change this to main.tscn for final build
@@ -14,7 +15,10 @@ func _ready():
 	handle_connecting_signals()
 
 func on_start_pressed() -> void: 
+	bg.texture = load("res://Art/Backgrounds/titlescreenred_notext.jpg")
+	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_packed(start_level)
+	
 
 func on_quit_pressed() -> void:
 	get_tree().quit()

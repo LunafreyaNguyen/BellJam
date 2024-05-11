@@ -76,10 +76,10 @@ expand_mode = 3
 stretch_mode = 6
 
 [node name="Slot0" type="Marker2D" parent="."]
-position = Vector2(-30, 110)
+position = Vector2(30, 110)
 
 [node name="Slot1" type="Marker2D" parent="."]
-position = Vector2(1000, 110)
+position = Vector2(1020, 110)
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true

@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://ptif1qlyo173"]
 
-[ext_resource type="Texture2D" uid="uid://cu2tfw52fin0a" path="res://Art/Portraits/cecilia.png" id="1_avpi6"]
+[ext_resource type="Texture2D" uid="uid://bkjkwkfnt6nbw" path="res://Art/Portraits/cecilia_blue.png" id="1_i13rf"]
 
 [node name="Cecilia" type="Node2D"]
-scale = Vector2(1.2, 1.2)
+scale = Vector2(0.4, 0.4)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_avpi6")
+texture = ExtResource("1_i13rf")

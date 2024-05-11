@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dia3ul64746cp"]
+[gd_scene load_steps=9 format=3 uid="uid://dia3ul64746cp"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_evsrw"]
 [ext_resource type="PackedScene" uid="uid://1gn4fx4hgtc6" path="res://Scenes/player.tscn" id="2_omwes"]
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="3_64bdx"]
 [ext_resource type="PackedScene" uid="uid://dmcd6ywtgi20u" path="res://Scenes/bounds.tscn" id="4_v6oj6"]
 [ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullet.tscn" id="5_xq422"]
-[ext_resource type="AudioStream" uid="uid://qw20kds2ppvs" path="res://Sounds/Music/Battle-Furious-GUITAR_loop.ogg" id="6_sk6e3"]
+[ext_resource type="AudioStream" uid="uid://cyrpo14d87ab1" path="res://Sounds/Music/Battle-SilverMoon_loop.ogg" id="6_6vq52"]
+[ext_resource type="Texture2D" uid="uid://dobc16qqpsir2" path="res://Art/givemeyourballs.webp" id="7_33rm8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8efj"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_evsrw")
@@ -27,7 +30,22 @@ metadata/_edit_group_ = true
 [node name="Bounds" parent="." instance=ExtResource("4_v6oj6")]
 
 [node name="Bullet" parent="." instance=ExtResource("5_xq422")]
+position = Vector2(474, -510)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_sk6e3")
+stream = ExtResource("6_6vq52")
 volume_db = -10.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CharacterBody2D"]
+offset_left = -41.0
+offset_top = -48.0
+offset_right = 41.0
+offset_bottom = 48.0
+texture = ExtResource("7_33rm8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(4.5, 4.5)
+shape = SubResource("CircleShape2D_x8efj")
+debug_color = Color(0.729412, 0, 0.2, 0.639216)

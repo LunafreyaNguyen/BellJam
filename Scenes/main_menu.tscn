@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://buv8r0ehewl2v"]
+[gd_scene load_steps=6 format=3 uid="uid://b2gei3nqjwcva"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_nhryt"]
 [ext_resource type="Texture2D" uid="uid://bm7gwcl34sw6w" path="res://Art/Backgrounds/titlescreenblue_notext.jpg" id="2_sf0q8"]
-[ext_resource type="PackedScene" uid="uid://c10kr0eryd2vk" path="res://Scenes/options_menu.tscn" id="3_ysnaf"]
-
-[sub_resource type="SystemFont" id="SystemFont_614q2"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_iayro"]
-font_names = PackedStringArray("Impact")
+[ext_resource type="FontFile" uid="uid://bvvcl50wtvfyg" path="res://Beholden/Beholden-Bold.ttf" id="3_smvun"]
+[ext_resource type="PackedScene" uid="uid://ba6g06svayjg6" path="res://Scenes/options_menu.tscn" id="3_ysnaf"]
+[ext_resource type="AudioStream" uid="uid://c8f62xyu7w64t" path="res://Sounds/Music/Set-Ablaze_loop.ogg" id="5_dloo7"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -53,9 +49,9 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 24
-theme_override_fonts/font = SubResource("SystemFont_614q2")
+theme_override_fonts/font = ExtResource("3_smvun")
 theme_override_font_sizes/font_size = 300
-text = "Title"
+text = " Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -94,24 +90,28 @@ theme_override_constants/separation = 16
 [node name="Start Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_iayro")
+theme_override_fonts/font = ExtResource("3_smvun")
 theme_override_font_sizes/font_size = 64
 text = "Start"
 
 [node name="Options Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_iayro")
+theme_override_fonts/font = ExtResource("3_smvun")
 theme_override_font_sizes/font_size = 64
 text = "Options"
 
 [node name="Quit Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_iayro")
+theme_override_fonts/font = ExtResource("3_smvun")
 theme_override_font_sizes/font_size = 64
 text = "Quit"
 
 [node name="Options Menu" parent="." instance=ExtResource("3_ysnaf")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dloo7")
+autoplay = true

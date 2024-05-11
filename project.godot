@@ -10,11 +10,16 @@ config_version=5
 
 [application]
 
-config/name="Kana Shoot"
+config/name="ceciliashoot"
 config/description="Made for Bullet Hell Game Jam 5."
-run/main_scene="res://Scenes/testLuna.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Art/kanaGun.png"
+config/icon="res://Art/Portraits/cecilia_closeup_temp.jpg"
+config/macos_native_icon="res://Art/Portraits/cecilia_closeup_temp.jpg"
+config/windows_native_icon="res://Art/Portraits/cecilia_closeup_temp.jpg"
+run/name="Kana Shoot"
+run/windows_native_icon=""
+run/macos_native_icon=""
 
 [autoload]
 
@@ -29,8 +34,6 @@ general/balloon_path="res://Dialogue/balloon.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/resizable=false
-window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
