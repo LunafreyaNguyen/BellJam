@@ -19,6 +19,8 @@ position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_5owib")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
+[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
+
 [node name="bulletSpawn1" type="Node2D" parent="."]
 position = Vector2(0, -53.3333)
 
