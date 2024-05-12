@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var bulletSpawnL = $bulletSpawn2
 @onready var bulletSpawnR = $bulletSpawn3
 @onready var sprite = $Sprite2D
-
+@onready var hit_box = $CollisionShape2D/HitBox
 # Character's stats
 
 @export var speed = 700.0
@@ -23,12 +23,17 @@ func get_input():
 	velocity = input_direction * speed
 	if Input.get_action_raw_strength("focus"):
 		velocity = velocity * .5
+		hit_box.visible = true
+	else:
+		hit_box.visible = false
 	if(input_direction.x > 0):
 		sprite.set_rotation(.3)
 	elif(input_direction.x < 0):
 		sprite.set_rotation(-.3)
 	else:
 		sprite.set_rotation(0)
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
