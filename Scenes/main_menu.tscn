@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2gei3nqjwcva"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_nhryt"]
-[ext_resource type="Texture2D" uid="uid://bm7gwcl34sw6w" path="res://Art/Backgrounds/titlescreenblue_notext.jpg" id="2_sf0q8"]
+[ext_resource type="Texture2D" uid="uid://bab66hicp6ioe" path="res://Art/Backgrounds/titlescreenblue_notext.png" id="2_6o5am"]
 [ext_resource type="FontFile" uid="uid://bvvcl50wtvfyg" path="res://Beholden/Beholden-Bold.ttf" id="3_smvun"]
 [ext_resource type="PackedScene" uid="uid://ba6g06svayjg6" path="res://Scenes/options_menu.tscn" id="3_ysnaf"]
 [ext_resource type="AudioStream" uid="uid://c8f62xyu7w64t" path="res://Sounds/Music/Set-Ablaze_loop.ogg" id="5_dloo7"]
@@ -22,13 +22,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_sf0q8")
+texture = ExtResource("2_6o5am")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 119.0
+offset_right = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 12
@@ -39,19 +41,35 @@ theme_override_constants/margin_bottom = 12
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/separation = 130
+theme_override_constants/separation = 0
 
 [node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Game Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.372549, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 24
 theme_override_fonts/font = ExtResource("3_smvun")
-theme_override_font_sizes/font_size = 300
-text = " Game"
+theme_override_font_sizes/font_size = 100
+text = "
+HELLSHOT
+KILLBLADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game Title2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.372549, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = ExtResource("3_smvun")
+theme_override_font_sizes/font_size = 50
+text = "TURN TO DUST
+SHOT TO DEATH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -90,6 +108,7 @@ theme_override_constants/separation = 16
 [node name="Start Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.372549, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_smvun")
 theme_override_font_sizes/font_size = 64
 text = "Start"
@@ -97,6 +116,7 @@ text = "Start"
 [node name="Options Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.372549, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_smvun")
 theme_override_font_sizes/font_size = 64
 text = "Options"
@@ -104,6 +124,7 @@ text = "Options"
 [node name="Quit Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.372549, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_smvun")
 theme_override_font_sizes/font_size = 64
 text = "Quit"
@@ -114,5 +135,6 @@ layout_mode = 1
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_dloo7")
+volume_db = -10.0
 autoplay = true
 bus = &"Music"

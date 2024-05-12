@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxrkx4xh1kw6u"
-path="res://.godot/imported/cecilia.jpg-cc9a2ae5d3ed61ce3f24b98567838b32.ctex"
+uid="uid://btsiljlwurm26"
+path="res://.godot/imported/All_Fire_Bullet_Pixel_16x16_05.png-e4b8db3d631fa63029c56bdedf1e170c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Portraits/cecilia.jpg"
-dest_files=["res://.godot/imported/cecilia.jpg-cc9a2ae5d3ed61ce3f24b98567838b32.ctex"]
+source_file="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_05.png"
+dest_files=["res://.godot/imported/All_Fire_Bullet_Pixel_16x16_05.png-e4b8db3d631fa63029c56bdedf1e170c.ctex"]
 
 [params]
 

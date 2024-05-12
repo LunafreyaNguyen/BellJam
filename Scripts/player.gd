@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 
 # Character's stats
+
 @export var speed = 700.0
 @export var fireRate = .1
 var dead: bool = false
