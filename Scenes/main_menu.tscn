@@ -112,6 +112,7 @@ text = "Quit"
 visible = false
 layout_mode = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_dloo7")
 autoplay = true
+bus = &"Music"

@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://dgjeiqggrxmdr"]
+[gd_scene load_steps=3 format=3 uid="uid://dgjeiqggrxmdr"]
+
+[ext_resource type="FontFile" uid="uid://bvvcl50wtvfyg" path="res://Beholden/Beholden-Bold.ttf" id="1_kh5i7"]
+[ext_resource type="Theme" uid="uid://b026na162ltsx" path="res://themes/option_button_theme.tres" id="2_2nmyy"]
 
 [node name="Options Display Button" type="Control"]
 layout_mode = 3
@@ -15,15 +18,18 @@ offset_bottom = 40.0
 theme_override_constants/separation = 160
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(264, 0)
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kh5i7")
 theme_override_font_sizes/font_size = 32
 text = "BASE_LABEL"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(256, 64)
+custom_minimum_size = Vector2(400, 64)
 layout_mode = 2
+theme = ExtResource("2_2nmyy")

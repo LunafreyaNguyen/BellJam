@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b026na162ltsx"]
+
+[ext_resource type="FontFile" uid="uid://bvvcl50wtvfyg" path="res://Beholden/Beholden-Bold.ttf" id="1_2nspd"]
+
+[resource]
+default_font = ExtResource("1_2nspd")

@@ -1,11 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba6g06svayjg6"]
 
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_acrg8"]
-[ext_resource type="PackedScene" path="res://Scenes/settings_tab_container.tscn" id="2_yvnyw"]
-
-[sub_resource type="SystemFont" id="SystemFont_bit8f"]
-font_names = PackedStringArray("Impact")
-subpixel_positioning = 0
+[ext_resource type="FontFile" uid="uid://bvvcl50wtvfyg" path="res://Beholden/Beholden-Bold.ttf" id="2_02wqr"]
+[ext_resource type="PackedScene" uid="uid://6gvm43n516ao" path="res://Scenes/settings_tab_container.tscn" id="2_yvnyw"]
 
 [node name="Options Menu" type="Control"]
 layout_mode = 3
@@ -38,7 +35,7 @@ theme_override_constants/separation = -48
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_bit8f")
+theme_override_fonts/font = ExtResource("2_02wqr")
 theme_override_font_sizes/font_size = 32
 text = "Options"
 horizontal_alignment = 1
@@ -51,4 +48,5 @@ size_flags_vertical = 3
 [node name="Exit Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_02wqr")
 text = "Quit"
