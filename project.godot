@@ -24,6 +24,9 @@ run/macos_native_icon=""
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+SettingsSignalBus="*res://autoloads/SettingsSignalBus.gd"
+SettingContainer="*res://autoloads/SettingsDataContainer.gd"
+SaveManager="*res://autoloads/SaveManager.gd"
 
 [dialogue_manager]
 
@@ -34,6 +37,7 @@ general/balloon_path="res://Dialogue/balloon.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

@@ -11,4 +11,5 @@ func _ready():
 
 func on_exit_pressed()-> void: 
 	exit_options_menu.emit()
+	SettingsSignalBus.emit_set_settings_dictionary(SettingContainer.create_storage_dictionary())
 	set_process(false)
