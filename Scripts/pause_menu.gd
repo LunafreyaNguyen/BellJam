@@ -37,6 +37,8 @@ func on_options_pressed() -> void:
 	options_menu.visible = true
 
 func on_main_menu_pressed() -> void:
+	for bullet in get_tree().get_nodes_in_group("EnemyBullet"):
+		bullet.queue_free()
 	resume()
 	get_tree().change_scene_to_file(main)
 
