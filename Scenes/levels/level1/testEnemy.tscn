@@ -1,20 +1,66 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1lmuathlmt5p"]
+[gd_scene load_steps=11 format=3 uid="uid://b1lmuathlmt5p"]
 
 [ext_resource type="Script" path="res://Scripts/testEnemy.gd" id="1_emw0f"]
 [ext_resource type="Texture2D" uid="uid://dobc16qqpsir2" path="res://Art/givemeyourballs.webp" id="2_0vkc2"]
+[ext_resource type="Shader" uid="uid://bdro57itc8xsh" path="res://themes/hit_flash.tres" id="2_asedb"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern1.gd" id="3_icjyh"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern2.gd" id="4_igsdx"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_km27d"]
+resource_local_to_scene = true
+shader = ExtResource("2_asedb")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8efj"]
+
+[sub_resource type="Animation" id="Animation_lq2vk"]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_8i8kt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mnft2"]
+_data = {
+"RESET": SubResource("Animation_8i8kt"),
+"hurt": SubResource("Animation_lq2vk")
+}
 
 [node name="Shiki" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_emw0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_km27d")
 texture = ExtResource("2_0vkc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2(4.5, 4.5)
 shape = SubResource("CircleShape2D_x8efj")
 debug_color = Color(0.729412, 0, 0.2, 0.639216)
@@ -28,6 +74,11 @@ script = ExtResource("3_icjyh")
 script = ExtResource("4_igsdx")
 
 [node name="shotTimer2" type="Timer" parent="Pattern2"]
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mnft2")
+}
 
 [connection signal="timeout" from="Pattern1/shotTimer1" to="Pattern1" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern2/shotTimer2" to="Pattern2" method="_on_shot_timer_timeout"]

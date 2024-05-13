@@ -11,8 +11,9 @@ class_name Enemy
 # For getting the player and sprite
 @onready var absolute_parent = get_parent()
 @export var player_name = "Player"
-@onready var sprite = $Sprite2D
-@onready var hurtbox = $CollisionShape2D
+@onready var sprite = $Sprite2D as Sprite2D
+@onready var hurtbox = $CollisionShape2D as CollisionShape2D
+@onready var hit_anim = $HitFlash as AnimationPlayer
 
 # For use with delta
 var timer = 0
@@ -32,7 +33,7 @@ func bossMovement(player):
 # For getting hit
 func hit():
 	health -= 1
-	
+	hit_anim.play("hurt")
 	
 # For dying
 func die():
