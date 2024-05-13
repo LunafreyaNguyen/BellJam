@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var bulletSpawnR = $bulletSpawn3
 @onready var sprite = $Sprite2D
 @onready var hit_box = $CollisionShape2D/HitBox
+@onready var focus_bar = $"Focus Bar"
 # Character's stats
 
 @export var speed = 700.0
@@ -21,10 +22,12 @@ func _ready():
 func get_input():
 	var input_direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	velocity = input_direction * speed
-	if Input.get_action_raw_strength("focus"):
+	if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
 		velocity = velocity * .5
+		focus_bar.add_value(10)
 		hit_box.visible = true
 	else:
+		focus_bar.decrease_value(5)
 		hit_box.visible = false
 	if(input_direction.x > 0):
 		sprite.set_rotation(.3)

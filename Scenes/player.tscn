@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://1gn4fx4hgtc6"]
+[gd_scene load_steps=6 format=3 uid="uid://1gn4fx4hgtc6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
 [ext_resource type="Texture2D" uid="uid://brui8d7ecb8yf" path="res://Art/kanaGun.png" id="2_8fxnh"]
 [ext_resource type="Texture2D" uid="uid://c4j30ljqrix6w" path="res://Art/circle_hitbox.png" id="3_vd8fv"]
+[ext_resource type="PackedScene" uid="uid://04tmwydsgolh" path="res://Scenes/focus_bar.tscn" id="4_omtao"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owib"]
 radius = 20.0998
@@ -36,3 +37,13 @@ position = Vector2(-63.3333, -53.3333)
 
 [node name="bulletSpawn3" type="Node2D" parent="."]
 position = Vector2(63.333, -53.333)
+
+[node name="Focus Bar" parent="." instance=ExtResource("4_omtao")]
+offset_left = -96.6667
+offset_top = -90.0
+offset_right = -96.6667
+offset_bottom = -90.0
+scale = Vector2(0.25, 0.25)
+
+[node name="Burnout Timer" type="Timer" parent="Focus Bar"]
+wait_time = 0.01
