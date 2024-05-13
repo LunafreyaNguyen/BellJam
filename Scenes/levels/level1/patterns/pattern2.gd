@@ -1,7 +1,7 @@
 extends Node
 
 const shuriken = preload("res://Scenes/bulletShuriken.tscn")
-@onready var shotTimer = $shotTimer2
+@onready var shotTimer = $shotTimer2 as Timer
 
 var rotateSpeed = 40
 var shootWaitTime = 0.1
@@ -30,7 +30,7 @@ func _on_shot_timer_timeout():
 				s.queue_free()
 
 
-func start(player, multiplier):
+func start(_player, multiplier):
 	waves = 4 * multiplier
 	var step = 2 * PI / spawnPointCount
 	
@@ -52,5 +52,5 @@ func getWaves():
 func setWaves(num):
 	waves = num
 
-func _process(delta):
+func _process(_delta):
 	pass

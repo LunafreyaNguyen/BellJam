@@ -40,7 +40,7 @@ func die():
 	self.queue_free()
 
 # To be modified by boss code
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Gets the player object to be referenced in movement scripts
 	var player
 	if absolute_parent.get_node_or_null(player_name) != null:

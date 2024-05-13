@@ -2,16 +2,14 @@ extends Enemy
 
 @onready var pattern1 = $Pattern1
 @onready var pattern2 = $Pattern2
-
-const shuriken = preload("res://Scenes/bulletShuriken.tscn")
-const bulletCircle = preload("res://Scenes/enemyBullet.tscn")
+@onready var pattern3 = $Pattern3
 
 ## For testing only one pattern
 var PATTERN_DEBUG_MODE = false
 var debugPattern = pattern2
 ##############################
 
-
+var rng = RandomNumberGenerator.new()
 var targetLocation
 var locations = []
 var breakTimer
@@ -42,7 +40,7 @@ func bossShoot(player, multiplier):
 	if(PATTERN_DEBUG_MODE):
 		debugPattern.start(player, multiplier)
 	else:
-		var random:int = randf_range(1, 3)
+		var random:int = rng.randi_range(1, 3)
 		if random == 1:
 			pattern1.start(player, multiplier)
 		else:
@@ -70,7 +68,8 @@ func _physics_process(delta):
 	t += delta * multiplier
 	
 	if self.position.distance_to(targetLocation) < 30:
-		var random:int = randf_range(1, 5)
+		print(locations.size())
+		var random:int = rng.randi_range(0, locations.size() - 1)
 		targetLocation = locations[random].position
 		if player != null && !player.invulnerable:
 			if (pattern1.getWaves() + pattern2.getWaves()) <= 10:

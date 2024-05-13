@@ -1,7 +1,7 @@
 extends Node
 
-const bulletCircle = preload("res://Scenes/enemyBullet.tscn")
-@onready var shotTimer = $shotTimer1 as Timer
+const bulletType = preload("res://Scenes/enemyBullet.tscn")
+@onready var shotTimer = $shotTimer3 as Timer
 
 var rotateSpeed = 40
 var shootWaitTime = 0.15
@@ -19,7 +19,7 @@ func _on_shot_timer_timeout():
 	if waves > 0:
 		for s in self.get_children():
 			if s != shotTimer:
-				var bullet = bulletCircle.instantiate()
+				var bullet = bulletType.instantiate()
 				get_tree().root.add_child(bullet)
 				bullet.position = s.global_position
 				bullet.rotation = s.global_rotation
