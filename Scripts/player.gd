@@ -33,7 +33,7 @@ func get_input():
 		focus_bar.add_value(10)
 		hit_box.visible = true
 		sprite.modulate.a = .4
-	else:
+	elif(focus_bar.get_burnout_condition() == false):
 		focus_bar.decrease_value(5)
 		sprite.modulate.a = 1.0
 		hit_box.visible = false

@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://cn3q3lyhuoymk"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_ha1o7"]
+[ext_resource type="Shader" path="res://themes/pause_menu.gdshader" id="1_ymffg"]
+[ext_resource type="PackedScene" uid="uid://ba6g06svayjg6" path="res://Scenes/options_menu.tscn" id="3_1grf0"]
+[ext_resource type="FontFile" uid="uid://bvvcl50wtvfyg" path="res://Beholden/Beholden-Bold.ttf" id="3_ge2di"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3w2dy"]
+shader = ExtResource("1_ymffg")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_m6606"]
+resource_name = "blur"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.886, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_yn47v"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8nh8"]
+_data = {
+"RESET": SubResource("Animation_yn47v"),
+"blur": SubResource("Animation_m6606")
+}
+
+[node name="Pause Menu" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ha1o7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3w2dy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ge2di")
+theme_override_font_sizes/font_size = 36
+text = "Resume"
+
+[node name="Options" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ge2di")
+theme_override_font_sizes/font_size = 36
+text = "Options
+"
+
+[node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ge2di")
+theme_override_font_sizes/font_size = 36
+text = "Main Menu"
+
+[node name="Options Menu" parent="." instance=ExtResource("3_1grf0")]
+visible = false
+layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i8nh8")
+}
