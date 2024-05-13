@@ -26,7 +26,7 @@ func get_input():
 		velocity = velocity * .5
 		focus_bar.add_value(10)
 		hit_box.visible = true
-	else:
+	elif(focus_bar.get_burnout_condition() == false):
 		focus_bar.decrease_value(5)
 		hit_box.visible = false
 	if(input_direction.x > 0):
