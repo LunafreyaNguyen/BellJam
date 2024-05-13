@@ -1,8 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxd3k1hjlvmd3"]
+[gd_scene load_steps=10 format=3 uid="uid://dxd3k1hjlvmd3"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_82aos"]
-[ext_resource type="Texture2D" uid="uid://co72rq18uxj0b" path="res://Art/lasers/Laser Sprites/01.png" id="2_02sy7"]
+[ext_resource type="Texture2D" uid="uid://digduuln6sxfe" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_02.png" id="2_d7t5n"]
 [ext_resource type="AudioStream" uid="uid://d3sf1ifaydom4" path="res://Sounds/SFX/Poof.wav" id="3_yncjd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsycg"]
+atlas = ExtResource("2_d7t5n")
+region = Rect2(416, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taglw"]
+atlas = ExtResource("2_d7t5n")
+region = Rect2(432, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nb1y"]
+atlas = ExtResource("2_d7t5n")
+region = Rect2(448, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmtrc"]
+atlas = ExtResource("2_d7t5n")
+region = Rect2(464, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udt4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsycg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taglw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nb1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmtrc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wx118"]
 radius = 15.0333
@@ -10,11 +46,13 @@ radius = 15.0333
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_82aos")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(-2, 11)
 rotation = -1.5708
-texture = ExtResource("2_02sy7")
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_udt4h")
+frame_progress = 0.257708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wx118")

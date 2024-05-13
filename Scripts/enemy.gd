@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 class_name Enemy
-@export var enemyBullet: PackedScene
 
 # Stats to be modified in each Boss
 @export_group("Stats")
@@ -37,9 +36,6 @@ func bossMovement(player, delta):
 # For getting hit
 func hit():
 	health -= 1
-	#To make sprite turn to white
-	sprite.scale *= 1.005
-	hurtbox.shape.radius *= 1.005
 	
 	
 # For dying

@@ -1,37 +1,46 @@
-[gd_scene load_steps=9 format=3 uid="uid://dia3ul64746cp"]
+[gd_scene load_steps=7 format=3 uid="uid://dia3ul64746cp"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_evsrw"]
-[ext_resource type="PackedScene" uid="uid://1gn4fx4hgtc6" path="res://Scenes/player.tscn" id="2_omwes"]
+[ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="2_omwes"]
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="3_64bdx"]
-[ext_resource type="PackedScene" uid="uid://dmcd6ywtgi20u" path="res://Scenes/bounds.tscn" id="4_v6oj6"]
+[ext_resource type="AudioStream" uid="uid://qw20kds2ppvs" path="res://Sounds/Music/Battle-Furious-GUITAR_loop.ogg" id="5_51mht"]
 [ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullet.tscn" id="5_xq422"]
-[ext_resource type="AudioStream" uid="uid://cyrpo14d87ab1" path="res://Sounds/Music/Battle-SilverMoon_loop.ogg" id="6_6vq52"]
-[ext_resource type="PackedScene" uid="uid://b1lmuathlmt5p" path="res://Scenes/testEnemy.tscn" id="7_ts67j"]
-[ext_resource type="PackedScene" uid="uid://miabqffkxupx" path="res://Scenes/enemyBullet.tscn" id="9_7vmf7"]
+[ext_resource type="PackedScene" uid="uid://b1lmuathlmt5p" path="res://Scenes/levels/level1/testEnemy.tscn" id="6_2v8rb"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_evsrw")
 
 [node name="Player" parent="." instance=ExtResource("2_omwes")]
-position = Vector2(2.08165e-12, 350)
+position = Vector2(960, 810)
 Bullet = ExtResource("5_xq422")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
+anchor_mode = 0
 position_smoothing_enabled = true
 
 [node name="LevelUi" parent="." instance=ExtResource("3_64bdx")]
-offset_left = -957.0
-offset_top = -544.0
-offset_right = -957.0
-offset_bottom = -544.0
 metadata/_edit_group_ = true
 
-[node name="Bounds" parent="." instance=ExtResource("4_v6oj6")]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_6vq52")
+stream = ExtResource("5_51mht")
 volume_db = -10.0
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("7_ts67j")]
-position = Vector2(4, -415)
-enemyBullet = ExtResource("9_7vmf7")
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_2v8rb")]
+position = Vector2(960, 180)
+
+[node name="locations" type="Node" parent="." groups=["locations"]]
+
+[node name="mark1" type="Marker2D" parent="locations" groups=["mark1"]]
+position = Vector2(650, 100)
+
+[node name="mark2" type="Marker2D" parent="locations" groups=["mark2"]]
+position = Vector2(1250, 100)
+
+[node name="mark3" type="Marker2D" parent="locations" groups=["mark3"]]
+position = Vector2(650, 400)
+
+[node name="mark4" type="Marker2D" parent="locations" groups=["mark4"]]
+position = Vector2(1250, 400)
+
+[node name="mark5" type="Marker2D" parent="locations" groups=["mark4"]]
+position = Vector2(960, 540)

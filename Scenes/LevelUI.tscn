@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://caa5w5nl2op15"]
+[gd_scene load_steps=7 format=3 uid="uid://caa5w5nl2op15"]
 
-[ext_resource type="Texture2D" uid="uid://dxrkx4xh1kw6u" path="res://Art/Portraits/cecilia.jpg" id="1_h7r0a"]
+[ext_resource type="Texture2D" uid="uid://bnjec4agc0fu" path="res://Art/Portraits/cecilia_blue_portrait.png" id="1_jddd0"]
+[ext_resource type="Texture2D" uid="uid://0t02phsf1afw" path="res://Art/Portraits/cecilia_red_portrait.png" id="2_b5iqx"]
+[ext_resource type="Shader" path="res://Scenes/levels/level1.gdshader" id="3_nww4t"]
+[ext_resource type="Texture2D" uid="uid://dikdo3e8tumnv" path="res://Art/Backgrounds/background.jpg" id="4_j51tj"]
+[ext_resource type="Script" path="res://Scenes/levels/scrolling.gd" id="5_0mi4d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mqqv"]
+shader = ExtResource("3_nww4t")
+shader_parameter/scrollSpeed = null
 
 [node name="LevelUi" type="Control"]
 layout_mode = 3
@@ -12,48 +20,61 @@ grow_vertical = 2
 
 [node name="ArtBG" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -18.0
-offset_top = -14.0
-offset_right = 1941.0
-offset_bottom = 1094.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="MainCharacterArt" type="TextureRect" parent="ArtBG"]
+[node name="MainCharacterArt" type="TextureRect" parent="ArtBG" groups=["PlayerPortrait"]]
 z_index = 6
+z_as_relative = false
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = 13.0
-offset_right = 509.0
-offset_bottom = -15.0
+offset_right = 500.0
 grow_vertical = 2
-texture = ExtResource("1_h7r0a")
-expand_mode = 1
+texture = ExtResource("1_jddd0")
 
 [node name="EnemyArt" type="TextureRect" parent="ArtBG"]
 z_index = 6
+z_as_relative = false
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -509.0
-offset_top = 14.0
-offset_right = -18.0
-offset_bottom = -14.0
+offset_left = -500.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("1_h7r0a")
+texture = ExtResource("2_b5iqx")
+expand_mode = 1
+
+[node name="EnemyArt2" type="TextureRect" parent="ArtBG"]
+z_index = 5
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_right = -1420.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_b5iqx")
 expand_mode = 1
 flip_h = true
 
 [node name="GameBG" type="TextureRect" parent="ArtBG"]
+modulate = Color(1, 1, 1, 0.513726)
+material = SubResource("ShaderMaterial_7mqqv")
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -469.5
-offset_right = 472.5
+offset_left = -460.0
+offset_right = 460.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_j51tj")
+stretch_mode = 1
+script = ExtResource("5_0mi4d")

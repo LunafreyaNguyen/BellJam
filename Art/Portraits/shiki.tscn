@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ygullglsdvkh"]
+
+[ext_resource type="Texture2D" uid="uid://dobc16qqpsir2" path="res://Art/givemeyourballs.webp" id="1_4y7vv"]
+
+[node name="_4" type="Node2D"]
+scale = Vector2(10, 10)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_4y7vv")
+flip_h = true

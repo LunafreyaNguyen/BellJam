@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://1gn4fx4hgtc6"]
+[gd_scene load_steps=6 format=3 uid="uid://d73ag2vw0tqg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
 [ext_resource type="Texture2D" uid="uid://brui8d7ecb8yf" path="res://Art/kanaGun.png" id="2_8fxnh"]
 [ext_resource type="Texture2D" uid="uid://c4j30ljqrix6w" path="res://Art/circle_hitbox.png" id="3_vd8fv"]
-[ext_resource type="PackedScene" uid="uid://04tmwydsgolh" path="res://Scenes/focus_bar.tscn" id="4_omtao"]
+[ext_resource type="PackedScene" path="res://Scenes/focus_bar.tscn" id="4_omtao"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owib"]
 radius = 20.0998
@@ -18,12 +18,13 @@ texture = ExtResource("2_8fxnh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 22)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_5owib")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
 [node name="HitBox" type="Sprite2D" parent="CollisionShape2D"]
 visible = false
-modulate = Color(0.305882, 1, 1, 0.768627)
+modulate = Color(0.239216, 0.423529, 1, 1)
 show_behind_parent = true
 position = Vector2(-1.90735e-06, -0.333381)
 scale = Vector2(0.0722222, 0.0722221)
