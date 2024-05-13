@@ -18,13 +18,9 @@ class_name Enemy
 var timer = 0
 
 # For general movement of the boss
-func bossMovement(player, delta):
-	timer += delta
+func bossMovement(player):
 	# These 3 little lines of code handle movement! Don't ask me why velocity has to be set this way.
 	if player != null && health > 0:
-		self.velocity = Vector2(0, 0)
-		self.position.x = move_toward(self.position.x, player.get("position").x, speed * delta)
-		
 		if(self.position.x < player.get("position").x):
 			sprite.set_rotation(.1)
 		elif(self.position.x > player.get("position").x):
@@ -50,4 +46,4 @@ func _physics_process(delta):
 		player = absolute_parent.get_node(player_name)
 	
 	# To be modified and made custom
-	bossMovement(player, delta)
+	bossMovement(player)

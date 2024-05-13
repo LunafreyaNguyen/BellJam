@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1lmuathlmt5p"]
+[gd_scene load_steps=6 format=3 uid="uid://b1lmuathlmt5p"]
 
 [ext_resource type="Script" path="res://Scripts/testEnemy.gd" id="1_emw0f"]
 [ext_resource type="Texture2D" uid="uid://dobc16qqpsir2" path="res://Art/givemeyourballs.webp" id="2_0vkc2"]
+[ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern1.gd" id="3_icjyh"]
+[ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern2.gd" id="4_igsdx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8efj"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Shiki" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_emw0f")
 
@@ -17,13 +19,15 @@ scale = Vector2(4.5, 4.5)
 shape = SubResource("CircleShape2D_x8efj")
 debug_color = Color(0.729412, 0, 0.2, 0.639216)
 
-[node name="Rotater1" type="Node2D" parent="."]
+[node name="Pattern1" type="Node2D" parent="."]
+script = ExtResource("3_icjyh")
 
-[node name="Rotater2" type="Node2D" parent="." groups=["rotater2"]]
+[node name="shotTimer1" type="Timer" parent="Pattern1"]
 
-[node name="shotTimer1" type="Timer" parent="."]
+[node name="Pattern2" type="Node2D" parent="." groups=["rotater2"]]
+script = ExtResource("4_igsdx")
 
-[node name="shotTimer2" type="Timer" parent="."]
+[node name="shotTimer2" type="Timer" parent="Pattern2"]
 
-[connection signal="timeout" from="shotTimer1" to="." method="_on_shot_timer_1_timeout"]
-[connection signal="timeout" from="shotTimer2" to="." method="_on_shot_timer_2_timeout"]
+[connection signal="timeout" from="Pattern1/shotTimer1" to="Pattern1" method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="Pattern2/shotTimer2" to="Pattern2" method="_on_shot_timer_timeout"]

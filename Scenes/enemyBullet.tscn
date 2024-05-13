@@ -80,7 +80,7 @@ radius = 14.2292
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_5pyaw")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
 z_index = 1
 texture_filter = 1
 position = Vector2(-9, -2)

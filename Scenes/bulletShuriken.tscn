@@ -111,7 +111,7 @@ position = Vector2(5.68434e-14, 2.38419e-07)
 shape = SubResource("CircleShape2D_wx118")
 debug_color = Color(0.968627, 0, 0, 0.419608)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
 z_index = 1
 texture_filter = 1
 scale = Vector2(3, 3)

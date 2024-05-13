@@ -7,9 +7,6 @@ func _ready():
 	debounce = false
 	
 	sprite.play("shot3")
-	var player
-	if absolute_parent.get_node_or_null(player_name) != null:
-		player = absolute_parent.get_node(player_name)
 
 
 # Move in the initial direction

@@ -13,8 +13,8 @@ extends CharacterBody2D
 
 # Character's stats
 @export_group("Stats")
-@export var health = 400
-@export var speed = 400.0
+@export var health = 8
+@export var speed = 450.0
 @export var fireRate = .1
 var dead: bool = false
 var timer = 0
@@ -28,14 +28,15 @@ func _ready():
 func get_input():
 	var input_direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	velocity = input_direction * speed
+	sprite.modulate.a = 1.0
+	hit_box.visible = false
 	if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
 		velocity = velocity * .5
-		focus_bar.add_value(10)
+		focus_bar.add_value(15)
 		hit_box.visible = true
 		sprite.modulate.a = .4
 	elif(focus_bar.get_burnout_condition() == false):
-		focus_bar.decrease_value(5)
-		sprite.modulate.a = 1.0
+		focus_bar.decrease_value(20)
 		hit_box.visible = false
 	if(input_direction.x > 0):
 		sprite.set_rotation(.3)

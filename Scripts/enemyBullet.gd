@@ -16,9 +16,6 @@ var timer = 0
 # On spawn, set direction to where the player is right now
 func _ready():
 	sprite.play("shot")
-	var player
-	if absolute_parent.get_node_or_null(player_name) != null:
-		player = absolute_parent.get_node(player_name)
 
 
 # Move in the initial direction
