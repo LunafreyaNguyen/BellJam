@@ -6,7 +6,7 @@ extends Enemy
 
 ## For testing only one pattern
 var PATTERN_DEBUG_MODE = false
-var debugPattern = pattern2
+var debugPattern = pattern3
 ##############################
 
 var rng = RandomNumberGenerator.new()
@@ -41,10 +41,15 @@ func bossShoot(player, multiplier):
 		debugPattern.start(player, multiplier)
 	else:
 		var random:int = rng.randi_range(1, 3)
-		if random == 1:
-			pattern1.start(player, multiplier)
-		else:
-			pattern2.start(player, multiplier)
+		#var random: int = 3 this is just here cause debugger is broke rn
+		
+		match random:
+			1: 
+				pattern1.start(player, multiplier)
+			2:
+				pattern2.start(player, multiplier)
+			3: 
+				pattern3.start(player, multiplier)
 
 func _physics_process(delta):
 	timer += delta
@@ -68,7 +73,6 @@ func _physics_process(delta):
 	t += delta * multiplier
 	
 	if self.position.distance_to(targetLocation) < 30:
-		print(locations.size())
 		var random:int = rng.randi_range(0, locations.size() - 1)
 		targetLocation = locations[random].position
 		if player != null && !player.invulnerable:

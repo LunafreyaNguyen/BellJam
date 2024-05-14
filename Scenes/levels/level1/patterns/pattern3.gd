@@ -1,11 +1,11 @@
 extends Node
 
-const bulletType = preload("res://Scenes/enemyBullet.tscn")
+const largeBall = preload("res://Scenes/bulletLargeBall.tscn")
 @onready var shotTimer = $shotTimer3 as Timer
 
 var rotateSpeed = 40
-var shootWaitTime = 0.15
-var spawnPointCount = 8
+var shootWaitTime = 0.45
+var spawnPointCount = 12
 var radius = 75
 var waves = 0
 
@@ -19,7 +19,7 @@ func _on_shot_timer_timeout():
 	if waves > 0:
 		for s in self.get_children():
 			if s != shotTimer:
-				var bullet = bulletType.instantiate()
+				var bullet = largeBall.instantiate()
 				get_tree().root.add_child(bullet)
 				bullet.position = s.global_position
 				bullet.rotation = s.global_rotation
@@ -53,6 +53,5 @@ func setWaves(num):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var newRotation = self.rotation_degrees + (rotateSpeed * delta)
-	self.rotation_degrees = fmod(newRotation, 360)
+func _process(_delta):
+	pass
