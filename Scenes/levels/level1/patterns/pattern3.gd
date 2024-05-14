@@ -3,7 +3,7 @@ extends Node
 const largeBall = preload("res://Scenes/bullets/bulletLargeBall.tscn")
 @onready var shotTimer = $shotTimer3 as Timer
 
-var rotateSpeed = 40
+var rotateSpeed = 15
 var shootWaitTime = 0.45
 var spawnPointCount = 12
 var radius = 75
@@ -31,7 +31,7 @@ func _on_shot_timer_timeout():
 
 
 func start(_player, multiplier):
-	waves = 30 * (multiplier / 2)
+	waves = 5 * (multiplier / 2)
 	var step = 2 * PI / spawnPointCount
 
 	for x in range(spawnPointCount):
@@ -41,6 +41,8 @@ func start(_player, multiplier):
 		spawnPoint.rotation = pos.angle()
 		self.add_child(spawnPoint)
 		
+	rotateSpawn(rotateSpeed, 1)
+	
 	shotTimer.wait_time = shootWaitTime
 	shotTimer.start()
 
@@ -52,6 +54,9 @@ func getWaves():
 func setWaves(num):
 	waves = num
 
+func rotateSpawn(rotate, time):
+	var newRotation = self.rotation_degrees + (rotate * time)
+	self.rotation_degrees = fmod(newRotation, 360)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

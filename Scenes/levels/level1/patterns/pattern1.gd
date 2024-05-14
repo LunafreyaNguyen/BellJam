@@ -51,8 +51,10 @@ func getWaves():
 func setWaves(num):
 	waves = num
 
+func rotateSpawn(rotate, time):
+	var newRotation = self.rotation_degrees + (rotate * time)
+	self.rotation_degrees = fmod(newRotation, 360)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var newRotation = self.rotation_degrees + (rotateSpeed * delta)
-	self.rotation_degrees = fmod(newRotation, 360)
+	rotateSpawn(rotateSpeed, delta)

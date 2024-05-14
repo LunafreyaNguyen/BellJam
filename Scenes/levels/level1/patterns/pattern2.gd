@@ -52,5 +52,9 @@ func getWaves():
 func setWaves(num):
 	waves = num
 
+func rotateSpawn(rotate, time):
+	var newRotation = self.rotation_degrees + (rotate * time)
+	self.rotation_degrees = fmod(newRotation, 360)
+
 func _process(_delta):
 	pass
