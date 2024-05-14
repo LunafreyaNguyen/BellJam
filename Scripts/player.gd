@@ -63,12 +63,10 @@ func get_input():
 		sprite.set_rotation(0)
 
 func parry():
-	print("parrying")
 	invulnerable = true
 	#Somehow delete bullet that enters player collisionbox
 
 func _on_parry_timer_timeout():
-	print("Finished Timing")
 	invulnerable = false
 	parry_timer.stop()
 
