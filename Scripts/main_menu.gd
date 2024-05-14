@@ -8,14 +8,14 @@ extends Control
 @onready var margin_container = $"MarginContainer" as MarginContainer
 @onready var bg = $BG
 
-@export var start_level = preload("res://Scenes/testLuna.tscn") as PackedScene
+@export var start_level = preload("res://Scenes/levels/testLuna.tscn") as PackedScene
 #change this to main.tscn for final build
 
 func _ready():
 	handle_connecting_signals()
 
 func on_start_pressed() -> void: 
-	bg.texture = load("res://Art/Backgrounds/titlescreenred_notext.png")
+	bg.texture = load("res://Art/Backgrounds/titlescreen_red_notext.png")
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_packed(start_level)
 	

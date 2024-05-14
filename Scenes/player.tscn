@@ -17,7 +17,7 @@ script = ExtResource("1_lohyg")
 texture = ExtResource("2_8fxnh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 22)
+position = Vector2(2.08165e-12, -15)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_5owib")
 debug_color = Color(0.988235, 0, 0, 0.419608)

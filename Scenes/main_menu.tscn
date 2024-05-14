@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2gei3nqjwcva"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_nhryt"]
-[ext_resource type="Texture2D" uid="uid://bab66hicp6ioe" path="res://Art/Backgrounds/titlescreenblue_notext.png" id="2_6o5am"]
+[ext_resource type="Texture2D" uid="uid://dfkl0lnlc25e2" path="res://Art/Backgrounds/titlescreen_blue_notext.png" id="2_j21hb"]
 [ext_resource type="FontFile" uid="uid://bvvcl50wtvfyg" path="res://Beholden/Beholden-Bold.ttf" id="3_smvun"]
 [ext_resource type="PackedScene" uid="uid://ba6g06svayjg6" path="res://Scenes/options_menu.tscn" id="3_ysnaf"]
 [ext_resource type="AudioStream" uid="uid://c8f62xyu7w64t" path="res://Sounds/Music/Set-Ablaze_loop.ogg" id="5_dloo7"]
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6o5am")
+texture = ExtResource("2_j21hb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -54,9 +54,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 24
 theme_override_fonts/font = ExtResource("3_smvun")
 theme_override_font_sizes/font_size = 100
-text = "
-HELLSHOT
-KILLBLADE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -68,8 +65,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 24
 theme_override_fonts/font = ExtResource("3_smvun")
 theme_override_font_sizes/font_size = 50
-text = "TURN TO DUST
-SHOT TO DEATH"
 horizontal_alignment = 1
 vertical_alignment = 1
 

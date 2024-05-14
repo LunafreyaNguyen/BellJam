@@ -7,13 +7,25 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var hit_box = $CollisionShape2D/HitBox
 @onready var focus_bar = $"Focus Bar"
+
+const styleS = preload("res://Art/style/S.png")
+const styleA = preload("res://Art/style/A.png")
+const styleB = preload("res://Art/style/B.png")
+const styleC = preload("res://Art/style/C.png")
+const styleD = preload("res://Art/style/D.png")
+
+@onready var styles = [styleD, styleC, styleB, styleA, styleS]
+@onready var currStyle = 2
+@onready var styleProgress = 0
+
 @onready var Camera = get_tree().get_first_node_in_group("Camera")
-@export var start_level = preload("res://Scenes/testLuna.tscn") as PackedScene
+@onready var style = get_tree().get_first_node_in_group("style")
+
+@export var gameOver = preload("res://Scenes/gameover.tscn") as PackedScene
 
 
 # Character's stats
 @export_group("Stats")
-@export var health = 8
 @export var speed = 450.0
 @export var fireRate = .1
 var dead: bool = false
@@ -48,27 +60,41 @@ func get_input():
 
 func hit():
 	if !invulnerable:
-		health -= 1;
-	if health <= 0:
-		get_tree().change_scene_to_packed(start_level)
-	else:
-		Camera.set("offset", Vector2(randf_range(-4, 4), randf_range(-4, 4)))
-		invulnerable = true
-		for nodes in get_tree().get_nodes_in_group("EnemyBullet"):
-			nodes.queue_free()
-		var playerPortrait = get_tree().get_first_node_in_group("PlayerPortrait")
-		playerPortrait.visible = not playerPortrait.visible
-		for x in 8:
+		if currStyle == 0:
+			for s in get_tree().get_nodes_in_group("EnemyBullet"):
+				s.queue_free()
+			get_tree().change_scene_to_packed(gameOver)
+			styleProgress = 0
+		else:
+			if currStyle >= 2:
+				currStyle -= 2
+			else:
+				currStyle = 0
+			styleProgress = 0
 			Camera.set("offset", Vector2(randf_range(-4, 4), randf_range(-4, 4)))
-			sprite.visible = not sprite.visible
-			await get_tree().create_timer(.1).timeout
-		playerPortrait.visible = not playerPortrait.visible
-		Camera.set("offset", Vector2(0, 0))
-		invulnerable = false
+			invulnerable = true
+			for nodes in get_tree().get_nodes_in_group("EnemyBullet"):
+				nodes.queue_free()
+			var playerPortrait = get_tree().get_first_node_in_group("PlayerPortrait")
+			playerPortrait.visible = not playerPortrait.visible
+			for x in 8:
+				Camera.set("offset", Vector2(randf_range(-4, 4), randf_range(-4, 4)))
+				sprite.visible = not sprite.visible
+				await get_tree().create_timer(.1).timeout
+			playerPortrait.visible = not playerPortrait.visible
+			Camera.set("offset", Vector2(0, 0))
+			invulnerable = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if styleProgress > 100:
+		if currStyle < 4:
+			currStyle += 1
+			styleProgress = 0
+		else:
+			styleProgress = 0
+	style.set_texture(styles[currStyle])
 	timer += delta
 	get_input()
 	move_and_slide()

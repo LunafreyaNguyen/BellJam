@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://caa5w5nl2op15"]
+[gd_scene load_steps=8 format=3 uid="uid://caa5w5nl2op15"]
 
+[ext_resource type="Texture2D" uid="uid://cmqn5qvitx46s" path="res://Art/style/S.png" id="1_b3qfm"]
 [ext_resource type="Texture2D" uid="uid://bnjec4agc0fu" path="res://Art/Portraits/cecilia_blue_portrait.png" id="1_jddd0"]
 [ext_resource type="Texture2D" uid="uid://0t02phsf1afw" path="res://Art/Portraits/cecilia_red_portrait.png" id="2_b5iqx"]
 [ext_resource type="Shader" path="res://Scenes/levels/level1.gdshader" id="3_nww4t"]
@@ -22,6 +23,15 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="Sprite2D" type="TextureRect" parent="ArtBG" groups=["style"]]
+z_index = 7
+layout_mode = 0
+offset_left = 279.0
+offset_top = 26.0
+offset_right = 479.0
+offset_bottom = 226.0
+texture = ExtResource("1_b3qfm")
 
 [node name="MainCharacterArt" type="TextureRect" parent="ArtBG" groups=["PlayerPortrait"]]
 z_index = 6
