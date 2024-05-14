@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://d73ag2vw0tqg"]
+[gd_scene load_steps=12 format=3 uid="uid://d73ag2vw0tqg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
 [ext_resource type="Texture2D" uid="uid://brui8d7ecb8yf" path="res://Art/kanaGun.png" id="2_8fxnh"]
 [ext_resource type="Texture2D" uid="uid://c4j30ljqrix6w" path="res://Art/circle_hitbox.png" id="3_vd8fv"]
 [ext_resource type="PackedScene" uid="uid://04tmwydsgolh" path="res://Scenes/focus_bar.tscn" id="4_omtao"]
+[ext_resource type="AudioStream" uid="uid://2np36aqyko0r" path="res://Sounds/SFX/death.mp3" id="5_2e52b"]
+[ext_resource type="AudioStream" uid="uid://cgdxsvb1eumry" path="res://Sounds/SFX/sci-fi-bell-1.ogg" id="5_k7elg"]
+[ext_resource type="Script" path="res://Scripts/rankUpNoise.gd" id="6_bb4ub"]
+[ext_resource type="AudioStream" uid="uid://k1dr1rd3m31w" path="res://Sounds/SFX/fire_punch_finisher_06.wav" id="8_ag3ff"]
+[ext_resource type="AudioStream" uid="uid://csq28gk8bujq4" path="res://Sounds/SFX/metal_punch_06.wav" id="8_lu8n7"]
+[ext_resource type="AudioStream" uid="uid://baqnc0vp28uau" path="res://Sounds/SFX/aww.mp3" id="9_a28r2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owib"]
 radius = 20.0998
@@ -51,5 +57,32 @@ wait_time = 0.01
 
 [node name="ParryTimer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="rankUpNoise" type="AudioStreamPlayer2D" parent="SFX"]
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("5_k7elg")
+volume_db = 5.0
+bus = &"SFX"
+script = ExtResource("6_bb4ub")
+
+[node name="rankUp2Noise" type="AudioStreamPlayer2D" parent="SFX"]
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("8_ag3ff")
+
+[node name="rankDownNoise" type="AudioStreamPlayer2D" parent="SFX"]
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("8_lu8n7")
+
+[node name="rankDown2Noise" type="AudioStreamPlayer2D" parent="SFX"]
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("9_a28r2")
+volume_db = 5.0
+
+[node name="deathNoise" type="AudioStreamPlayer2D" parent="SFX"]
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("5_2e52b")
+bus = &"SFX"
 
 [connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]

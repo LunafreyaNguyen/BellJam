@@ -8,6 +8,14 @@ extends CharacterBody2D
 @onready var hit_box = $CollisionShape2D/HitBox
 @onready var focus_bar = $"Focus Bar"
 
+const deathParticles = preload("res://Scenes/death_particles.tscn")
+
+@onready var rankUpNoise = $SFX/rankUpNoise
+@onready var rankUp2Noise = $SFX/rankUp2Noise
+@onready var rankDownNoise = $SFX/rankDownNoise
+@onready var rankDown2Noise = $SFX/rankDown2Noise
+@onready var deathNoise = $SFX/deathNoise
+
 const styleS = preload("res://Art/style/S.png")
 const styleA = preload("res://Art/style/A.png")
 const styleB = preload("res://Art/style/B.png")
@@ -15,11 +23,12 @@ const styleC = preload("res://Art/style/C.png")
 const styleD = preload("res://Art/style/D.png")
 
 @onready var styles = [styleD, styleC, styleB, styleA, styleS]
-@onready var currStyle = 2
+@onready var currStyle = 1
 @onready var styleProgress = 0
 
 @onready var Camera = get_tree().get_first_node_in_group("Camera")
 @onready var style = get_tree().get_first_node_in_group("style")
+
 
 @export var gameOver = preload("res://Scenes/gameover.tscn") as PackedScene
 
@@ -42,7 +51,14 @@ func _ready():
 
 func get_input():
 	var input_direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
-	velocity = input_direction * speed
+	if !dead:
+		velocity = input_direction * speed
+		if(input_direction.x > 0):
+			sprite.set_rotation(.3)
+		elif(input_direction.x < 0):
+			sprite.set_rotation(-.3)
+		else:
+			sprite.set_rotation(0)
 	sprite.modulate.a = 1.0
 	hit_box.visible = false
 	if Input.get_action_raw_strength("parry"):
@@ -55,12 +71,6 @@ func get_input():
 	elif(focus_bar.get_burnout_condition() == false):
 		focus_bar.decrease_value(20)
 		hit_box.visible = false
-	if(input_direction.x > 0):
-		sprite.set_rotation(.3)
-	elif(input_direction.x < 0):
-		sprite.set_rotation(-.3)
-	else:
-		sprite.set_rotation(0)
 
 func parry():
 	invulnerable = true
@@ -73,7 +83,21 @@ func _on_parry_timer_timeout():
 
 func hit():
 	if !invulnerable:
-		if currStyle == 0:
+		if currStyle == 0 && !dead:
+			dead = true
+			var particle = deathParticles.instantiate()
+			particle.position = global_position
+			particle.rotation = rotation
+			particle.emitting = true
+			get_tree().current_scene.add_child(particle)
+			for child in self.get_children():
+				if child is Sprite2D:
+					child.visible = false
+				elif child is CollisionShape2D:
+					child.set_deferred("disabled", true)
+			deathNoise.play()
+			velocity = Vector2(0, 0)
+			await get_tree().create_timer(4, true, false, true).timeout
 			for s in get_tree().get_nodes_in_group("EnemyBullet"):
 				s.queue_free()
 			get_tree().change_scene_to_packed(gameOver)
@@ -84,6 +108,8 @@ func hit():
 			else:
 				currStyle = 0
 			styleProgress = 0
+			rankDownNoise.play()
+			rankDown2Noise.play()
 			Camera.set("offset", Vector2(randf_range(-4, 4), randf_range(-4, 4)))
 			invulnerable = true
 			for nodes in get_tree().get_nodes_in_group("EnemyBullet"):
@@ -93,7 +119,7 @@ func hit():
 			for x in 8:
 				Camera.set("offset", Vector2(randf_range(-4, 4), randf_range(-4, 4)))
 				sprite.visible = not sprite.visible
-				await get_tree().create_timer(.1).timeout
+				await get_tree().create_timer(.05, true, false, true).timeout
 			playerPortrait.visible = not playerPortrait.visible
 			Camera.set("offset", Vector2(0, 0))
 			invulnerable = false
@@ -106,6 +132,8 @@ func _physics_process(delta):
 	if styleProgress > 100:
 		if currStyle < 4:
 			currStyle += 1
+			rankUpNoise.playPitch((currStyle/5 + 1), .22)
+			rankUp2Noise.play()
 			styleProgress = 0
 		else:
 			styleProgress = 0
@@ -116,7 +144,7 @@ func _physics_process(delta):
 	if parry_timer.time_left > 0:
 		parry()
 	if timer > fireRate:
-		if Input.get_action_raw_strength("shoot"):
+		if Input.get_action_raw_strength("shoot") && !dead:
 			var temp1 = Bullet.instantiate()
 			var temp2 = Bullet.instantiate()
 			var temp3 = Bullet.instantiate()

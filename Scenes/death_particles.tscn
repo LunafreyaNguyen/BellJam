@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgm5w1may3xwy"]
+
+[ext_resource type="Texture2D" uid="uid://brui8d7ecb8yf" path="res://Art/kanaGun.png" id="1_32yqq"]
+[ext_resource type="Script" path="res://Scripts/death_particles.gd" id="1_n7k2m"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_w24yl"]
+
+[sub_resource type="Curve" id="Curve_ioyhc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j703k"]
+curve = SubResource("Curve_ioyhc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j0u0h"]
+particle_flag_disable_z = true
+angle_min = 3.9968e-14
+angle_max = 360.0
+direction = Vector3(1, 2.08165e-12, 2.08165e-12)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -800.0
+angular_velocity_max = 800.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+scale_min = 0.2
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_j703k")
+alpha_curve = SubResource("CurveTexture_w24yl")
+
+[node name="DeathParticles" type="GPUParticles2D"]
+amount = 800
+process_material = SubResource("ParticleProcessMaterial_j0u0h")
+texture = ExtResource("1_32yqq")
+lifetime = 4.0
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+script = ExtResource("1_n7k2m")

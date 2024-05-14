@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb4khlnb32f8i"]
 
-[ext_resource type="Script" path="res://Scenes/gameover.gd" id="1_eie48"]
+[ext_resource type="Script" path="res://Scripts/gameover.gd" id="1_6u3ub"]
 [ext_resource type="Texture2D" uid="uid://cjrhaldmfjgxr" path="res://Art/gameOVER.png" id="1_oy6l3"]
 [ext_resource type="AudioStream" uid="uid://bwxxyckjevsac" path="res://Sounds/Music/FinalFantasyX-ToZanarkandpianoVersion.ogg" id="3_66yr1"]
 
 [node name="Gameover" type="Node2D"]
-script = ExtResource("1_eie48")
+script = ExtResource("1_6u3ub")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0

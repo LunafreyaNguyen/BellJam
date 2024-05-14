@@ -21,6 +21,7 @@ metadata/_edit_group_ = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_uwwgu")
 volume_db = -10.0
+bus = &"Music"
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_wovmq")]
 position = Vector2(960, 180)
