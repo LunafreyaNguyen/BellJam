@@ -30,4 +30,7 @@ func _on_body_entered(body):
 
 # Make it hurt
 func hit(body):
-	body.hit()
+	if body.isInvulnerable():
+		return
+	else:
+		body.hit()

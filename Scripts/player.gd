@@ -23,6 +23,9 @@ const styleD = preload("res://Art/style/D.png")
 
 @export var gameOver = preload("res://Scenes/gameover.tscn") as PackedScene
 
+@export var start_level = preload("res://Scenes/testLuna.tscn") as PackedScene
+@onready var parry_timer = $ParryTimer
+@onready var collision_shape_2d = $CollisionShape2D
 
 # Character's stats
 @export_group("Stats")
@@ -42,6 +45,8 @@ func get_input():
 	velocity = input_direction * speed
 	sprite.modulate.a = 1.0
 	hit_box.visible = false
+	if Input.get_action_raw_strength("parry"):
+		parry_timer.start()
 	if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
 		velocity = velocity * .5
 		focus_bar.add_value(15)
@@ -56,6 +61,16 @@ func get_input():
 		sprite.set_rotation(-.3)
 	else:
 		sprite.set_rotation(0)
+
+func parry():
+	print("parrying")
+	invulnerable = true
+	#Somehow delete bullet that enters player collisionbox
+
+func _on_parry_timer_timeout():
+	print("Finished Timing")
+	invulnerable = false
+	parry_timer.stop()
 
 
 func hit():
@@ -85,6 +100,8 @@ func hit():
 			Camera.set("offset", Vector2(0, 0))
 			invulnerable = false
 
+func isInvulnerable():
+	return invulnerable
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -98,6 +115,8 @@ func _physics_process(delta):
 	timer += delta
 	get_input()
 	move_and_slide()
+	if parry_timer.time_left > 0:
+		parry()
 	if timer > fireRate:
 		if Input.get_action_raw_strength("shoot"):
 			var temp1 = Bullet.instantiate()
