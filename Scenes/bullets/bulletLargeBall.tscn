@@ -1,29 +1,29 @@
 [gd_scene load_steps=10 format=3 uid="uid://c46bhj4q25a1e"]
 
-[ext_resource type="Script" path="res://Scripts/bulletLargeBall.gd" id="1_45xr6"]
-[ext_resource type="Texture2D" uid="uid://digduuln6sxfe" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_02.png" id="2_plfq1"]
+[ext_resource type="Script" path="res://Scripts/bulletLargeBall.gd" id="1_1lagj"]
+[ext_resource type="Texture2D" uid="uid://digduuln6sxfe" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_02.png" id="2_sficr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wx118"]
 radius = 14.2292
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmw6g"]
-atlas = ExtResource("2_plfq1")
+atlas = ExtResource("2_sficr")
 region = Rect2(0, 17, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2d6u"]
-atlas = ExtResource("2_plfq1")
+atlas = ExtResource("2_sficr")
 region = Rect2(16, 17, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sgaly"]
-atlas = ExtResource("2_plfq1")
+atlas = ExtResource("2_sficr")
 region = Rect2(32, 17, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mp6fv"]
-atlas = ExtResource("2_plfq1")
+atlas = ExtResource("2_sficr")
 region = Rect2(48, 17, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ptbd6"]
-atlas = ExtResource("2_plfq1")
+atlas = ExtResource("2_sficr")
 region = Rect2(64, 17, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bw4vl"]
@@ -51,7 +51,9 @@ animations = [{
 
 [node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_45xr6")
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_1lagj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true

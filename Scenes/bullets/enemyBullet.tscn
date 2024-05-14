@@ -1,39 +1,39 @@
 [gd_scene load_steps=14 format=3 uid="uid://miabqffkxupx"]
 
-[ext_resource type="Script" path="res://Scripts/enemyBullet.gd" id="1_5pyaw"]
-[ext_resource type="Texture2D" uid="uid://df2id3wsjfl64" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_01.png" id="2_jmqsr"]
-[ext_resource type="Texture2D" uid="uid://btdj21v0phgk1" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_03.png" id="2_lkqc1"]
+[ext_resource type="Script" path="res://Scripts/enemyBullet.gd" id="1_rupjb"]
+[ext_resource type="Texture2D" uid="uid://btdj21v0phgk1" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_03.png" id="2_7ej34"]
+[ext_resource type="Texture2D" uid="uid://df2id3wsjfl64" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_01.png" id="3_jxnux"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lme62"]
-atlas = ExtResource("2_lkqc1")
+atlas = ExtResource("2_7ej34")
 region = Rect2(256, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dr0a"]
-atlas = ExtResource("2_lkqc1")
+atlas = ExtResource("2_7ej34")
 region = Rect2(272, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_31jtw"]
-atlas = ExtResource("2_lkqc1")
+atlas = ExtResource("2_7ej34")
 region = Rect2(288, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8671"]
-atlas = ExtResource("2_lkqc1")
+atlas = ExtResource("2_7ej34")
 region = Rect2(304, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jj6uy"]
-atlas = ExtResource("2_jmqsr")
+atlas = ExtResource("3_jxnux")
 region = Rect2(496, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t701x"]
-atlas = ExtResource("2_jmqsr")
+atlas = ExtResource("3_jxnux")
 region = Rect2(512, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s42dm"]
-atlas = ExtResource("2_jmqsr")
+atlas = ExtResource("3_jxnux")
 region = Rect2(528, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lx6va"]
-atlas = ExtResource("2_jmqsr")
+atlas = ExtResource("3_jxnux")
 region = Rect2(544, 160, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bw4vl"]
@@ -78,7 +78,9 @@ radius = 14.2292
 
 [node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_5pyaw")
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_rupjb")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
 z_index = 1

@@ -1,6 +1,6 @@
 extends Node
 
-const bulletCircle = preload("res://Scenes/enemyBullet.tscn")
+const bulletCircle = preload("res://Scenes/bullets/enemyBullet.tscn")
 @onready var shotTimer = $shotTimer1 as Timer
 
 var rotateSpeed = 40

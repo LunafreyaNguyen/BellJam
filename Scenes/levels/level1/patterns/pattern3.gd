@@ -1,6 +1,6 @@
 extends Node
 
-const largeBall = preload("res://Scenes/bulletLargeBall.tscn")
+const largeBall = preload("res://Scenes/bullets/bulletLargeBall.tscn")
 @onready var shotTimer = $shotTimer3 as Timer
 
 var rotateSpeed = 40
@@ -47,6 +47,7 @@ func start(_player, multiplier):
 
 func getWaves():
 	return waves
+
 
 func setWaves(num):
 	waves = num

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="3_64bdx"]
 [ext_resource type="PackedScene" uid="uid://cn3q3lyhuoymk" path="res://Scenes/pause_menu.tscn" id="3_ctqlc"]
 [ext_resource type="AudioStream" uid="uid://qw20kds2ppvs" path="res://Sounds/Music/Battle-Furious-GUITAR_loop.ogg" id="5_51mht"]
-[ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullet.tscn" id="5_xq422"]
+[ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="5_xq422"]
 [ext_resource type="PackedScene" uid="uid://b1lmuathlmt5p" path="res://Scenes/levels/level1/testEnemy.tscn" id="6_2v8rb"]
 
 [node name="Game" type="Node2D"]
