@@ -1,12 +1,15 @@
 extends EnemyBullet
 
+@onready var player = get_tree().get_first_node_in_group("Player")
 # On spawn, set direction to where the player is right now
 func _ready():
-	speed = 400.0
-	area_direction = Vector2(0, 0)
 	debounce = false
-	
 	sprite.play("shot")
+	speed = 0
+	await get_tree().create_timer(1.0).timeout
+	look_at(player.position)
+	speed = 600
+	area_direction = Vector2(0, 0)
 
 
 # Move in the initial direction

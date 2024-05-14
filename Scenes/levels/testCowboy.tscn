@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://wrmckgjsw0mc"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_rdjpj"]
+[ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="2_mryl3"]
+[ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="3_m22g2"]
+[ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="4_vkup7"]
+[ext_resource type="AudioStream" uid="uid://da7kh87egs76q" path="res://Sounds/Music/Battle-resolution_loop.ogg" id="5_h3jr2"]
+[ext_resource type="PackedScene" uid="uid://d0q8pw85ftlds" path="res://Scenes/levels/level2/boss2.tscn" id="6_jfnon"]
+[ext_resource type="PackedScene" uid="uid://cn3q3lyhuoymk" path="res://Scenes/pause_menu.tscn" id="7_kxi3b"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_rdjpj")
+
+[node name="Player" parent="." instance=ExtResource("2_mryl3")]
+position = Vector2(960, 810)
+Bullet = ExtResource("3_m22g2")
+
+[node name="LevelUi" parent="." instance=ExtResource("4_vkup7")]
+metadata/_edit_group_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_h3jr2")
+volume_db = -10.0
+
+[node name="Cowboy" parent="." instance=ExtResource("6_jfnon")]
+position = Vector2(960, 180)
+
+[node name="locations" type="Node" parent="." groups=["locations"]]
+
+[node name="mark1" type="Marker2D" parent="locations" groups=["mark1"]]
+position = Vector2(650, 100)
+
+[node name="mark2" type="Marker2D" parent="locations" groups=["mark2"]]
+position = Vector2(1250, 100)
+
+[node name="mark3" type="Marker2D" parent="locations" groups=["mark3"]]
+position = Vector2(650, 400)
+
+[node name="mark4" type="Marker2D" parent="locations" groups=["mark4"]]
+position = Vector2(1250, 400)
+
+[node name="mark5" type="Marker2D" parent="locations" groups=["mark4"]]
+position = Vector2(960, 540)
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
+anchor_mode = 0
+position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Pause Menu" parent="Camera2D/CanvasLayer" instance=ExtResource("7_kxi3b")]

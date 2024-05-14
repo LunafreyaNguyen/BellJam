@@ -46,7 +46,8 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://Scenes/levels/level1/": "yellow"
+"res://Scenes/levels/level1/": "yellow",
+"res://Scenes/levels/level2/": "orange"
 }
 
 [input]
