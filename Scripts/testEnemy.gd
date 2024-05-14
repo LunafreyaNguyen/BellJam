@@ -41,7 +41,7 @@ func bossShoot(player, multiplier):
 		debugPattern.start(player, multiplier)
 	else:
 		var random:int = rng.randi_range(1, 3)
-		#var random: int = 3 this is just here cause debugger is broke rn
+		#var random: int = 3 #this is just here cause debugger is broke rn
 		
 		match random:
 			1: 

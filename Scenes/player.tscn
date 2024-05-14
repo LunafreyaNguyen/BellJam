@@ -48,3 +48,8 @@ scale = Vector2(0.25, 0.25)
 
 [node name="Burnout Timer" type="Timer" parent="Focus Bar"]
 wait_time = 0.01
+
+[node name="ParryTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]
