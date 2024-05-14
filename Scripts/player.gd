@@ -23,7 +23,7 @@ const styleD = preload("res://Art/style/D.png")
 
 @export var gameOver = preload("res://Scenes/gameover.tscn") as PackedScene
 
-@export var start_level = preload("res://Scenes/testLuna.tscn") as PackedScene
+@export var start_level = preload("res://Scenes/levels/testLuna.tscn") as PackedScene
 @onready var parry_timer = $ParryTimer
 @onready var collision_shape_2d = $CollisionShape2D
 
