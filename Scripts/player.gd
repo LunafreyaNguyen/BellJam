@@ -25,10 +25,12 @@ const styleD = preload("res://Art/style/D.png")
 @onready var styles = [styleD, styleC, styleB, styleA, styleS]
 @onready var currStyle = 1
 @onready var styleProgress = 0
+@onready var styleConstant = get_tree().get_first_node_in_group("styleConstant")
+@onready var styleExplosion = get_tree().get_first_node_in_group("styleExplosion")
 
 @onready var Camera = get_tree().get_first_node_in_group("Camera")
 @onready var style = get_tree().get_first_node_in_group("style")
-
+@onready var styleGauge = get_tree().get_first_node_in_group("styleGauge")
 
 @export var gameOver = preload("res://Scenes/gameover.tscn") as PackedScene
 
@@ -135,9 +137,14 @@ func _physics_process(delta):
 			rankUpNoise.playPitch((currStyle/5 + 1), .22)
 			rankUp2Noise.play()
 			styleProgress = 0
+			if(styleExplosion.is_emitting()):
+				styleExplosion.set_emitting(false)
+			styleExplosion.set_emitting(true)
 		else:
 			styleProgress = 0
 	style.set_texture(styles[currStyle])
+	styleGauge.value = styleProgress
+	styleConstant.set_amount(currStyle * 100 + 100)
 	timer += delta
 	get_input()
 	move_and_slide()

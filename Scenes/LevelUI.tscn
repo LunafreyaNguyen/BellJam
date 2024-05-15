@@ -1,11 +1,66 @@
-[gd_scene load_steps=8 format=3 uid="uid://caa5w5nl2op15"]
+[gd_scene load_steps=18 format=3 uid="uid://caa5w5nl2op15"]
 
+[ext_resource type="Texture2D" uid="uid://cujblggxj07nk" path="res://Art/ring_progress.png" id="1_5n8k6"]
 [ext_resource type="Texture2D" uid="uid://cmqn5qvitx46s" path="res://Art/style/S.png" id="1_b3qfm"]
 [ext_resource type="Texture2D" uid="uid://bnjec4agc0fu" path="res://Art/Portraits/cecilia_blue_portrait.png" id="1_jddd0"]
 [ext_resource type="Texture2D" uid="uid://0t02phsf1afw" path="res://Art/Portraits/cecilia_red_portrait.png" id="2_b5iqx"]
+[ext_resource type="Texture2D" uid="uid://dxrdyo3alngeu" path="res://Art/style/fire.tres" id="2_tiw7j"]
 [ext_resource type="Shader" path="res://Scenes/levels/level1.gdshader" id="3_nww4t"]
+[ext_resource type="Texture2D" uid="uid://dnagh4vipv6k4" path="res://Art/style/particle.png" id="3_o56cd"]
+[ext_resource type="Texture2D" uid="uid://da4dkpr4tqhyv" path="res://Art/style/styleCircle.png" id="4_68yfs"]
 [ext_resource type="Texture2D" uid="uid://dikdo3e8tumnv" path="res://Art/Backgrounds/background.jpg" id="4_j51tj"]
 [ext_resource type="Script" path="res://Scenes/levels/scrolling.gd" id="5_0mi4d"]
+
+[sub_resource type="Curve" id="Curve_qlug8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.735099, 1), 0.0, 0.0, 0, 0, Vector2(0.976821, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1qllv"]
+curve = SubResource("Curve_qlug8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2gnqj"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_max = 45.0
+direction = Vector3(2.08165e-12, -1, 2.08165e-12)
+spread = 90.0
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+gravity = Vector3(2.08165e-12, -98, 2.08165e-12)
+scale_min = 0.4
+scale_max = 2.0
+color_ramp = ExtResource("2_tiw7j")
+color_initial_ramp = ExtResource("2_tiw7j")
+alpha_curve = SubResource("CurveTexture_1qllv")
+turbulence_enabled = true
+turbulence_noise_scale = 5.0
+turbulence_noise_speed_random = 0.1
+turbulence_influence_min = 0.04
+turbulence_influence_max = 0.08
+turbulence_initial_displacement_min = 100.0
+turbulence_initial_displacement_max = 100.0
+
+[sub_resource type="Curve" id="Curve_fd8pf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sgdad"]
+curve = SubResource("Curve_fd8pf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ewms"]
+particle_flag_disable_z = true
+angle_max = 45.0
+direction = Vector3(2.08165e-12, -1, 2.08165e-12)
+spread = 80.0
+initial_velocity_min = 200.0
+initial_velocity_max = 600.0
+gravity = Vector3(2.08165e-12, -98, 2.08165e-12)
+scale_min = 0.4
+scale_max = 2.0
+color_ramp = ExtResource("2_tiw7j")
+color_initial_ramp = ExtResource("2_tiw7j")
+alpha_curve = SubResource("CurveTexture_sgdad")
+turbulence_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7mqqv"]
 shader = ExtResource("3_nww4t")
@@ -25,13 +80,54 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Sprite2D" type="TextureRect" parent="ArtBG" groups=["style"]]
-z_index = 7
+z_index = 8
 layout_mode = 0
-offset_left = 279.0
-offset_top = 26.0
-offset_right = 479.0
-offset_bottom = 226.0
+offset_left = 290.0
+offset_top = 56.0
+offset_right = 490.0
+offset_bottom = 256.0
+scale = Vector2(0.736584, 0.736584)
 texture = ExtResource("1_b3qfm")
+
+[node name="styleExplosion" type="GPUParticles2D" parent="ArtBG/Sprite2D" groups=["styleExplosion"]]
+z_index = 7
+z_as_relative = false
+position = Vector2(106, 134)
+emitting = false
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_2gnqj")
+texture = ExtResource("3_o56cd")
+lifetime = 5.0
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+fixed_fps = 60
+trail_lifetime = 1.0
+
+[node name="styleConstant" type="GPUParticles2D" parent="ArtBG/Sprite2D" groups=["styleConstant"]]
+z_index = -1
+position = Vector2(108, 144)
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_1ewms")
+texture = ExtResource("3_o56cd")
+lifetime = 5.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ArtBG/Sprite2D" groups=["styleGauge"]]
+z_index = -1
+layout_mode = 0
+offset_left = -40.0
+offset_top = -50.0
+offset_right = 731.0
+offset_bottom = 721.0
+scale = Vector2(0.4, 0.4)
+value = 50.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("1_5n8k6")
+texture_progress = ExtResource("4_68yfs")
+tint_under = Color(1, 1, 1, 0)
+tint_over = Color(1, 0, 0.333333, 1)
+tint_progress = Color(1, 0, 0.164706, 0.890196)
 
 [node name="MainCharacterArt" type="TextureRect" parent="ArtBG" groups=["PlayerPortrait"]]
 z_index = 6

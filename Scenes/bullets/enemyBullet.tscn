@@ -83,7 +83,7 @@ monitorable = false
 script = ExtResource("1_rupjb")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
-z_index = 1
+z_index = 2
 texture_filter = 1
 position = Vector2(-9, -2)
 scale = Vector2(3, 3)

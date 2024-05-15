@@ -29,19 +29,19 @@ position = Vector2(960, 180)
 [node name="locations" type="Node" parent="." groups=["locations"]]
 
 [node name="mark1" type="Marker2D" parent="locations" groups=["mark1"]]
-position = Vector2(650, 100)
+position = Vector2(649, 83)
 
 [node name="mark2" type="Marker2D" parent="locations" groups=["mark2"]]
-position = Vector2(1250, 100)
+position = Vector2(1249, 83)
 
 [node name="mark3" type="Marker2D" parent="locations" groups=["mark3"]]
-position = Vector2(650, 400)
+position = Vector2(649, 383)
 
 [node name="mark4" type="Marker2D" parent="locations" groups=["mark4"]]
-position = Vector2(1250, 400)
+position = Vector2(1249, 383)
 
 [node name="mark5" type="Marker2D" parent="locations" groups=["mark4"]]
-position = Vector2(960, 540)
+position = Vector2(959, 210)
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
 anchor_mode = 0

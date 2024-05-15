@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcsbw4nsmw1i6"]
+[gd_scene load_steps=9 format=3 uid="uid://b02l3kqi33v3n"]
 
 [ext_resource type="Script" path="res://Scripts/bulletPointed.gd" id="1_ffr4m"]
 [ext_resource type="Texture2D" uid="uid://digduuln6sxfe" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_02.png" id="2_vwylw"]
@@ -50,14 +50,13 @@ script = ExtResource("1_ffr4m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_wx118")
 debug_color = Color(0.968627, 0, 0, 1)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(-7.33333, -2)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_bw4vl")
 animation = &"shot"

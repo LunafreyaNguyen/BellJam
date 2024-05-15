@@ -103,6 +103,7 @@ animations = [{
 }]
 
 [node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
+z_index = 2
 scale = Vector2(1.5, 1.5)
 collision_layer = 0
 monitorable = false
