@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://ybryqlfxcglo"]
+
+[ext_resource type="Script" path="res://Scripts/bulletOscillating.gd" id="1_xp7pp"]
+[ext_resource type="Texture2D" uid="uid://digduuln6sxfe" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_02.png" id="2_f1ufy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx118"]
+radius = 14.2292
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1txp"]
+atlas = ExtResource("2_f1ufy")
+region = Rect2(0, 81, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqkl0"]
+atlas = ExtResource("2_f1ufy")
+region = Rect2(16, 81, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h63p"]
+atlas = ExtResource("2_f1ufy")
+region = Rect2(32, 81, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxewt"]
+atlas = ExtResource("2_f1ufy")
+region = Rect2(48, 81, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkids"]
+atlas = ExtResource("2_f1ufy")
+region = Rect2(64, 81, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bw4vl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1txp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqkl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h63p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxewt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkids")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 15.0
+}]
+
+[node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_xp7pp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
+shape = SubResource("CircleShape2D_wx118")
+debug_color = Color(0.968627, 0, 0, 1)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
+z_index = 1
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_bw4vl")
+animation = &"shot"
+
+[node name="Wait Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Wait Timer" to="." method="_on_wait_timer_timeout"]

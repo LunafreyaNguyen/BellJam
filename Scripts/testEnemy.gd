@@ -76,13 +76,14 @@ func _physics_process(delta):
 		var random:int = rng.randi_range(0, locations.size() - 1)
 		targetLocation = locations[random].position
 		if player != null && !player.invulnerable:
-			if (pattern1.getWaves() + pattern2.getWaves()) <= 10:
+			if (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 10:
 				timer = 0
 				bossShoot(player, multiplier)
 		else:
 			pattern1.setWaves(0)
 			pattern2.setWaves(0)
-	elif pattern1.getWaves() + pattern2.getWaves() <= 0 || health < 200:
+			pattern3.setWaves(0)
+	elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 0 || health < 200:
 		self.position = self.position.lerp(targetLocation, t)
 	
 	# To be modified and made custom

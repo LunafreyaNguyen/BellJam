@@ -2,6 +2,7 @@ extends Enemy
 
 @onready var pattern1 = $Pattern5
 @onready var pattern2 = $Pattern6
+@onready var pattern3 = $Pattern7
 
 ## For testing only one pattern
 var PATTERN_DEBUG_MODE = false
@@ -12,7 +13,7 @@ var rng = RandomNumberGenerator.new()
 var targetLocation
 var locations = []
 var breakTimer
-var totalPatterns = 2
+var totalPatterns = 3
 
 # To be changed and made custom
 func _ready():
@@ -39,8 +40,8 @@ func bossShoot(player, multiplier):
 	if(PATTERN_DEBUG_MODE):
 		debugPattern.start(player, multiplier)
 	else:
-		#var random:int = rng.randi_range(1, 3)
-		var random: int = 2 #this is just here cause debugger is broke rn
+		var random:int = rng.randi_range(1, 3)
+		#var random: int = 3 #this is just here cause debugger is broke rn
 		
 		match random:
 			1: 
@@ -48,7 +49,7 @@ func bossShoot(player, multiplier):
 			2:
 				pattern2.start(player, multiplier)
 			3: 
-				pass
+				pattern3.start(player, multiplier)
 
 func _physics_process(delta):
 	timer += delta
@@ -75,12 +76,14 @@ func _physics_process(delta):
 		var random:int = rng.randi_range(0, locations.size() - 1)
 		targetLocation = locations[random].position
 		if player != null && !player.invulnerable:
-			if (pattern1.getWaves() + pattern2.getWaves()) <= 10:
+			if (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 10:
 				timer = 0
 				bossShoot(player, multiplier)
 		else:
 			pattern1.setWaves(0)
-	elif (pattern1.getWaves() + pattern2.getWaves()) <= 0 || health < 200:
+			pattern2.setWaves(0)
+			pattern3.setWaves(0)
+	elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 0 || health < 200:
 		self.position = self.position.lerp(targetLocation, t)
 	
 	# To be modified and made custom
