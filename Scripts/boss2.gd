@@ -1,6 +1,8 @@
 extends Enemy
 
 @onready var pattern1 = $Pattern5
+@onready var pattern2 = $Pattern6
+
 ## For testing only one pattern
 var PATTERN_DEBUG_MODE = false
 var debugPattern = pattern1
@@ -10,7 +12,7 @@ var rng = RandomNumberGenerator.new()
 var targetLocation
 var locations = []
 var breakTimer
-var totalPatterns = 1
+var totalPatterns = 2
 
 # To be changed and made custom
 func _ready():
@@ -38,13 +40,13 @@ func bossShoot(player, multiplier):
 		debugPattern.start(player, multiplier)
 	else:
 		#var random:int = rng.randi_range(1, 3)
-		var random: int = 1 #this is just here cause debugger is broke rn
+		var random: int = 2 #this is just here cause debugger is broke rn
 		
 		match random:
 			1: 
 				pattern1.start(player, multiplier)
 			2:
-				pass
+				pattern2.start(player, multiplier)
 			3: 
 				pass
 
@@ -73,12 +75,12 @@ func _physics_process(delta):
 		var random:int = rng.randi_range(0, locations.size() - 1)
 		targetLocation = locations[random].position
 		if player != null && !player.invulnerable:
-			if (pattern1.getWaves()) <= 10:
+			if (pattern1.getWaves() + pattern2.getWaves()) <= 10:
 				timer = 0
 				bossShoot(player, multiplier)
 		else:
 			pattern1.setWaves(0)
-	elif pattern1.getWaves() <= 0 || health < 200:
+	elif (pattern1.getWaves() + pattern2.getWaves()) <= 0 || health < 200:
 		self.position = self.position.lerp(targetLocation, t)
 	
 	# To be modified and made custom
