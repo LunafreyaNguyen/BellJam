@@ -3,8 +3,8 @@ extends Node
 const bullet_pointed = preload("res://Scenes/bullets/bulletLargeBall2.tscn")
 @onready var shotTimer = $shotTimer6 as Timer
 
-var rotateSpeed = 45
-var shootWaitTime = 0.45
+var rotateSpeed = 90
+var shootWaitTime = 0.1
 var spawnPointCount = 6
 var radius = 110
 var waves = 0
@@ -31,7 +31,7 @@ func _on_shot_timer_timeout():
 
 
 func start(_player, multiplier):
-	waves = 3 * (multiplier / 2)
+	waves = 6 * (multiplier / 2)
 	var step = 2 * PI / spawnPointCount
 
 	for x in range(spawnPointCount):

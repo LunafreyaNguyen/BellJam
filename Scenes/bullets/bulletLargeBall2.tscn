@@ -50,7 +50,6 @@ animations = [{
 }]
 
 [node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
-scale = Vector2(1.5, 1.5)
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_q03i3")
