@@ -50,13 +50,14 @@ script = ExtResource("1_ffr4m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
-scale = Vector2(1.5, 1.5)
+scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_wx118")
 debug_color = Color(0.968627, 0, 0, 1)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
 z_index = 1
 texture_filter = 1
+position = Vector2(-7.33333, -2)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_bw4vl")
 animation = &"shot"
