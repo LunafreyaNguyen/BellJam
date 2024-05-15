@@ -36,7 +36,11 @@ const styleD = preload("res://Art/style/D.png")
 
 @export var start_level = preload("res://Scenes/levels/testLuna.tscn") as PackedScene
 @onready var parry_timer = $ParryTimer
+@onready var parryHitbox = $ParryHitbox
+@onready var parrySlash = get_tree().get_first_node_in_group("parrySlash")
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var parryCooldown = $ParryCooldown
+@onready var parryShine = $SFX/parryShine
 
 # Character's stats
 @export_group("Stats")
@@ -45,11 +49,13 @@ const styleD = preload("res://Art/style/D.png")
 var dead: bool = false
 var timer = 0
 @export var invulnerable = false
-
+var isParrying = false
+var parryOff = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	parryHitbox.modulate.a = 0
+	changeHitboxSize()
 
 func get_input():
 	var input_direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
@@ -63,7 +69,13 @@ func get_input():
 			sprite.set_rotation(0)
 	sprite.modulate.a = 1.0
 	hit_box.visible = false
-	if Input.get_action_raw_strength("parry"):
+	if Input.get_action_raw_strength("parry") && !isParrying && !parryOff:
+		isParrying = true
+		var whiteTween: Tween = create_tween()
+		whiteTween.tween_property(self, "modulate:v", 1, 0.25).from(15)
+		var parryHitboxTween: Tween = create_tween()
+		parryHitboxTween.tween_property(parryHitbox, "modulate:a", 0, .5).from(1)
+		parryShine.play()
 		parry_timer.start()
 	if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
 		velocity = velocity * .5
@@ -74,17 +86,22 @@ func get_input():
 		focus_bar.decrease_value(20)
 		hit_box.visible = false
 
-func parry():
-	invulnerable = true
-	#Somehow delete bullet that enters player collisionbox
-
 func _on_parry_timer_timeout():
-	invulnerable = false
+	isParrying = false
+	parryOff = true
+	parryCooldown.start()
 	parry_timer.stop()
 
+func parryCooldownTimeout():
+	parryOff = false
 
 func hit():
-	if !invulnerable:
+	if isParrying:
+		parrySlash.parry()
+		for s in get_tree().get_nodes_in_group("EnemyBullet"):
+			if s.position.distance_to(position) < (currStyle * 100 + 100):
+				s.queue_free()
+	elif !invulnerable:
 		if currStyle == 0 && !dead:
 			dead = true
 			var particle = deathParticles.instantiate()
@@ -110,6 +127,7 @@ func hit():
 			else:
 				currStyle = 0
 			styleProgress = 0
+			changeHitboxSize()
 			rankDownNoise.play()
 			rankDown2Noise.play()
 			Camera.set("offset", Vector2(randf_range(-4, 4), randf_range(-4, 4)))
@@ -126,6 +144,15 @@ func hit():
 			Camera.set("offset", Vector2(0, 0))
 			invulnerable = false
 
+
+func changeHitboxSize():
+	
+	var newParrySize = ((currStyle/4.0)) + 1
+	if currStyle == 0:
+		newParrySize = .6
+	parryHitbox.scale.x = newParrySize
+	parryHitbox.scale.y = newParrySize
+
 func isInvulnerable():
 	return invulnerable
 
@@ -140,6 +167,7 @@ func _physics_process(delta):
 			if(styleExplosion.is_emitting()):
 				styleExplosion.set_emitting(false)
 			styleExplosion.set_emitting(true)
+			changeHitboxSize()
 		else:
 			styleProgress = 0
 	style.set_texture(styles[currStyle])
@@ -148,8 +176,6 @@ func _physics_process(delta):
 	timer += delta
 	get_input()
 	move_and_slide()
-	if parry_timer.time_left > 0:
-		parry()
 	if timer > fireRate:
 		if Input.get_action_raw_strength("shoot") && !dead:
 			var temp1 = Bullet.instantiate()

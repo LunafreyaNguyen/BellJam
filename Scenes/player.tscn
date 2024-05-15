@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d73ag2vw0tqg"]
+[gd_scene load_steps=13 format=3 uid="uid://d73ag2vw0tqg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
 [ext_resource type="Texture2D" uid="uid://brui8d7ecb8yf" path="res://Art/kanaGun.png" id="2_8fxnh"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://k1dr1rd3m31w" path="res://Sounds/SFX/fire_punch_finisher_06.wav" id="8_ag3ff"]
 [ext_resource type="AudioStream" uid="uid://csq28gk8bujq4" path="res://Sounds/SFX/metal_punch_06.wav" id="8_lu8n7"]
 [ext_resource type="AudioStream" uid="uid://baqnc0vp28uau" path="res://Sounds/SFX/aww.mp3" id="9_a28r2"]
+[ext_resource type="AudioStream" uid="uid://dpfi4dxmc52nq" path="res://Sounds/SFX/parryShine.wav" id="11_jhn4f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owib"]
 radius = 20.0998
@@ -21,6 +22,11 @@ script = ExtResource("1_lohyg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
 texture = ExtResource("2_8fxnh")
+
+[node name="ParryHitbox" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.647059)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("3_vd8fv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, -15)
@@ -58,6 +64,8 @@ wait_time = 0.01
 [node name="ParryTimer" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="ParryCooldown" type="Timer" parent="."]
+
 [node name="SFX" type="Node" parent="."]
 
 [node name="rankUpNoise" type="AudioStreamPlayer2D" parent="SFX"]
@@ -70,19 +78,27 @@ script = ExtResource("6_bb4ub")
 [node name="rankUp2Noise" type="AudioStreamPlayer2D" parent="SFX"]
 scale = Vector2(0.6, 0.6)
 stream = ExtResource("8_ag3ff")
+bus = &"SFX"
 
 [node name="rankDownNoise" type="AudioStreamPlayer2D" parent="SFX"]
 scale = Vector2(0.6, 0.6)
 stream = ExtResource("8_lu8n7")
+bus = &"SFX"
 
 [node name="rankDown2Noise" type="AudioStreamPlayer2D" parent="SFX"]
 scale = Vector2(0.6, 0.6)
 stream = ExtResource("9_a28r2")
 volume_db = 5.0
+bus = &"SFX"
 
 [node name="deathNoise" type="AudioStreamPlayer2D" parent="SFX"]
 scale = Vector2(0.6, 0.6)
 stream = ExtResource("5_2e52b")
 bus = &"SFX"
 
+[node name="parryShine" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_jhn4f")
+bus = &"SFX"
+
 [connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]
+[connection signal="timeout" from="ParryCooldown" to="." method="parryCooldownTimeout"]

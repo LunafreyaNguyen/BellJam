@@ -111,16 +111,18 @@ amount = 300
 process_material = SubResource("ParticleProcessMaterial_1ewms")
 texture = ExtResource("3_o56cd")
 lifetime = 5.0
+trail_enabled = true
+trail_lifetime = 4.0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="ArtBG/Sprite2D" groups=["styleGauge"]]
 z_index = -1
 layout_mode = 0
-offset_left = -40.0
-offset_top = -50.0
-offset_right = 731.0
-offset_bottom = 721.0
+offset_left = -39.371
+offset_top = -50.2319
+offset_right = 731.629
+offset_bottom = 720.768
 scale = Vector2(0.4, 0.4)
-value = 50.0
+value = 90.0
 fill_mode = 4
 nine_patch_stretch = true
 texture_under = ExtResource("1_5n8k6")
