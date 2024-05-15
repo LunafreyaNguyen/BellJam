@@ -1,15 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://caa5w5nl2op15"]
+[gd_scene load_steps=19 format=3 uid="uid://caa5w5nl2op15"]
 
 [ext_resource type="Texture2D" uid="uid://cujblggxj07nk" path="res://Art/ring_progress.png" id="1_5n8k6"]
 [ext_resource type="Texture2D" uid="uid://cmqn5qvitx46s" path="res://Art/style/S.png" id="1_b3qfm"]
-[ext_resource type="Texture2D" uid="uid://bnjec4agc0fu" path="res://Art/Portraits/cecilia_blue_portrait.png" id="1_jddd0"]
-[ext_resource type="Texture2D" uid="uid://0t02phsf1afw" path="res://Art/Portraits/cecilia_red_portrait.png" id="2_b5iqx"]
+[ext_resource type="Texture2D" uid="uid://bnjec4agc0fu" path="res://Art/portraits/cecilia_blue_portrait.png" id="1_jddd0"]
+[ext_resource type="Texture2D" uid="uid://0t02phsf1afw" path="res://Art/portraits/cecilia_red_portrait.png" id="2_b5iqx"]
 [ext_resource type="Texture2D" uid="uid://dxrdyo3alngeu" path="res://Art/style/fire.tres" id="2_tiw7j"]
 [ext_resource type="Shader" path="res://Scenes/levels/level1.gdshader" id="3_nww4t"]
 [ext_resource type="Texture2D" uid="uid://dnagh4vipv6k4" path="res://Art/style/particle.png" id="3_o56cd"]
 [ext_resource type="Texture2D" uid="uid://da4dkpr4tqhyv" path="res://Art/style/styleCircle.png" id="4_68yfs"]
 [ext_resource type="Texture2D" uid="uid://dikdo3e8tumnv" path="res://Art/Backgrounds/background.jpg" id="4_j51tj"]
 [ext_resource type="Script" path="res://Scenes/levels/scrolling.gd" id="5_0mi4d"]
+[ext_resource type="PackedScene" uid="uid://dqfsocl4gcwu2" path="res://Scenes/parrySlash.tscn" id="11_mavus"]
 
 [sub_resource type="Curve" id="Curve_qlug8"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.735099, 1), 0.0, 0.0, 0, 0, Vector2(0.976821, 0), 0.0, 0.0, 0, 0]
@@ -186,3 +187,6 @@ grow_vertical = 2
 texture = ExtResource("4_j51tj")
 stretch_mode = 1
 script = ExtResource("5_0mi4d")
+
+[node name="ParrySlash" parent="." groups=["parrySlash"] instance=ExtResource("11_mavus")]
+z_index = 10

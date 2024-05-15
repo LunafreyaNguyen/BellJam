@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dia3ul64746cp"]
+[gd_scene load_steps=8 format=3 uid="uid://dia3ul64746cp"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_hghyf"]
 [ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="2_wur4i"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://da7kh87egs76q" path="res://Sounds/Music/Battle-resolution_loop.ogg" id="5_uwwgu"]
 [ext_resource type="PackedScene" uid="uid://b1lmuathlmt5p" path="res://Scenes/levels/level1/testEnemy.tscn" id="6_wovmq"]
 [ext_resource type="PackedScene" uid="uid://cn3q3lyhuoymk" path="res://Scenes/pause_menu.tscn" id="7_fa512"]
-[ext_resource type="PackedScene" uid="uid://dqfsocl4gcwu2" path="res://Scenes/parrySlash.tscn" id="8_xc1f0"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hghyf")
@@ -51,7 +50,3 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
 [node name="Pause Menu" parent="Camera2D/CanvasLayer" instance=ExtResource("7_fa512")]
-
-[node name="ParrySlash" parent="." groups=["parrySlash"] instance=ExtResource("8_xc1f0")]
-z_index = 10
-position = Vector2(2.08165e-12, 2.08165e-12)
