@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://bfy7itnfon1p3"
+path="res://.godot/imported/test.dialogue-113dbbd83e7d86f8d318a8693b281e42.tres"
+
+[deps]
+
+source_file="res://Dialogue/Ojou/test.dialogue"
+dest_files=["res://.godot/imported/test.dialogue-113dbbd83e7d86f8d318a8693b281e42.tres"]
+
+[params]
+
+defaults=true

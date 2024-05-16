@@ -8,7 +8,7 @@ extends Control
 @onready var margin_container = $"MarginContainer" as MarginContainer
 @onready var bg = $BG
 
-@export var start_level = preload("res://Scenes/levels/testLuna.tscn") as PackedScene
+@export var start_level = preload("res://Dialogue/Ojou/ojouIntro.tscn") as PackedScene
 #change this to main.tscn for final build
 
 func _ready():

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmkjlcscgt8tt"]
+
+[ext_resource type="Script" path="res://Dialogue/Ojou/ojouIntro.gd" id="1_swjon"]
+[ext_resource type="Resource" uid="uid://bfy7itnfon1p3" path="res://Dialogue/Ojou/test.dialogue" id="2_xlngi"]
+
+[node name="DialogueSceneTest" type="Node2D"]
+script = ExtResource("1_swjon")
+dialogue_resource = ExtResource("2_xlngi")
+dialogue_title = "beginning"
