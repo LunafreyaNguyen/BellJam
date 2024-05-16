@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://d73ag2vw0tqg"]
+[gd_scene load_steps=15 format=3 uid="uid://d73ag2vw0tqg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
-[ext_resource type="Texture2D" uid="uid://brui8d7ecb8yf" path="res://Art/kanaGun.png" id="2_8fxnh"]
+[ext_resource type="Texture2D" uid="uid://bkjkwkfnt6nbw" path="res://Art/Portraits/cecilia_blue.png" id="2_ov7fe"]
+[ext_resource type="SpriteFrames" uid="uid://btp10iu0jv7px" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/parry.tres" id="3_06qht"]
 [ext_resource type="Texture2D" uid="uid://c4j30ljqrix6w" path="res://Art/circle_hitbox.png" id="3_vd8fv"]
 [ext_resource type="PackedScene" uid="uid://04tmwydsgolh" path="res://Scenes/focus_bar.tscn" id="4_omtao"]
 [ext_resource type="AudioStream" uid="uid://2np36aqyko0r" path="res://Sounds/SFX/death.mp3" id="5_2e52b"]
@@ -14,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://b103h2qo1snyy" path="res://Sounds/SFX/laugh.ogg" id="12_sx20d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owib"]
-radius = 20.0998
+radius = 76.956
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -22,25 +23,28 @@ scale = Vector2(0.6, 0.6)
 script = ExtResource("1_lohyg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
-texture = ExtResource("2_8fxnh")
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_ov7fe")
 
-[node name="ParryHitbox" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 0.647059)
-scale = Vector2(0.333, 0.333)
-texture = ExtResource("3_vd8fv")
+[node name="ParryHitbox" type="AnimatedSprite2D" parent="."]
+z_index = 2
+scale = Vector2(20, 32)
+sprite_frames = ExtResource("3_06qht")
+animation = &"parry"
+frame_progress = 0.629039
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, -15)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.26, 0.26)
 shape = SubResource("CircleShape2D_5owib")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
 [node name="HitBox" type="Sprite2D" parent="CollisionShape2D" groups=["parryHitboxCircle"]]
-visible = false
 modulate = Color(0.239216, 0.423529, 1, 1)
 show_behind_parent = true
+z_index = 1
 position = Vector2(-1.90735e-06, -0.333381)
-scale = Vector2(0.0722222, 0.0722221)
+scale = Vector2(0.26, 0.26)
 texture = ExtResource("3_vd8fv")
 
 [node name="bulletSpawn1" type="Node2D" parent="."]

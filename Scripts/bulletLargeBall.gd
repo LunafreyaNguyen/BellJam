@@ -15,20 +15,10 @@ func _process(delta):
 	position += transform.x * speed * delta
 	if(timer > 4.0):
 		queue_free()
-
-
-func _on_body_entered(body):
-	# Stops an error that crashes the game.
-	if debounce == true:
-		return
-	debounce = true
-	
-	# make sure walls aren't destroyed!
-	if body.is_in_group("Player"):
-		hit(body)
-	elif body.is_in_group("Enemy"):
-		return
-	queue_free()
+	if(position.x < 500 || position.x > 1420):
+		queue_free()
+	if(position.y < 0 || position.y > 1080):
+		queue_free()
 
 # Make it hurt
 func hit(body):

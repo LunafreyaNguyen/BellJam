@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvsoif6pbwr5a"
-path="res://.godot/imported/cecilia_blue_portrait.png-ad298d6866f1d994b34f34478cd70966.ctex"
+uid="uid://deoo4x6t7ijbq"
+path="res://.godot/imported/backgroundUI.png-fea30158dac94abdbde7f10bc8b2f19a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Portraits/cecilia_blue_portrait.png"
-dest_files=["res://.godot/imported/cecilia_blue_portrait.png-ad298d6866f1d994b34f34478cd70966.ctex"]
+source_file="res://Art/backgroundUI.png"
+dest_files=["res://.godot/imported/backgroundUI.png-fea30158dac94abdbde7f10bc8b2f19a.ctex"]
 
 [params]
 

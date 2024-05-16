@@ -1,36 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmcd6ywtgi20u"]
+[gd_scene load_steps=2 format=3 uid="uid://k24dibp6p0qs"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_kvkaq"]
-a = Vector2(-489, 18.77)
-b = Vector2(709, 20.77)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlibm"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_4bjk2"]
-a = Vector2(462, -556)
-b = Vector2(463, 551)
+[node name="Bounds" type="StaticBody2D" groups=["bounds"]]
 
-[node name="Bounds" type="Node"]
+[node name="TopBoundary" type="CollisionShape2D" parent="." groups=["boundary"]]
+position = Vector2(926, -10)
+scale = Vector2(100, 1)
+shape = SubResource("RectangleShape2D_hlibm")
 
-[node name="bottomBound" type="StaticBody2D" parent="."]
+[node name="LeftBoundary" type="CollisionShape2D" parent="." groups=["boundary"]]
+position = Vector2(500, 608)
+scale = Vector2(1, 100)
+shape = SubResource("RectangleShape2D_hlibm")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="bottomBound"]
-position = Vector2(2.08165e-12, 519.23)
-shape = SubResource("SegmentShape2D_kvkaq")
-debug_color = Color(0.989781, 0, 0.286362, 0.42)
+[node name="RightBoundary" type="CollisionShape2D" parent="." groups=["boundary"]]
+position = Vector2(1420, 608)
+scale = Vector2(1, 100)
+shape = SubResource("RectangleShape2D_hlibm")
 
-[node name="topBound" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="topBound"]
-position = Vector2(-65, -559)
-shape = SubResource("SegmentShape2D_kvkaq")
-debug_color = Color(0.989781, 0, 0.286362, 0.42)
-
-[node name="leftBound" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="leftBound"]
-position = Vector2(-925, 0)
-shape = SubResource("SegmentShape2D_4bjk2")
-
-[node name="rightBound" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rightBound"]
-shape = SubResource("SegmentShape2D_4bjk2")
+[node name="BotBoundary" type="CollisionShape2D" parent="." groups=["boundary"]]
+position = Vector2(926, 1080)
+scale = Vector2(100, 1)
+shape = SubResource("RectangleShape2D_hlibm")

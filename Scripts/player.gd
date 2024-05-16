@@ -56,6 +56,7 @@ var parryOff = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	parryHitbox.modulate.a = 0
+	parryHitbox.play()
 	changeHitboxSize()
 
 func get_input():
@@ -148,11 +149,11 @@ func hit():
 
 
 func changeHitboxSize():
-	var newParrySize = ((currStyle/4.0)) + 1
+	var newParrySize = ((currStyle/4.0)) * 30 + 10
 	if currStyle == 0:
-		newParrySize = .6
+		newParrySize = 10
 	parryHitbox.scale.x = newParrySize
-	parryHitbox.scale.y = newParrySize
+	parryHitbox.scale.y = newParrySize * 1.4
 
 
 func isInvulnerable():

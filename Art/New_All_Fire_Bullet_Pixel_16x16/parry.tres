@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://btp10iu0jv7px"]
+
+[ext_resource type="Texture2D" uid="uid://digduuln6sxfe" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_02.png" id="1_7bl5w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0qcq"]
+atlas = ExtResource("1_7bl5w")
+region = Rect2(448, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vev04"]
+atlas = ExtResource("1_7bl5w")
+region = Rect2(480, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vswoe"]
+atlas = ExtResource("1_7bl5w")
+region = Rect2(512, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ver12"]
+atlas = ExtResource("1_7bl5w")
+region = Rect2(544, 224, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0qcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vev04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vswoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ver12")
+}],
+"loop": true,
+"name": &"parry",
+"speed": 30.0
+}]

@@ -1,23 +1,23 @@
 [gd_scene load_steps=14 format=3 uid="uid://miabqffkxupx"]
 
 [ext_resource type="Script" path="res://Scripts/enemyBullet.gd" id="1_rupjb"]
-[ext_resource type="Texture2D" uid="uid://btdj21v0phgk1" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_03.png" id="2_7ej34"]
+[ext_resource type="Texture2D" uid="uid://860m4hqktw6e" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_07.png" id="2_yku2y"]
 [ext_resource type="Texture2D" uid="uid://df2id3wsjfl64" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_01.png" id="3_jxnux"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lme62"]
-atlas = ExtResource("2_7ej34")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c04e"]
+atlas = ExtResource("2_yku2y")
 region = Rect2(256, 160, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2dr0a"]
-atlas = ExtResource("2_7ej34")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hoxr"]
+atlas = ExtResource("2_yku2y")
 region = Rect2(272, 160, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_31jtw"]
-atlas = ExtResource("2_7ej34")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkrty"]
+atlas = ExtResource("2_yku2y")
 region = Rect2(288, 160, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8671"]
-atlas = ExtResource("2_7ej34")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx6cj"]
+atlas = ExtResource("2_yku2y")
 region = Rect2(304, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jj6uy"]
@@ -40,16 +40,16 @@ region = Rect2(544, 160, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lme62")
+"texture": SubResource("AtlasTexture_0c04e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2dr0a")
+"texture": SubResource("AtlasTexture_2hoxr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_31jtw")
+"texture": SubResource("AtlasTexture_kkrty")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f8671")
+"texture": SubResource("AtlasTexture_nx6cj")
 }],
 "loop": true,
 "name": &"shot",
@@ -89,7 +89,8 @@ position = Vector2(-9, -2)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bw4vl")
 animation = &"shot"
-frame_progress = 0.0467091
+frame = 1
+frame_progress = 0.729471
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true

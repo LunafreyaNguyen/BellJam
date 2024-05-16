@@ -1,9 +1,14 @@
 ~ beginning
-do set_background("hell")
+
 ~ startREAL
+???: Hey, stop!
+???: What the hell do you think you're going?!
+???: ...?!
+???: H-huh?!
+Cecilia: epic
+do set_background("hell")
 do add_portrait("cecilia", 0)
-Cecilia: What's up, bitch? This is some dialogue.
-Cecilia: Pick a choice.
+Cecilia: 
 - Dev Choice
 	=> victoria
 - First one

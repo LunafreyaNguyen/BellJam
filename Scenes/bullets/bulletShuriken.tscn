@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/bulletShuriken.gd" id="1_u33tl"]
 [ext_resource type="Texture2D" uid="uid://df2id3wsjfl64" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_01.png" id="2_465rv"]
-[ext_resource type="Texture2D" uid="uid://btsiljlwurm26" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_05.png" id="3_2hwb5"]
+[ext_resource type="Texture2D" uid="uid://860m4hqktw6e" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_07.png" id="3_tru1a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wx118"]
 radius = 14.2292
@@ -35,20 +35,20 @@ region = Rect2(512, 192, 32, 32)
 atlas = ExtResource("2_465rv")
 region = Rect2(544, 192, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s0cr1"]
-atlas = ExtResource("3_2hwb5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyfcg"]
+atlas = ExtResource("3_tru1a")
 region = Rect2(496, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lcjwl"]
-atlas = ExtResource("3_2hwb5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k70k"]
+atlas = ExtResource("3_tru1a")
 region = Rect2(512, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0lrme"]
-atlas = ExtResource("3_2hwb5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlcoe"]
+atlas = ExtResource("3_tru1a")
 region = Rect2(528, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yfiqi"]
-atlas = ExtResource("3_2hwb5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_532l6"]
+atlas = ExtResource("3_tru1a")
 region = Rect2(544, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvttx"]
@@ -86,16 +86,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s0cr1")
+"texture": SubResource("AtlasTexture_jyfcg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lcjwl")
+"texture": SubResource("AtlasTexture_7k70k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0lrme")
+"texture": SubResource("AtlasTexture_rlcoe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yfiqi")
+"texture": SubResource("AtlasTexture_532l6")
 }],
 "loop": true,
 "name": &"shot3",
@@ -120,5 +120,6 @@ texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_tvttx")
 animation = &"shot3"
+frame_progress = 0.995301
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
