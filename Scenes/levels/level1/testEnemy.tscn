@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1lmuathlmt5p"]
+[gd_scene load_steps=13 format=3 uid="uid://b1lmuathlmt5p"]
 
 [ext_resource type="Script" path="res://Scripts/testEnemy.gd" id="1_emw0f"]
 [ext_resource type="Texture2D" uid="uid://dobc16qqpsir2" path="res://Art/givemeyourballs.webp" id="2_0vkc2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern1.gd" id="3_icjyh"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern2.gd" id="4_igsdx"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern3.gd" id="6_tapji"]
+[ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern4.gd" id="7_7j4u6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_km27d"]
 resource_local_to_scene = true
@@ -81,6 +82,11 @@ script = ExtResource("6_tapji")
 
 [node name="shotTimer3" type="Timer" parent="Pattern3"]
 
+[node name="Pattern4" type="Node2D" parent="."]
+script = ExtResource("7_7j4u6")
+
+[node name="shotTimer4" type="Timer" parent="Pattern4"]
+
 [node name="HitFlash" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mnft2")
@@ -89,3 +95,5 @@ libraries = {
 [connection signal="timeout" from="Pattern1/shotTimer1" to="Pattern1" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern2/shotTimer2" to="Pattern2" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern3/shotTimer3" to="Pattern3" method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="Pattern4/shotTimer4" to="Pattern4" method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="Pattern4/shotTimer4" to="Pattern4" method="_on_shot_timer_4_timeout"]

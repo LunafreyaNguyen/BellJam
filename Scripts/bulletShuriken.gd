@@ -5,7 +5,6 @@ func _ready():
 	speed = 400.0
 	area_direction = Vector2(0, 0)
 	debounce = false
-	
 	sprite.play("shot3")
 
 
@@ -26,7 +25,7 @@ func _on_body_entered(body):
 	# make sure walls aren't destroyed!
 	if body.is_in_group("Player"):
 		hit(body)
-	queue_free()
+		queue_free()
 
 # Make it hurt
 func hit(body):

@@ -3,6 +3,7 @@ extends Enemy
 @onready var pattern1 = $Pattern1
 @onready var pattern2 = $Pattern2
 @onready var pattern3 = $Pattern3
+@onready var pattern4 = $Pattern4
 
 ## For testing only one pattern
 var PATTERN_DEBUG_MODE = false
@@ -13,7 +14,7 @@ var rng = RandomNumberGenerator.new()
 var targetLocation
 var locations = []
 var breakTimer
-var totalPatterns = 2
+var totalPatterns = 4
 
 # To be changed and made custom
 func _ready():
@@ -25,7 +26,7 @@ func _ready():
 
 
 func bossMovement(player):
-	# These 3 little lines of code handle movement! Don't ask me why velocity has to be set this way.
+	# Rotate to player
 	if player != null && health > 0:
 		if(self.position.x < player.get("position").x):
 			sprite.set_rotation(.1)
@@ -33,14 +34,13 @@ func bossMovement(player):
 			sprite.set_rotation(-.1)
 		else:
 			sprite.set_rotation(0)
-	move_and_slide()
-	
-	
+
+
 func bossShoot(player, multiplier):
 	if(PATTERN_DEBUG_MODE):
 		debugPattern.start(player, multiplier)
 	else:
-		var random:int = rng.randi_range(1, 3)
+		var random:int = rng.randi_range(1, 4)
 		#var random: int = 3 #this is just here cause debugger is broke rn
 		
 		match random:
@@ -50,6 +50,8 @@ func bossShoot(player, multiplier):
 				pattern2.start(player, multiplier)
 			3: 
 				pattern3.start(player, multiplier)
+			4:
+				pattern4.start(player, multiplier)
 
 func _physics_process(delta):
 	timer += delta
@@ -76,20 +78,14 @@ func _physics_process(delta):
 		var random:int = rng.randi_range(0, locations.size() - 1)
 		targetLocation = locations[random].position
 		if player != null && !player.invulnerable:
-			if (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 10:
+			if (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) + pattern4.getWaves() <= 1:
 				timer = 0
 				bossShoot(player, multiplier)
-		else:
-			pattern1.setWaves(0)
-			pattern2.setWaves(0)
-			pattern3.setWaves(0)
-	elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 0 || health < 200:
+	elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 0:
 		self.position = self.position.lerp(targetLocation, t)
-	
-	# To be modified and made custom
 	bossMovement(player)
 	
-	if get_tree().get_nodes_in_group("EnemyBullet").size() > 500:
+	if get_tree().get_nodes_in_group("EnemyBullet").size() > 1000:
 		get_tree().get_nodes_in_group("EnemyBullet")[0].queue_free()
 	
 	if health <= 0:

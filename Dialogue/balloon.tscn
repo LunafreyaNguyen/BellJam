@@ -76,10 +76,10 @@ expand_mode = 3
 stretch_mode = 6
 
 [node name="Slot0" type="Marker2D" parent="."]
-position = Vector2(30, 110)
+position = Vector2(0, 169)
 
 [node name="Slot1" type="Marker2D" parent="."]
-position = Vector2(1020, 110)
+position = Vector2(1166, 147)
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -99,9 +99,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 21.0
-offset_top = -183.0
+offset_top = -274.0
 offset_right = -19.0
-offset_bottom = -19.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
@@ -122,6 +122,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -131,6 +132,7 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 60
 text = "Dialogue..."
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]

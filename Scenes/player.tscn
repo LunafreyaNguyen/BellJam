@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d73ag2vw0tqg"]
+[gd_scene load_steps=14 format=3 uid="uid://d73ag2vw0tqg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
 [ext_resource type="Texture2D" uid="uid://brui8d7ecb8yf" path="res://Art/kanaGun.png" id="2_8fxnh"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://csq28gk8bujq4" path="res://Sounds/SFX/metal_punch_06.wav" id="8_lu8n7"]
 [ext_resource type="AudioStream" uid="uid://baqnc0vp28uau" path="res://Sounds/SFX/aww.mp3" id="9_a28r2"]
 [ext_resource type="AudioStream" uid="uid://dpfi4dxmc52nq" path="res://Sounds/SFX/parryShine.wav" id="11_jhn4f"]
+[ext_resource type="AudioStream" uid="uid://b103h2qo1snyy" path="res://Sounds/SFX/laugh.ogg" id="12_sx20d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owib"]
 radius = 20.0998
@@ -34,7 +35,7 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_5owib")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
-[node name="HitBox" type="Sprite2D" parent="CollisionShape2D"]
+[node name="HitBox" type="Sprite2D" parent="CollisionShape2D" groups=["parryHitboxCircle"]]
 visible = false
 modulate = Color(0.239216, 0.423529, 1, 1)
 show_behind_parent = true
@@ -99,6 +100,9 @@ bus = &"SFX"
 [node name="parryShine" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("11_jhn4f")
 bus = &"SFX"
+
+[node name="laugh" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("12_sx20d")
 
 [connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]
 [connection signal="timeout" from="ParryCooldown" to="." method="parryCooldownTimeout"]

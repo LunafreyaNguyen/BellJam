@@ -1,9 +1,11 @@
-~ this_is_a_node_title
+~ beginning
 do set_background("hell")
 ~ startREAL
 do add_portrait("cecilia", 0)
 Cecilia: What's up, bitch? This is some dialogue.
 Cecilia: Pick a choice.
+- Dev Choice
+	=> victoria
 - First one
 	Cecilia: Why would you pick the first one?
 	Cecilia: Default Andy?
@@ -16,19 +18,20 @@ Cecilia: Pick a choice.
 	Cecilia: Are you deaf? I said...
 	=> startREAL
 Cecilia: You're lame as hell.
-do add_portrait("shiki", 1)
+~ victoria
+do add_portrait("victoria", 1)
 Cecilia: HOLY
-Shiki: guess
-- 3
-	Shiki: wrong amount of apples
-- 9
-	Shiki: wrong amount of apples
-- 10
-	Shiki: wrong amount of apples
-Shiki: you win dying
-Cecilia: NOOOOO
+Victoria: OHOHOH
+- what
+	Victoria: wrong amount of apples
+- huh
+	Victoria: wrong amount of apples
+- ojou sama
+	Victoria: correct
+Victoria: OH HOH HOHHOHOOHOHOHOOHOHOH also the cowboy says "It's alllll in the bullets..."
+Cecilia: epic
 do remove_portrait("cecilia")
-Shiki: good bye
-do remove_portrait("shiki")
+Victoria: good bye
+do remove_portrait("victoria")
 
 => END

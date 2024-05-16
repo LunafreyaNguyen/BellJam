@@ -69,5 +69,4 @@ animation = &"shot"
 
 [node name="Wait Timer" type="Timer" parent="."]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Wait Timer" to="." method="_on_wait_timer_timeout"]

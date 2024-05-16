@@ -1,40 +1,49 @@
-extends Node
+extends EnemyBullet
 
-const bulletCircle = preload("res://Scenes/bullets/enemyBullet.tscn")
-@onready var shotTimer = $shotTimer1 as Timer
-@onready var boss = get_tree().get_nodes_in_group("Enemy")
+
+@onready var shotTimer: Timer = $shotTimer
+
+const bulletShuriken = preload("res://Scenes/bullets/bulletShuriken.tscn")
+
 
 var rotateSpeed = 40
-var shootWaitTime = 0.15
-var spawnPointCount = 8
-var radius = 75
-var waves = 0
+var shootWaitTime = 2
+var spawnPointCount = 20
+var radius = 1
+var waves = 1
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	sprite.play("shot3")
+	speed = 100
+	await(get_tree().create_timer(shootWaitTime))
+	start()
 
 
 func _on_shot_timer_timeout():
 	if waves > 0:
 		for s in self.get_children():
 			if s != shotTimer:
-				var bullet = bulletCircle.instantiate()
+				var bullet = bulletShuriken.instantiate()
 				get_tree().root.add_child(bullet)
 				bullet.position = s.global_position
 				bullet.rotation = s.global_rotation
+				bullet.speed = 250
 		waves -= 1
 	else:
 		for s in self.get_children():
 			if s != shotTimer:
 				s.queue_free()
+	queue_free()
 
 
-func start(_player, multiplier):
-	waves = 30 * (multiplier / 2)
+func start():
 	var step = 2 * PI / spawnPointCount
-
+	# Bullet travels for a timer
+	# Once timer elapses
+	# Spawn and spin shurikens
+	# Die
 	for x in range(spawnPointCount):
 		var spawnPoint = Node2D.new()
 		var pos = Vector2(radius, 0).rotated(step * x)
@@ -46,16 +55,30 @@ func start(_player, multiplier):
 	shotTimer.start()
 
 
-func getWaves():
-	return waves
-
-func setWaves(num):
-	waves = num
-
 func rotateSpawn(rotate, time):
 	var newRotation = self.rotation_degrees + (rotate * time)
 	self.rotation_degrees = fmod(newRotation, 360)
 
+
+func _on_body_entered(body):
+	# Stops an error that crashes the game.
+	if debounce == true:
+		return
+	debounce = true
+	
+	# make sure walls aren't destroyed!
+	if body.is_in_group("Player"):
+		hit(body)
+		queue_free()
+
+# Make it hurt
+func hit(body):
+	if body.isInvulnerable():
+		return
+	else:
+		body.hit()
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotateSpawn(rotateSpeed, delta)
+	position += transform.x * delta * speed

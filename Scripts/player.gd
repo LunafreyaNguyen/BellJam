@@ -41,6 +41,7 @@ const styleD = preload("res://Art/style/D.png")
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var parryCooldown = $ParryCooldown
 @onready var parryShine = $SFX/parryShine
+@onready var laugh = $SFX/laugh
 
 # Character's stats
 @export_group("Stats")
@@ -73,8 +74,6 @@ func get_input():
 		isParrying = true
 		var whiteTween: Tween = create_tween()
 		whiteTween.tween_property(self, "modulate:v", 1, 0.25).from(15)
-		var parryHitboxTween: Tween = create_tween()
-		parryHitboxTween.tween_property(parryHitbox, "modulate:a", 0, .5).from(1)
 		parryShine.play()
 		parry_timer.start()
 	if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
@@ -98,6 +97,9 @@ func parryCooldownTimeout():
 func hit():
 	if isParrying:
 		parrySlash.parry()
+		#laugh.play()
+		var parryHitboxTween: Tween = create_tween()
+		parryHitboxTween.tween_property(parryHitbox, "modulate:a", 0, .5).from(1)
 		for s in get_tree().get_nodes_in_group("EnemyBullet"):
 			if s.position.distance_to(position) < (currStyle * 100 + 100):
 				s.queue_free()
@@ -146,15 +148,16 @@ func hit():
 
 
 func changeHitboxSize():
-	
 	var newParrySize = ((currStyle/4.0)) + 1
 	if currStyle == 0:
 		newParrySize = .6
 	parryHitbox.scale.x = newParrySize
 	parryHitbox.scale.y = newParrySize
 
+
 func isInvulnerable():
 	return invulnerable
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
