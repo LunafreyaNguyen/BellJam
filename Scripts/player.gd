@@ -37,6 +37,9 @@ const styleD = preload("res://Art/style/D.png")
 @export var start_level = preload("res://Scenes/levels/testLuna.tscn") as PackedScene
 @onready var parry_timer = $ParryTimer
 @onready var parryHitbox = $ParryHitbox
+@onready var parry_cd_indicator = get_tree().get_first_node_in_group("parryIndicator")
+@onready var parry_follow = $ParryFollow
+const FOLLOW_SPEED : float = 8.0
 @onready var parrySlash = get_tree().get_first_node_in_group("parrySlash")
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var parryCooldown = $ParryCooldown
@@ -89,10 +92,14 @@ func get_input():
 func _on_parry_timer_timeout():
 	isParrying = false
 	parryOff = true
+	if(parry_cd_indicator != null):
+		parry_cd_indicator.visible = false
 	parryCooldown.start()
 	parry_timer.stop()
 
 func parryCooldownTimeout():
+	if(parry_cd_indicator != null):
+		parry_cd_indicator.visible = true
 	parryOff = false
 
 func hit():
@@ -107,6 +114,7 @@ func hit():
 	elif !invulnerable:
 		if currStyle == 0 && !dead:
 			dead = true
+			parry_cd_indicator.queue_free()
 			var particle = deathParticles.instantiate()
 			particle.position = global_position
 			particle.rotation = rotation
@@ -178,6 +186,8 @@ func _physics_process(delta):
 	styleGauge.value = styleProgress
 	styleConstant.set_amount(currStyle * 100 + 100)
 	timer += delta
+	if(parry_cd_indicator != null):
+		parry_cd_indicator.global_position = parry_cd_indicator.global_position.lerp(parry_follow.global_position, delta * FOLLOW_SPEED)
 	get_input()
 	move_and_slide()
 	if timer > fireRate:

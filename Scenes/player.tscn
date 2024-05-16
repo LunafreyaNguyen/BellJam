@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://d73ag2vw0tqg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
-[ext_resource type="Texture2D" uid="uid://bkjkwkfnt6nbw" path="res://Art/Portraits/cecilia_blue.png" id="2_ov7fe"]
+[ext_resource type="Texture2D" uid="uid://bkjkwkfnt6nbw" path="res://Art/portraits/cecilia_blue.png" id="2_ov7fe"]
 [ext_resource type="SpriteFrames" uid="uid://btp10iu0jv7px" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/parry.tres" id="3_06qht"]
 [ext_resource type="Texture2D" uid="uid://c4j30ljqrix6w" path="res://Art/circle_hitbox.png" id="3_vd8fv"]
 [ext_resource type="PackedScene" uid="uid://04tmwydsgolh" path="res://Scenes/focus_bar.tscn" id="4_omtao"]
@@ -31,7 +31,8 @@ z_index = 2
 scale = Vector2(20, 32)
 sprite_frames = ExtResource("3_06qht")
 animation = &"parry"
-frame_progress = 0.629039
+frame = 2
+frame_progress = 0.0528811
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, -15)
@@ -107,6 +108,12 @@ bus = &"SFX"
 
 [node name="laugh" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("12_sx20d")
+
+[node name="ParryFollow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -145)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_vd8fv")
 
 [connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]
 [connection signal="timeout" from="ParryCooldown" to="." method="parryCooldownTimeout"]

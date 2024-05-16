@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dia3ul64746cp"]
+[gd_scene load_steps=11 format=3 uid="uid://dia3ul64746cp"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_hghyf"]
 [ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="2_wur4i"]
 [ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="3_8hume"]
+[ext_resource type="PackedScene" uid="uid://dmd0ct53py3wx" path="res://Scenes/parry_cd_indicator.tscn" id="4_08b4f"]
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="4_vt22u"]
 [ext_resource type="AudioStream" uid="uid://da7kh87egs76q" path="res://Sounds/Music/Battle-resolution_loop.ogg" id="5_uwwgu"]
 [ext_resource type="PackedScene" uid="uid://b1lmuathlmt5p" path="res://Scenes/levels/level1/testEnemy.tscn" id="6_wovmq"]
@@ -28,6 +29,9 @@ bus = &"Music"
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_wovmq")]
 z_index = 1
 position = Vector2(960, 180)
+
+[node name="ParryCDIndicator" parent="." groups=["parryIndicator"] instance=ExtResource("4_08b4f")]
+position = Vector2(960, 679)
 
 [node name="locations" type="Node" parent="." groups=["locations"]]
 
