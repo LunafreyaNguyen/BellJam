@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqfsocl4gcwu2"]
 
 [ext_resource type="Script" path="res://Scripts/parrySlash.gd" id="1_jpngm"]
-[ext_resource type="Texture2D" uid="uid://c6bdhxv8o8wm2" path="res://Art/parryRed.png" id="2_l46q8"]
-[ext_resource type="AudioStream" uid="uid://dkccelvs12pi4" path="res://Sounds/SFX/parrySuccess.ogg" id="3_f28w8"]
+[ext_resource type="Texture2D" uid="uid://dljdp2g8yy6d7" path="res://Art/parryBlue.png" id="2_2jw8q"]
+[ext_resource type="AudioStream" uid="uid://bds7y173fxdwh" path="res://Sounds/SFX/not-gonna-sugarcoat-it.mp3" id="3_ccd8b"]
 
 [node name="ParrySlash" type="Node2D"]
 script = ExtResource("1_jpngm")
 
 [node name="parryImage" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-texture = ExtResource("2_l46q8")
+texture = ExtResource("2_2jw8q")
 
 [node name="success" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_f28w8")
+stream = ExtResource("3_ccd8b")
 bus = &"SFX"

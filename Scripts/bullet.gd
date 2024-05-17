@@ -13,7 +13,7 @@ func ready():
 
 func _process(delta):
 	timer += delta
-	self.translate(Vector2(0, -1) * speed * delta)
+	position += transform.x * speed * delta
 	if timer > 4:
 		queue_free()
 	if(position.x < 500 || position.x > 1420):
@@ -33,4 +33,5 @@ func hit(body):
 	if body.is_in_group("Enemy"):
 		body.hit()
 		player.styleProgress += 1
-	queue_free()
+	if!(body.is_in_group("bullet")):
+		queue_free()

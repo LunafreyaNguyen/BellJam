@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqj00d3nvl42h"]
+[gd_scene load_steps=10 format=3 uid="uid://cqj00d3nvl42h"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_rdjpj"]
 [ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="2_mryl3"]
 [ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="3_m22g2"]
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="4_vkup7"]
-[ext_resource type="AudioStream" uid="uid://da7kh87egs76q" path="res://Sounds/Music/Battle-resolution_loop.ogg" id="5_h3jr2"]
+[ext_resource type="Texture2D" uid="uid://ceb218b5me644" path="res://Art/Backgrounds/backgroundcowboy.jpeg" id="5_hm6e6"]
+[ext_resource type="AudioStream" uid="uid://begtlj6k05yh7" path="res://Sounds/Music/Battle-TheOath_loop.ogg" id="5_kpe3m"]
 [ext_resource type="PackedScene" uid="uid://d0q8pw85ftlds" path="res://Scenes/levels/level2/boss2.tscn" id="6_jfnon"]
 [ext_resource type="PackedScene" uid="uid://cn3q3lyhuoymk" path="res://Scenes/pause_menu.tscn" id="7_kxi3b"]
 [ext_resource type="PackedScene" uid="uid://dmd0ct53py3wx" path="res://Scenes/parry_cd_indicator.tscn" id="8_j6ba6"]
@@ -19,8 +20,21 @@ Bullet = ExtResource("3_m22g2")
 [node name="LevelUi" parent="." instance=ExtResource("4_vkup7")]
 metadata/_edit_group_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_h3jr2")
+[node name="GameBG" parent="LevelUi/ArtBG" index="5"]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 500.0
+offset_right = 2100.0
+offset_bottom = 102400.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.575, 0.575)
+texture = ExtResource("5_hm6e6")
+
+[node name="LevelOST" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kpe3m")
 volume_db = -10.0
 
 [node name="Cowboy" parent="." instance=ExtResource("6_jfnon")]
@@ -53,3 +67,5 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
 [node name="Pause Menu" parent="Camera2D/CanvasLayer" instance=ExtResource("7_kxi3b")]
+
+[editable path="LevelUi"]

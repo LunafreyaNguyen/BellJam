@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Battle-SilverMoon_loop.ogg-d30b82689902bd272d
 [params]
 
 loop=true
-loop_offset=4.25
+loop_offset=4.73
 bpm=0.0
 beat_count=0
 bar_beats=4

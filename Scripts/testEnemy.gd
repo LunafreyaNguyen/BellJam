@@ -81,7 +81,7 @@ func _physics_process(delta):
 			if (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) + pattern4.getWaves() <= 1:
 				timer = 0
 				bossShoot(player, multiplier)
-	elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 0:
+	elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 0 || health < 150:
 		self.position = self.position.lerp(targetLocation, t)
 	bossMovement(player)
 	

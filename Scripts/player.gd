@@ -32,14 +32,14 @@ const styleD = preload("res://Art/style/D.png")
 @onready var style = get_tree().get_first_node_in_group("style")
 @onready var styleGauge = get_tree().get_first_node_in_group("styleGauge")
 
-@export var gameOver = preload("res://Scenes/gameover.tscn") as PackedScene
+@export var gameOver = load("res://Scenes/gameover.tscn") as PackedScene
 
-@export var start_level = preload("res://Scenes/levels/testLuna.tscn") as PackedScene
+@export var start_level = load("res://Scenes/levels/testLuna.tscn") as PackedScene
 @onready var parry_timer = $ParryTimer
 @onready var parryHitbox = $ParryHitbox
 @onready var parry_cd_indicator = get_tree().get_first_node_in_group("parryIndicator")
 @onready var parry_follow = $ParryFollow
-const FOLLOW_SPEED : float = 8.0
+const FOLLOW_SPEED : float = 3.0
 @onready var parrySlash = get_tree().get_first_node_in_group("parrySlash")
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var parryCooldown = $ParryCooldown
@@ -188,6 +188,7 @@ func _physics_process(delta):
 	timer += delta
 	if(parry_cd_indicator != null):
 		parry_cd_indicator.global_position = parry_cd_indicator.global_position.lerp(parry_follow.global_position, delta * FOLLOW_SPEED)
+		parry_cd_indicator.look_at(self.position)
 	get_input()
 	move_and_slide()
 	if timer > fireRate:
@@ -198,12 +199,19 @@ func _physics_process(delta):
 			add_sibling(temp1)
 			add_sibling(temp2)
 			add_sibling(temp3)
+			temp1.set_rotation_degrees(-90)
+			temp2.set_rotation_degrees(-90)
+			temp3.set_rotation_degrees(-90)
 			if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
 				bulletSpawnL.position.x = -40
 				bulletSpawnR.position.x = 40
 			else:
 				bulletSpawnL.position.x = 100
 				bulletSpawnR.position.x = -100
+			if !(Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false):
+				temp2.set_rotation_degrees(-80)
+				temp3.set_rotation_degrees(-100)
+				
 			temp1.global_position = bulletSpawnM.get("global_position")
 			temp2.global_position = bulletSpawnL.get("global_position")
 			temp3.global_position = bulletSpawnR.get("global_position")

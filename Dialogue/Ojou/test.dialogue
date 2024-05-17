@@ -1,42 +1,46 @@
-~ beginning
-
-~ startREAL
+~ start
+do set_background("blackscreen")
 ???: Hey, stop!
-???: What the hell do you think you're going?!
+???: What the hell do you think you're doing?!
 ???: ...?!
-???: H-huh?!
-Cecilia: epic
+Cecilia: Heh...
+???: H-huh?! You're-!
+Cecilia: Move it, buddy.
+???: But I'm supposed to be guarding the Path Outta Hell's exit!
+???: Nobody's supposed to get in or out, not even one of the Unholy Seraphims!
+Cecilia: ... Do I look like I care about those new curfews?
+Cecilia: Get out of the way before I remove you from the cycle of Samsara.
+???: Ee-yikes!
+: ...
 do set_background("hell")
 do add_portrait("cecilia", 0)
-Cecilia: 
-- Dev Choice
-	=> victoria
-- First one
-	Cecilia: Why would you pick the first one?
-	Cecilia: Default Andy?
-	Cecilia: Bro picked the first choice??
-	Cecilia: I went to "picked the first option" town and they said you're the mayor???
-	=> startREAL
-- Second one
-	Cecilia: You picked the first option before this, didn't you?
-- Huh?
-	Cecilia: Are you deaf? I said...
-	=> startREAL
-Cecilia: You're lame as hell.
-~ victoria
+Cecilia: What a relief.
+Cecilia: Thought I'd have to spend another day wiping the blood off my blade, heh...
+Cecilia: ...
+Cecilia: Looks like it's just a bit longer 'till I'm out.
+Cecilia: Taking the quiet route is way too boring.
+???: OH, HOH, HOH!
+Cecilia: ..!
+Cecelia: Just great... Must be my lucky day.
 do add_portrait("victoria", 1)
-Cecilia: HOLY
-Victoria: OHOHOH
-- what
-	Victoria: wrong amount of apples
-- huh
-	Victoria: wrong amount of apples
-- ojou sama
-	Victoria: correct
-Victoria: OH HOH HOHHOHOOHOHOHOOHOHOH also the cowboy says "It's alllll in the bullets..."
-Cecilia: epic
-do remove_portrait("cecilia")
-Victoria: good bye
-do remove_portrait("victoria")
-
+Victoria: Oh, my! So it really was you trying to sneak out!
+Cecilia: Your uniform's jingling again.
+Cecilia: Didn't know it was already Christmas, heh.
+Victoria: OHOHOH!
+Victoria: Now that is a new one! Where did you get that one?
+Victoria: The book of lame one liners?
+- Oh yeah? Where'd you get your outfit? The bank?
+	Victoria: OHOHOH! Dear, there's nothing wrong with flaunting what you've got!
+	=> respect
+- What, you bring a vending machine for all those coins too?
+	Victoria: Sorry dear, just me and my mallet!
+	=> respect
+~ respect
+Victoria: You really should treat higher authorities with more respect!
+Cecilia: Yeah yeah. Enough talk. Outta of my way, Victoria.
+Victoria: As your superior, you know I can't let you go see her, right?
+Cecilia: Heh, sorry! Can't help it. Guess I've always been a bit rebellious.
+Victoria: Oh my, looks like HR's going to have to get involved after I'm done disciplining you.
+Cecilia: Sorry Bladie, looks like I'll be cleaning you today after all!
+Victoria: Now then, let us begin!
 => END

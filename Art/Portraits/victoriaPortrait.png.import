@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cokbuswnaal1s"
-path="res://.godot/imported/victoriaPortrait.png-92163fc88120558da36378e14b481c97.ctex"
+path="res://.godot/imported/victoriaPortrait.png-fe7e83a782e147fce5b98f5c9b607a2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/portraits/victoriaPortrait.png"
-dest_files=["res://.godot/imported/victoriaPortrait.png-92163fc88120558da36378e14b481c97.ctex"]
+source_file="res://Art/Portraits/victoriaPortrait.png"
+dest_files=["res://.godot/imported/victoriaPortrait.png-fe7e83a782e147fce5b98f5c9b607a2c.ctex"]
 
 [params]
 

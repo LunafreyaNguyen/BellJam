@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3ftlxmbxdwc6"]
+
+[ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="1_ghori"]
+[ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="2_isrri"]
+[ext_resource type="PackedScene" uid="uid://miabqffkxupx" path="res://Scenes/bullets/enemyBullet.tscn" id="2_svoof"]
+[ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="3_6onmw"]
+[ext_resource type="PackedScene" uid="uid://dmd0ct53py3wx" path="res://Scenes/parry_cd_indicator.tscn" id="4_u3x0d"]
+[ext_resource type="PackedScene" uid="uid://dqfsocl4gcwu2" path="res://Scenes/parrySlash.tscn" id="5_ds53u"]
+
+[node name="Test" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ghori")]
+position = Vector2(1030, 659)
+Bullet = ExtResource("2_isrri")
+
+[node name="Bullet" parent="." instance=ExtResource("2_svoof")]
+position = Vector2(769, 674)
+
+[node name="LevelUi" parent="." instance=ExtResource("3_6onmw")]
+
+[node name="Camera" type="Camera2D" parent="." groups=["Camera"]]
+position = Vector2(960, 540)
+
+[node name="ParryCDIndicator" parent="." groups=["parryIndicator"] instance=ExtResource("4_u3x0d")]
+position = Vector2(960, 679)
+
+[node name="ParrySlash" parent="." groups=["parrySlash"] instance=ExtResource("5_ds53u")]
+visible = false
+z_index = 10
+position = Vector2(2.08165e-12, 2.08165e-12)
+
+[editable path="CharacterBody2D"]

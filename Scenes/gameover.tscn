@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/gameover.gd" id="1_6u3ub"]
 [ext_resource type="Texture2D" uid="uid://cjrhaldmfjgxr" path="res://Art/gameOVER.png" id="1_oy6l3"]
-[ext_resource type="AudioStream" uid="uid://bwxxyckjevsac" path="res://Sounds/Music/FinalFantasyX-ToZanarkandpianoVersion.ogg" id="3_66yr1"]
+[ext_resource type="AudioStream" uid="uid://10y47omgj3xf" path="res://Sounds/Music/reminiscence_loop.ogg" id="3_xf2pg"]
 
 [node name="Gameover" type="Node2D"]
 script = ExtResource("1_6u3ub")
@@ -13,6 +13,6 @@ offset_bottom = 40.0
 texture = ExtResource("1_oy6l3")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_66yr1")
+stream = ExtResource("3_xf2pg")
 volume_db = 10.0
 bus = &"Music"

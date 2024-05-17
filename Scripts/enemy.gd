@@ -37,7 +37,8 @@ func hit():
 	
 # For dying
 func die():
-	self.queue_free()
+	get_tree().change_scene_to_file("res://Scenes/levels/testCowboy.tscn")
+	#self.queue_free()
 
 # To be modified by boss code
 func _physics_process(_delta):

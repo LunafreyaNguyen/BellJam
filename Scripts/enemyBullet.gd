@@ -35,7 +35,7 @@ func _on_body_entered(body):
 	if debounce == true:
 		return
 	debounce = true
-	
+	print(body)
 	if body.is_in_group("Player"):
 		hit(body)
 	if !body.is_in_group("Enemy") || body.is_in_group("bounds"):

@@ -36,5 +36,3 @@ func hit(body):
 	else:
 		body.hit()
 
-
-
