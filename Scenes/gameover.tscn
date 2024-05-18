@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://mm46nrem1am1" path="res://Scenes/restart_menu.tscn" id="3_6787e"]
 [ext_resource type="AudioStream" uid="uid://10y47omgj3xf" path="res://Sounds/Music/reminiscence_loop.ogg" id="3_xf2pg"]
 
-[node name="Gameover" type="Control"]
+[node name="Gameover" type="Control" groups=["GameOverScreen"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

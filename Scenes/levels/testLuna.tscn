@@ -59,10 +59,10 @@ position_smoothing_enabled = true
 
 [node name="Pause Menu" parent="Camera2D/CanvasLayer" instance=ExtResource("7_fa512")]
 
-[node name="Gameover" parent="Camera2D/CanvasLayer" groups=["GameOverScreen"] instance=ExtResource("9_xa28d")]
+[node name="Gameover" parent="Camera2D/CanvasLayer" instance=ExtResource("9_xa28d")]
 visible = false
 
-[node name="ParrySlash" parent="." groups=["parrySlash"] instance=ExtResource("8_xc1f0")]
+[node name="ParrySlash" parent="." instance=ExtResource("8_xc1f0")]
 visible = false
 z_index = 10
 position = Vector2(2.08165e-12, 2.08165e-12)
