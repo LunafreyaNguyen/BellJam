@@ -12,5 +12,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	timer += delta
-	if Input.get_action_raw_strength("pause"):
-		get_tree().change_scene_to_file(MAIN_MENU)

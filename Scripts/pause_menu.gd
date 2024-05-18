@@ -21,9 +21,11 @@ func _ready():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
+		#print("pause captured")
 		_is_paused = !_is_paused
 
 func resume() -> void:
+	#print("resuming")
 	_is_paused = false
 	animation_player.play_backwards("blur")
 
@@ -52,6 +54,4 @@ func handle_connecting_signals() -> void:
 	options_menu.exit_options_menu.connect(on_exit_options_menu)
 	main_menu_button.button_down.connect(on_main_menu_pressed)
 
-func _process(delta):
-	if Input.is_action_pressed("exit"):
-		resume()
+
