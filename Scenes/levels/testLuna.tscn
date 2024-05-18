@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dia3ul64746cp"]
+[gd_scene load_steps=12 format=3 uid="uid://dia3ul64746cp"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_hghyf"]
 [ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="2_wur4i"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cn3q3lyhuoymk" path="res://Scenes/pause_menu.tscn" id="7_fa512"]
 [ext_resource type="PackedScene" uid="uid://dqfsocl4gcwu2" path="res://Scenes/parrySlash.tscn" id="8_xc1f0"]
 [ext_resource type="PackedScene" uid="uid://k24dibp6p0qs" path="res://Scenes/bounds.tscn" id="9_evmry"]
+[ext_resource type="PackedScene" uid="uid://cb4khlnb32f8i" path="res://Scenes/gameover.tscn" id="9_xa28d"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hghyf")
@@ -57,6 +58,9 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
 [node name="Pause Menu" parent="Camera2D/CanvasLayer" instance=ExtResource("7_fa512")]
+
+[node name="Gameover" parent="Camera2D/CanvasLayer" groups=["GameOverScreen"] instance=ExtResource("9_xa28d")]
+visible = false
 
 [node name="ParrySlash" parent="." groups=["parrySlash"] instance=ExtResource("8_xc1f0")]
 visible = false

@@ -32,8 +32,6 @@ const styleD = preload("res://Art/style/D.png")
 @onready var style = get_tree().get_first_node_in_group("style")
 @onready var styleGauge = get_tree().get_first_node_in_group("styleGauge")
 
-@export var gameOver = load("res://Scenes/gameover.tscn") as PackedScene
-
 @export var start_level = load("res://Scenes/levels/testLuna.tscn") as PackedScene
 @onready var parry_timer = $ParryTimer
 @onready var parryHitbox = $ParryHitbox
@@ -148,7 +146,7 @@ func hit():
 			await get_tree().create_timer(4, true, false, true).timeout
 			for s in get_tree().get_nodes_in_group("EnemyBullet"):
 				s.queue_free()
-			get_tree().change_scene_to_packed(gameOver)
+			get_tree().get_first_node_in_group("GameOverScreen").visible = true
 			styleProgress = 0
 		else:
 			if currStyle >= 2:

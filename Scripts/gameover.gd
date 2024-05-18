@@ -1,4 +1,5 @@
-extends Node2D
+extends Control
+
 var timer = 0
 const MAIN_MENU : String = "res://Scenes/main_menu.tscn"
 @onready var music = $AudioStreamPlayer2D
