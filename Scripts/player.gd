@@ -72,22 +72,22 @@ func get_input():
 			sprite.set_rotation(-.3)
 		else:
 			sprite.set_rotation(0)
-	sprite.modulate.a = 1.0
-	hit_box.visible = false
-	if Input.get_action_raw_strength("parry") && !isParrying && !parryOff:
-		isParrying = true
-		var whiteTween: Tween = create_tween()
-		whiteTween.tween_property(self, "modulate:v", 1, 0.25).from(15)
-		parryShine.play()
-		parry_timer.start()
-	if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
-		velocity = velocity * .5
-		focus_bar.add_value(15)
-		hit_box.visible = true
-		sprite.modulate.a = .4
-	elif(focus_bar.get_burnout_condition() == false):
-		focus_bar.decrease_value(20)
+		sprite.modulate.a = 1.0
 		hit_box.visible = false
+		if Input.get_action_raw_strength("parry") && !isParrying && !parryOff:
+			isParrying = true
+			var whiteTween: Tween = create_tween()
+			whiteTween.tween_property(self, "modulate:v", 1, 0.25).from(15)
+			parryShine.play()
+			parry_timer.start()
+		if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
+			velocity = velocity * .5
+			focus_bar.add_value(15)
+			hit_box.visible = true
+			sprite.modulate.a = .4
+		elif(focus_bar.get_burnout_condition() == false):
+			focus_bar.decrease_value(20)
+			hit_box.visible = false
 
 func _on_parry_timer_timeout():
 	isParrying = false
@@ -183,6 +183,8 @@ func changeHitboxSize():
 func isInvulnerable():
 	return invulnerable
 
+func isDead():
+	return dead
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
