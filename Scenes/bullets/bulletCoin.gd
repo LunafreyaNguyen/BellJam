@@ -1,5 +1,4 @@
 extends Area2D
-class_name EnemyBullet
 
 @onready var sprite = $Sprite2D
 
@@ -7,7 +6,7 @@ class_name EnemyBullet
 @onready var absolute_parent = get_parent()
 
 @export_group("Stats")
-var speed = 150.0
+var speed = 350.0
 var area_direction = Vector2(0, 0)
 var debounce = false
 

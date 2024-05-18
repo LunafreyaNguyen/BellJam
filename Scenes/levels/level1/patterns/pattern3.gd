@@ -3,16 +3,18 @@ extends Node
 const largeBall = preload("res://Scenes/bullets/bulletLargeBall.tscn")
 @onready var shotTimer = $shotTimer3 as Timer
 
-var rotateSpeed = 15
-var shootWaitTime = 0.45
-var spawnPointCount = 12
+var rng = RandomNumberGenerator.new()
+var rotateSpeed = 100
+var shootWaitTime = 0.2
+var spawnPointCount = 18
 var radius = 75
 var waves = 0
-
+var victoria
+signal patternDone
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	victoria = get_tree().get_first_node_in_group("Enemy")
 
 
 func _on_shot_timer_timeout():
@@ -28,9 +30,12 @@ func _on_shot_timer_timeout():
 		for s in self.get_children():
 			if s != shotTimer:
 				s.queue_free()
+				emit_signal("patternDone")
 
 
 func start(_player, multiplier):
+	var random:int = rng.randi_range(1, 5)
+	victoria.targetLocation = Vector2(500 + (100 * random), 300)
 	waves = 5 * (multiplier / 2)
 	var step = 2 * PI / spawnPointCount
 
@@ -42,7 +47,6 @@ func start(_player, multiplier):
 		self.add_child(spawnPoint)
 		
 	rotateSpawn(rotateSpeed, 1)
-	
 	shotTimer.wait_time = shootWaitTime
 	shotTimer.start()
 
@@ -60,4 +64,4 @@ func rotateSpawn(rotate, time):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	rotateSpawn(rotateSpeed, _delta)

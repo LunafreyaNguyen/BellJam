@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d73ag2vw0tqg"]
+[gd_scene load_steps=14 format=3 uid="uid://d73ag2vw0tqg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
 [ext_resource type="Texture2D" uid="uid://bkjkwkfnt6nbw" path="res://Art/Portraits/cecilia_blue.png" id="2_ov7fe"]
@@ -12,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://csq28gk8bujq4" path="res://Sounds/SFX/metal_punch_06.wav" id="8_lu8n7"]
 [ext_resource type="AudioStream" uid="uid://baqnc0vp28uau" path="res://Sounds/SFX/aww.mp3" id="9_a28r2"]
 [ext_resource type="AudioStream" uid="uid://dpfi4dxmc52nq" path="res://Sounds/SFX/parryShine.wav" id="11_jhn4f"]
-[ext_resource type="AudioStream" uid="uid://b103h2qo1snyy" path="res://Sounds/SFX/laugh.ogg" id="12_sx20d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owib"]
 radius = 76.956
@@ -106,9 +105,6 @@ bus = &"SFX"
 [node name="parryShine" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("11_jhn4f")
 bus = &"SFX"
-
-[node name="laugh" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("12_sx20d")
 
 [node name="ParryFollow" type="Sprite2D" parent="."]
 visible = false

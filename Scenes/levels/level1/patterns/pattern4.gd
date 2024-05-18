@@ -9,11 +9,16 @@ var shootWaitTime = .01
 var spawnPointCount = 1
 var radius = 75
 var waves = 1
+var victoria
+
+signal patternDone
 
 var static_pos
 var static_rot 
 
 func start(_player, multiplier):
+	victoria = get_tree().get_first_node_in_group("Enemy")
+	victoria.targetLocation = Vector2(1200, 300)
 	#waves = 30 * (multiplier / 2)
 	waves = 1
 	for x in range(spawnPointCount):
@@ -50,6 +55,8 @@ func _on_shot_timer_4_timeout():
 		for s in self.get_children():
 			if s != shotTimer:
 				s.queue_free()
+				await(get_tree().create_timer(.7).timeout)
+				emit_signal("patternDone")
 
 
 func getWaves():

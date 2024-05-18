@@ -1,19 +1,21 @@
 extends Node
 
 const bulletCircle = preload("res://Scenes/bullets/enemyBullet.tscn")
-@onready var shotTimer = $shotTimer1 as Timer
+@onready var shotTimer = $shotTimer5 as Timer
 @onready var boss = get_tree().get_nodes_in_group("Enemy")
 
-var rotateSpeed = 40
+var victoria
+var rotateSpeed = 45
 var shootWaitTime = 0.15
-var spawnPointCount = 8
+var spawnPointCount = 20
 var radius = 75
 var waves = 0
-
+var patternOn = true
+signal patternDone
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	victoria = get_tree().get_first_node_in_group("Enemy")
 
 
 func _on_shot_timer_timeout():
@@ -27,14 +29,16 @@ func _on_shot_timer_timeout():
 		waves -= 1
 	else:
 		for s in self.get_children():
-			if s != shotTimer:
+			if s != shotTimer && is_instance_valid(s):
 				s.queue_free()
+				await(get_tree().create_timer(2).timeout)
+				emit_signal("patternDone")
 
 
 func start(_player, multiplier):
-	waves = 30 * (multiplier / 2)
+	victoria.targetLocation = Vector2(960, 200)
+	waves = 20 * (multiplier / 2)
 	var step = 2 * PI / spawnPointCount
-
 	for x in range(spawnPointCount):
 		var spawnPoint = Node2D.new()
 		var pos = Vector2(radius, 0).rotated(step * x)

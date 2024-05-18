@@ -4,7 +4,6 @@ extends Enemy
 @onready var pattern2 = $Pattern2
 @onready var pattern3 = $Pattern3
 @onready var pattern4 = $Pattern4
-@onready var pattern5 = $Pattern5
 
 ## For testing only one pattern
 var PATTERN_DEBUG_MODE = false
@@ -15,19 +14,19 @@ var rng = RandomNumberGenerator.new()
 var targetLocation
 var locations = []
 var breakTimer
-var lastPattern = 1
-var shooting = false
+var totalPatterns = 4
 
 # To be changed and made custom
 func _ready():
+	speed = 200
 	health = 1000
 	for s in get_tree().get_first_node_in_group("locations").get_children():
 		locations.push_back(s)
 	targetLocation = locations[0].position
 
 
-# Rotate to player
 func bossMovement(player):
+	# Rotate to player
 	if player != null && health > 0:
 		if(self.position.x < player.get("position").x):
 			sprite.set_rotation(.1)
@@ -37,35 +36,22 @@ func bossMovement(player):
 			sprite.set_rotation(0)
 
 
-# Picks the pattern
 func bossShoot(player, multiplier):
-	shooting = true
 	if(PATTERN_DEBUG_MODE):
 		debugPattern.start(player, multiplier)
 	else:
-		var random:int = rng.randi_range(1, 5)
-		while random == lastPattern:
-			random = rng.randi_range(1, 5)
-		lastPattern = random
+		var random:int = rng.randi_range(1, 4)
 		#var random: int = 3 #this is just here cause debugger is broke rn
+		
 		match random:
 			1: 
 				pattern1.start(player, multiplier)
-				await(pattern1.patternDone)
 			2:
 				pattern2.start(player, multiplier)
-				await(pattern2.patternDone)
 			3: 
 				pattern3.start(player, multiplier)
-				await(pattern3.patternDone)
 			4:
 				pattern4.start(player, multiplier)
-				await(pattern4.patternDone)
-			5:
-				pattern5.start(player, multiplier)
-				await(pattern5.patternDone)
-	await(get_tree().create_timer(.8).timeout)
-	shooting = false
 
 func _physics_process(delta):
 	timer += delta
@@ -90,21 +76,19 @@ func _physics_process(delta):
 	
 	# Once Victoria is close enough to the location
 	if self.position.distance_to(targetLocation) < 30:
-		#var random:int = rng.randi_range(0, locations.size() - 1)
-		#targetLocation = locations[random].position
+		var random:int = rng.randi_range(0, locations.size() - 1)
+		targetLocation = locations[random].position
 		if player != null && !player.invulnerable:
-			if !shooting:
+			if (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) + pattern4.getWaves() <= 1:
+				timer = 0
 				bossShoot(player, multiplier)
 	# Move to new location if the wave is done shooting, or have no movement cooldown or if she's in berserker mode
-	#elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 0 || health < 150:
-	#	self.position = self.position.lerp(targetLocation, t)
-	bossMovement(player)
-	if shooting:
-		self.position = self.position.lerp(targetLocation, t*4)
-	else:
+	elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 0 || health < 150:
 		self.position = self.position.lerp(targetLocation, t)
+	bossMovement(player)
+	
 	# Delete some nodes if there are over a thousand of them
-	if get_tree().get_nodes_in_group("EnemyBullet").size() > 2000:
+	if get_tree().get_nodes_in_group("EnemyBullet").size() > 1000:
 		get_tree().get_nodes_in_group("EnemyBullet")[0].queue_free()
 	
 	# If Victoria's health is below 0
@@ -112,12 +96,3 @@ func _physics_process(delta):
 		for nodes in get_tree().get_nodes_in_group("EnemyBullet"):
 			nodes.queue_free()
 		die()
-
-
-
-func _on_hitboxarea_body_entered(body):
-	if body.is_in_group("Player"):
-		if body.isInvulnerable():
-			return
-		else:
-			body.hit()

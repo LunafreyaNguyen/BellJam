@@ -1,7 +1,7 @@
 extends Node2D
 @onready var parryImage = $parryImage
 @onready var success = $success
-
+@onready var success2 = $success2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +12,7 @@ func parry():
 	parryImage.visible = true
 	modulate.a = 1
 	success.play()
+	success2.play()
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, .5).from(1)
 	Engine.time_scale = .3

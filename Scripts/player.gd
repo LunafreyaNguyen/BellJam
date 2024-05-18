@@ -46,6 +46,8 @@ const FOLLOW_SPEED : float = 3.0
 @onready var parryShine = $SFX/parryShine
 @onready var laugh = $SFX/laugh
 
+signal parryCancel
+
 # Character's stats
 @export_group("Stats")
 @export var speed = 450.0
@@ -105,12 +107,28 @@ func parryCooldownTimeout():
 func hit():
 	if isParrying:
 		parrySlash.parry()
+		emit_signal("parryCancel")
 		#laugh.play()
 		var parryHitboxTween: Tween = create_tween()
 		parryHitboxTween.tween_property(parryHitbox, "modulate:a", 0, .5).from(1)
 		for s in get_tree().get_nodes_in_group("EnemyBullet"):
 			if s.position.distance_to(position) < (currStyle * 100 + 100):
 				s.queue_free()
+		if currStyle < 4:
+			currStyle += 1
+			rankUpNoise.playPitch((currStyle/5 + 1), .22)
+			rankUp2Noise.play()
+			if(styleExplosion.is_emitting()):
+				styleExplosion.set_emitting(false)
+			styleExplosion.set_emitting(true)
+			changeHitboxSize()
+		else:
+			rankUpNoise.playPitch((currStyle/5 + 1), .22)
+			rankUp2Noise.play()
+			styleProgress = 100
+			if(styleExplosion.is_emitting()):
+				styleExplosion.set_emitting(false)
+			styleExplosion.set_emitting(true)
 	elif !invulnerable:
 		if currStyle == 0 && !dead:
 			dead = true
@@ -181,7 +199,7 @@ func _physics_process(delta):
 			styleExplosion.set_emitting(true)
 			changeHitboxSize()
 		else:
-			styleProgress = 0
+			styleProgress = 100
 	style.set_texture(styles[currStyle])
 	styleGauge.value = styleProgress
 	styleConstant.set_amount(currStyle * 100 + 100)

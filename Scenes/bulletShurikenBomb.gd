@@ -8,7 +8,7 @@ const bulletShuriken = preload("res://Scenes/bullets/bulletShuriken.tscn")
 
 var rotateSpeed = 40
 var shootWaitTime = 2
-var spawnPointCount = 20
+var spawnPointCount = 50
 var radius = 1
 var waves = 1
 
@@ -29,7 +29,7 @@ func _on_shot_timer_timeout():
 				get_tree().root.add_child(bullet)
 				bullet.position = s.global_position
 				bullet.rotation = s.global_rotation
-				bullet.speed = 250
+				bullet.speed = 200
 		waves -= 1
 	else:
 		for s in self.get_children():

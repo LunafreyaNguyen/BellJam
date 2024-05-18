@@ -1,12 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1lmuathlmt5p"]
+[gd_scene load_steps=18 format=3 uid="uid://b1lmuathlmt5p"]
 
 [ext_resource type="Script" path="res://Scripts/testEnemy.gd" id="1_emw0f"]
 [ext_resource type="Shader" uid="uid://cajjvk3dmacsi" path="res://themes/hit_flash.tres" id="2_asedb"]
 [ext_resource type="Texture2D" uid="uid://oa77q774hbxg" path="res://Art/Portraits/victoria.png" id="3_b4165"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern1.gd" id="3_icjyh"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern2.gd" id="4_igsdx"]
+[ext_resource type="Script" path="res://Scenes/levels/level1/patterns/patternOjou.gd" id="4_n0hsn"]
+[ext_resource type="AudioStream" uid="uid://duksdwmkasgj2" path="res://Sounds/SFX/chargeImpact.mp3" id="5_5uvkq"]
+[ext_resource type="AudioStream" uid="uid://xh8thdjthkc2" path="res://Sounds/SFX/chargeStart.mp3" id="5_rgjsn"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern3.gd" id="6_tapji"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern4.gd" id="7_7j4u6"]
+[ext_resource type="AudioStream" uid="uid://dr4qsgmdbmhwe" path="res://Sounds/SFX/blast1.mp3" id="8_yg8a4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqbh"]
+radius = 7.66667
+height = 15.5556
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_km27d"]
 resource_local_to_scene = true
@@ -14,9 +22,9 @@ shader = ExtResource("2_asedb")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqbh"]
-radius = 7.66667
-height = 15.5556
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbmgw"]
+radius = 39.0
+height = 91.0
 
 [sub_resource type="Animation" id="Animation_8i8kt"]
 length = 0.001
@@ -55,29 +63,46 @@ _data = {
 "hurt": SubResource("Animation_lq2vk")
 }
 
-[node name="Shiki" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Victoria" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_emw0f")
+
+[node name="hurtbox" type="CollisionShape2D" parent="."]
+scale = Vector2(4.5, 4.5)
+shape = SubResource("CapsuleShape2D_kyqbh")
+debug_color = Color(0.729412, 0, 0.2, 0.639216)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_km27d")
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_b4165")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(4.5, 4.5)
-shape = SubResource("CapsuleShape2D_kyqbh")
-debug_color = Color(0.729412, 0, 0.2, 0.639216)
+[node name="hitboxarea" type="Area2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="hitboxarea"]
+position = Vector2(3.5, 7.5)
+shape = SubResource("CapsuleShape2D_wbmgw")
 
 [node name="Pattern1" type="Node2D" parent="."]
-script = ExtResource("3_icjyh")
+script = ExtResource("4_n0hsn")
 
 [node name="shotTimer1" type="Timer" parent="Pattern1"]
+
+[node name="chargeImpact" type="AudioStreamPlayer" parent="Pattern1"]
+stream = ExtResource("5_5uvkq")
+bus = &"SFX"
+
+[node name="chargeStart" type="AudioStreamPlayer" parent="Pattern1"]
+stream = ExtResource("5_rgjsn")
+bus = &"SFX"
 
 [node name="Pattern2" type="Node2D" parent="." groups=["rotater2"]]
 script = ExtResource("4_igsdx")
 
 [node name="shotTimer2" type="Timer" parent="Pattern2"]
+
+[node name="blast" type="AudioStreamPlayer" parent="Pattern2"]
+stream = ExtResource("8_yg8a4")
 
 [node name="Pattern3" type="Node2D" parent="."]
 script = ExtResource("6_tapji")
@@ -89,13 +114,20 @@ script = ExtResource("7_7j4u6")
 
 [node name="shotTimer4" type="Timer" parent="Pattern4"]
 
+[node name="Pattern5" type="Node2D" parent="."]
+script = ExtResource("3_icjyh")
+
+[node name="shotTimer5" type="Timer" parent="Pattern5"]
+
 [node name="HitFlash" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mnft2")
 }
 
+[connection signal="body_entered" from="hitboxarea" to="." method="_on_hitboxarea_body_entered"]
 [connection signal="timeout" from="Pattern1/shotTimer1" to="Pattern1" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern2/shotTimer2" to="Pattern2" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern3/shotTimer3" to="Pattern3" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern4/shotTimer4" to="Pattern4" method="_on_shot_timer_4_timeout"]
 [connection signal="timeout" from="Pattern4/shotTimer4" to="Pattern4" method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="Pattern5/shotTimer5" to="Pattern5" method="_on_shot_timer_timeout"]

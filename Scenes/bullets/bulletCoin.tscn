@@ -1,36 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsao7tbxdfghq"]
+[gd_scene load_steps=11 format=3 uid="uid://dsao7tbxdfghq"]
 
-[ext_resource type="Script" path="res://Scripts/enemyBullet.gd" id="1_xq2hy"]
+[ext_resource type="Script" path="res://Scenes/bullets/bulletCoin.gd" id="1_upr72"]
 [ext_resource type="Texture2D" uid="uid://jfyvpt0fgf1y" path="res://Art/coins-chests-etc-2-0.png" id="2_i4r58"]
 [ext_resource type="Texture2D" uid="uid://df2id3wsjfl64" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_01.png" id="3_oy05y"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fhod1"]
-atlas = ExtResource("2_i4r58")
-region = Rect2(272, 17, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u21oi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxiiy"]
 atlas = ExtResource("2_i4r58")
 region = Rect2(64, 17, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uxyi2"]
-atlas = ExtResource("2_i4r58")
-region = Rect2(80, 17, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y1gu2"]
-atlas = ExtResource("2_i4r58")
-region = Rect2(96, 17, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e2nri"]
-atlas = ExtResource("2_i4r58")
-region = Rect2(112, 17, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_chs3j"]
-atlas = ExtResource("2_i4r58")
-region = Rect2(128, 17, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_88i58"]
-atlas = ExtResource("2_i4r58")
-region = Rect2(144, 17, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jj6uy"]
 atlas = ExtResource("3_oy05y")
@@ -52,25 +28,7 @@ region = Rect2(544, 160, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fhod1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u21oi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uxyi2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y1gu2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e2nri")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_chs3j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_88i58")
+"texture": SubResource("AtlasTexture_hxiiy")
 }],
 "loop": true,
 "name": &"shot",
@@ -101,12 +59,13 @@ radius = 27.7778
 scale = Vector2(1.5, 1.5)
 collision_layer = 0
 monitorable = false
-script = ExtResource("1_xq2hy")
+script = ExtResource("1_upr72")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
 z_index = 2
 texture_filter = 1
 position = Vector2(2.08165e-12, 2.08165e-12)
+rotation = 1.5708
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bw4vl")
 animation = &"shot"

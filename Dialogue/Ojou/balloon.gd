@@ -36,7 +36,6 @@ var dialogue_line: DialogueLine:
 		# The dialogue has finished so close the balloon
 		if not next_dialogue_line:
 			queue_free()
-			get_tree().change_scene_to_file("res://Scenes/levels/testLuna.tscn")
 			return
 
 		# If the node isn't ready yet then none of the labels will be ready yet either
