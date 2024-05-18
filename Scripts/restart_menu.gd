@@ -2,9 +2,7 @@ extends Control
 
 var main : String = "res://Scenes/main_menu.tscn"
 @onready var panel_container = $PanelContainer as PanelContainer
-@onready var options_menu = $"Options Menu" as OptionsMenu
-@onready var resume_button = $PanelContainer/MarginContainer/VBoxContainer/Resume as Button
-@onready var options_button = $PanelContainer/MarginContainer/VBoxContainer/Options as Button
+@onready var restart_button = $PanelContainer/MarginContainer/VBoxContainer/Restart as Button
 @onready var main_menu_button = $PanelContainer/MarginContainer/VBoxContainer/MainMenu as Button
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 
@@ -31,10 +29,8 @@ func pause() -> void:
 	_is_paused = true
 	animation_player.play("blur")
 
-func on_options_pressed() -> void:
-	panel_container.visible = false
-	options_menu.set_process(true)
-	options_menu.visible = true
+func on_restart_pressed() -> void:
+	pass
 
 func on_main_menu_pressed() -> void:
 	for bullet in get_tree().get_nodes_in_group("EnemyBullet"):
@@ -42,16 +38,6 @@ func on_main_menu_pressed() -> void:
 	resume()
 	get_tree().change_scene_to_file(main)
 
-func on_exit_options_menu() -> void: 
-	panel_container.visible = true
-	options_menu.visible = false
-
 func handle_connecting_signals() -> void:
-	resume_button.button_down.connect(resume)
-	options_button.button_down.connect(on_options_pressed)
-	options_menu.exit_options_menu.connect(on_exit_options_menu)
+	restart_button.button_down.connect(on_restart_pressed)
 	main_menu_button.button_down.connect(on_main_menu_pressed)
-
-func _process(delta):
-	if Input.is_action_pressed("exit"):
-		resume()

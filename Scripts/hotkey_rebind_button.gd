@@ -29,6 +29,10 @@ func set_action_name() -> void:
 			label.text = "Shoot"
 		"focus":
 			label.text = "Focus"
+		"parry":
+			label.text = "Parry"
+		"pause":
+			label.text = "Pause"
 
 func set_text_for_key() -> void:
 	var action_events = InputMap.action_get_events(action_name)
