@@ -13,6 +13,10 @@ var _is_paused : bool = false:
 	set(value):
 		_is_paused = value
 		get_tree().paused = _is_paused
+		if _is_paused:
+			Engine.time_scale = 0.0
+		else: 
+			Engine.time_scale = 1.0
 		visible = _is_paused
 
 # Called when the node enters the scene tree for the first time.
