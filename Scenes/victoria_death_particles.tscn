@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bka0ger8bovd6"]
+[gd_scene load_steps=7 format=3 uid="uid://crh8rlor8wahr"]
 
 [ext_resource type="Texture2D" uid="uid://oa77q774hbxg" path="res://Art/Portraits/victoria.png" id="1_jpn65"]
 [ext_resource type="Script" path="res://Scripts/death_particles.gd" id="2_x5hrp"]
