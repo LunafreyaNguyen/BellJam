@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var Bullet: PackedScene
+@export var Laser: PackedScene
+@export var Seeker: PackedScene
 @onready var bulletSpawnM = $bulletSpawn1
 @onready var bulletSpawnL = $bulletSpawn2
 @onready var bulletSpawnR = $bulletSpawn3
@@ -44,6 +46,7 @@ const FOLLOW_SPEED : float = 3.0
 @onready var parryShine = $SFX/parryShine
 @onready var laugh = $SFX/laugh
 
+var seekerShoot = 0
 signal parryCancel
 
 # Character's stats
@@ -213,9 +216,19 @@ func _physics_process(delta):
 	move_and_slide()
 	if timer > fireRate:
 		if Input.get_action_raw_strength("shoot") && !dead:
-			shoot_D()
+			if currStyle == 0:
+				shoot_D()
+			elif currStyle == 1:
+				shoot_C()
+			elif currStyle == 2:
+				shoot_B()
+			elif currStyle == 3:
+				shoot_A()
+			elif currStyle == 4:
+				shoot_S()
 
 func shoot_D():
+	fireRate = .1
 	if Input.get_action_raw_strength("shoot") && !dead:
 		var temp1 = Bullet.instantiate()
 		var temp2 = Bullet.instantiate()
@@ -239,4 +252,161 @@ func shoot_D():
 		temp1.global_position = bulletSpawnM.get("global_position")
 		temp2.global_position = bulletSpawnL.get("global_position")
 		temp3.global_position = bulletSpawnR.get("global_position")
+		timer = 0
+
+
+func shoot_C():
+	fireRate = .1
+	if Input.get_action_raw_strength("shoot") && !dead:
+		var temp1 = Bullet.instantiate()
+		var temp2 = Bullet.instantiate()
+		var temp3 = Bullet.instantiate()
+		var temp4 = Bullet.instantiate()
+		var temp5 = Bullet.instantiate()
+		temp4.progress = .5
+		temp5.progress = .5
+		add_sibling(temp1)
+		add_sibling(temp2)
+		add_sibling(temp3)
+		add_sibling(temp4)
+		add_sibling(temp5)
+		temp1.set_rotation_degrees(-90)
+		temp2.set_rotation_degrees(-90)
+		temp3.set_rotation_degrees(-90)
+		temp4.set_rotation_degrees(-90)
+		temp5.set_rotation_degrees(-90)
+		if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
+			bulletSpawnL.position.x = -50
+			bulletSpawnR.position.x = 50
+			temp2.global_position = bulletSpawnL.get("global_position")
+			temp3.global_position = bulletSpawnR.get("global_position")
+		else:
+			bulletSpawnL.position.x = 100
+			bulletSpawnR.position.x = -100
+			temp2.global_position = bulletSpawnL.get("global_position")
+			temp3.global_position = bulletSpawnR.get("global_position")
+		if !(Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false):
+			temp2.set_rotation_degrees(-80)
+			temp3.set_rotation_degrees(-100)
+			temp4.set_rotation_degrees(-85)
+			temp5.set_rotation_degrees(-95)
+		bulletSpawnL.position.x = 75
+		bulletSpawnR.position.x = -75
+		temp1.global_position = bulletSpawnM.get("global_position")
+		temp4.global_position = bulletSpawnL.get("global_position")
+		temp5.global_position = bulletSpawnR.get("global_position")
+		timer = 0
+		
+		
+func shoot_B():
+	fireRate = .01
+	if Input.get_action_raw_strength("shoot") && !dead:
+		var temp1 = Laser.instantiate()
+		var temp2 = Laser.instantiate()
+		var temp3 = Laser.instantiate()
+		add_sibling(temp1)
+		add_sibling(temp2)
+		add_sibling(temp3)
+		temp1.set_rotation_degrees(-90)
+		temp2.set_rotation_degrees(-90)
+		temp3.set_rotation_degrees(-90)
+		if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
+			bulletSpawnL.position.x = -50
+			bulletSpawnR.position.x = 50
+			temp2.global_position = bulletSpawnL.get("global_position")
+			temp3.global_position = bulletSpawnR.get("global_position")
+		else:
+			bulletSpawnL.position.x = 100
+			bulletSpawnR.position.x = -100
+			temp2.global_position = bulletSpawnL.get("global_position")
+			temp3.global_position = bulletSpawnR.get("global_position")
+		if !(Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false):
+			temp2.set_rotation_degrees(-80)
+			temp3.set_rotation_degrees(-100)
+		temp1.global_position = bulletSpawnM.get("global_position")
+		timer = 0
+
+
+func shoot_A():
+	fireRate = .01
+	seekerShoot += 1
+	if(seekerShoot > 20):
+		var temp1 = Seeker.instantiate()
+		var temp2 = Seeker.instantiate()
+		add_sibling(temp1)
+		add_sibling(temp2)
+		temp1.set_rotation_degrees(-80)
+		temp2.set_rotation_degrees(-100)
+		temp1.animationPlay()
+		temp2.animationPlay()
+		temp1.global_position = bulletSpawnL.get("global_position")
+		temp2.global_position = bulletSpawnR.get("global_position")
+		seekerShoot = 0
+	if Input.get_action_raw_strength("shoot") && !dead:
+		var temp1 = Laser.instantiate()
+		var temp2 = Laser.instantiate()
+		var temp3 = Laser.instantiate()
+		add_sibling(temp1)
+		add_sibling(temp2)
+		add_sibling(temp3)
+		temp1.set_rotation_degrees(-90)
+		temp2.set_rotation_degrees(-90)
+		temp3.set_rotation_degrees(-90)
+		if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
+			bulletSpawnL.position.x = -50
+			bulletSpawnR.position.x = 50
+			temp2.global_position = bulletSpawnL.get("global_position")
+			temp3.global_position = bulletSpawnR.get("global_position")
+		else:
+			bulletSpawnL.position.x = 100
+			bulletSpawnR.position.x = -100
+			temp2.global_position = bulletSpawnL.get("global_position")
+			temp3.global_position = bulletSpawnR.get("global_position")
+		if !(Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false):
+			temp2.set_rotation_degrees(-80)
+			temp3.set_rotation_degrees(-100)
+		temp1.global_position = bulletSpawnM.get("global_position")
+		timer = 0
+
+
+func shoot_S():
+	fireRate = .01
+	if Input.get_action_raw_strength("shoot") && !dead:
+		var temp1 = Laser.instantiate()
+		var temp2 = Laser.instantiate()
+		var temp3 = Laser.instantiate()
+		var temp4 = Laser.instantiate()
+		var temp5 = Laser.instantiate()
+		temp4.progress = .5
+		temp5.progress = .5
+		add_sibling(temp1)
+		add_sibling(temp2)
+		add_sibling(temp3)
+		add_sibling(temp4)
+		add_sibling(temp5)
+		temp1.set_rotation_degrees(-90)
+		temp2.set_rotation_degrees(-90)
+		temp3.set_rotation_degrees(-90)
+		temp4.set_rotation_degrees(-90)
+		temp5.set_rotation_degrees(-90)
+		if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
+			bulletSpawnL.position.x = -50
+			bulletSpawnR.position.x = 50
+			temp2.global_position = bulletSpawnL.get("global_position")
+			temp3.global_position = bulletSpawnR.get("global_position")
+		else:
+			bulletSpawnL.position.x = 100
+			bulletSpawnR.position.x = -100
+			temp2.global_position = bulletSpawnL.get("global_position")
+			temp3.global_position = bulletSpawnR.get("global_position")
+		if !(Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false):
+			temp2.set_rotation_degrees(-80)
+			temp3.set_rotation_degrees(-100)
+			temp4.set_rotation_degrees(-85)
+			temp5.set_rotation_degrees(-95)
+		bulletSpawnL.position.x = 75
+		bulletSpawnR.position.x = -75
+		temp1.global_position = bulletSpawnM.get("global_position")
+		temp4.global_position = bulletSpawnL.get("global_position")
+		temp5.global_position = bulletSpawnR.get("global_position")
 		timer = 0
