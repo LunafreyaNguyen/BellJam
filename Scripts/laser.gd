@@ -2,10 +2,10 @@ extends Area2D
 @onready var sprite = $Sprite2D
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-const speed = 3000.0
+const speed = 2500.0
 var area_direction = Vector2(0, 0)
 var debounce = false
-var progress = 1
+var progress = .05
 	
 var timer = 0
 
@@ -31,5 +31,3 @@ func hit(body):
 	if body.is_in_group("Enemy"):
 		body.hit(progress)
 		player.styleProgress += progress
-	if!(body.is_in_group("bullet")):
-		queue_free()

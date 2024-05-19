@@ -6,6 +6,10 @@ extends Enemy
 @onready var pattern4 = $Pattern4
 @onready var pattern5 = $Pattern5
 
+var dieParticle = false
+
+const deathParticles = preload("res://Scenes/victoria_death_particles.tscn")
+
 ## For testing only one pattern
 var PATTERN_DEBUG_MODE = false
 var debugPattern = pattern3
@@ -20,7 +24,7 @@ var shooting = false
 
 # To be changed and made custom
 func _ready():
-	health = 1000
+	health = 12000
 	for s in get_tree().get_first_node_in_group("locations").get_children():
 		locations.push_back(s)
 	targetLocation = locations[0].position
@@ -50,20 +54,25 @@ func bossShoot(player, multiplier):
 		#var random: int = 3 #this is just here cause debugger is broke rn
 		match random:
 			1: 
-				pattern1.start(player, multiplier)
-				await(pattern1.patternDone)
+				if pattern1 != null:
+					pattern1.start(player, multiplier)
+					await(pattern1.patternDone)
 			2:
-				pattern2.start(player, multiplier)
-				await(pattern2.patternDone)
+				if pattern2 != null:
+					pattern2.start(player, multiplier)
+					await(pattern2.patternDone)
 			3: 
-				pattern3.start(player, multiplier)
-				await(pattern3.patternDone)
+				if pattern3 != null:
+					pattern3.start(player, multiplier)
+					await(pattern3.patternDone)
 			4:
-				pattern4.start(player, multiplier)
-				await(pattern4.patternDone)
+				if pattern4 != null:
+					pattern4.start(player, multiplier)
+					await(pattern4.patternDone)
 			5:
-				pattern5.start(player, multiplier)
-				await(pattern5.patternDone)
+				if pattern5 != null:
+					pattern5.start(player, multiplier)
+					await(pattern5.patternDone)
 	await(get_tree().create_timer(2).timeout)
 	shooting = false
 
@@ -109,6 +118,20 @@ func _physics_process(delta):
 			nodes.queue_free()
 		die()
 
+
+func die():
+	if !dieParticle:
+		var particle = deathParticles.instantiate()
+		particle.position = global_position
+		particle.rotation = rotation
+		particle.emitting = true
+		get_tree().current_scene.add_child(particle)
+		dieParticle = !dieParticle
+		for nodes in get_tree().get_nodes_in_group("pattern"):
+			nodes.queue_free()
+		visible = false
+	await(get_tree().create_timer(3).timeout)
+	get_tree().change_scene_to_file("res://Scenes/levels/testCowboy.tscn")
 
 
 func _on_hitboxarea_body_entered(body):

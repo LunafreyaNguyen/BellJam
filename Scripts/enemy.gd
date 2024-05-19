@@ -31,8 +31,8 @@ func bossMovement(player):
 	move_and_slide()
 
 # For getting hit
-func hit():
-	health -= 1
+func hit(damage):
+	health -= damage
 	hit_anim.play("hurt")
 	
 # For dying
