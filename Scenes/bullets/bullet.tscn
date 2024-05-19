@@ -48,11 +48,10 @@ script = ExtResource("1_82aos")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-texture_filter = 1
-position = Vector2(-14, -4)
-scale = Vector2(4.25005, 6.63535)
+position = Vector2(-17.5334, 2.08592e-12)
+scale = Vector2(3.96793, 3.073)
 sprite_frames = SubResource("SpriteFrames_udt4h")
-frame_progress = 0.257765
+frame_progress = 0.95842
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wx118")
