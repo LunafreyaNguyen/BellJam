@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmkjlcscgt8tt"]
 
 [ext_resource type="Script" path="res://Dialogue/Ojou/ojouIntro.gd" id="1_swjon"]
-[ext_resource type="Resource" uid="uid://bfy7itnfon1p3" path="res://Dialogue/Ojou/test.dialogue" id="2_xlngi"]
+[ext_resource type="Resource" uid="uid://bfy7itnfon1p3" path="res://Dialogue/Ojou/test.dialogue" id="2_uif4p"]
 [ext_resource type="AudioStream" uid="uid://c5us8mka8x5ky" path="res://Sounds/Music/desperate-situation_loop.ogg" id="3_c203s"]
 
 [node name="DialogueSceneTest" type="Node2D"]
 script = ExtResource("1_swjon")
-dialogue_resource = ExtResource("2_xlngi")
+dialogue_resource = ExtResource("2_uif4p")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["ost"]]
 stream = ExtResource("3_c203s")

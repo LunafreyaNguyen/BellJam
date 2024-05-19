@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dia3ul64746cp"]
+[gd_scene load_steps=11 format=3 uid="uid://dia3ul64746cp"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_hghyf"]
 [ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="2_wur4i"]
-[ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="3_8hume"]
 [ext_resource type="PackedScene" uid="uid://dmd0ct53py3wx" path="res://Scenes/parry_cd_indicator.tscn" id="4_08b4f"]
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="4_vt22u"]
 [ext_resource type="AudioStream" uid="uid://beq8rfy0vys8p" path="res://Sounds/Music/Under-the-Moonlight_loop.ogg" id="5_ouqk8"]
@@ -17,7 +16,6 @@ script = ExtResource("1_hghyf")
 
 [node name="Player" parent="." instance=ExtResource("2_wur4i")]
 position = Vector2(960, 810)
-Bullet = ExtResource("3_8hume")
 
 [node name="LevelUi" parent="." instance=ExtResource("4_vt22u")]
 metadata/_edit_group_ = true

@@ -1,6 +1,6 @@
 extends BaseDialogueTestScene
 
-@export var dialogue_resource : DialogueResource
+@export var dialogue_resource: DialogueResource
 #Title must match Resource file Title
 @export var dialogue_title : String = "start"
 @onready var ost = $AudioStreamPlayer
