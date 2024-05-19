@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
 @export var Bullet: PackedScene
-@export var Laser: PackedScene
-@export var Seeker: PackedScene
 @onready var bulletSpawnM = $bulletSpawn1
 @onready var bulletSpawnL = $bulletSpawn2
 @onready var bulletSpawnR = $bulletSpawn3
@@ -232,7 +230,6 @@ func _physics_process(delta):
 				shoot_S()
 
 func shoot_D():
-	fireRate = .1
 	if Input.get_action_raw_strength("shoot") && !dead:
 		var temp1 = Bullet.instantiate()
 		var temp2 = Bullet.instantiate()

@@ -83,7 +83,7 @@ texture = ExtResource("3_b4165")
 position = Vector2(3.5, 7.5)
 shape = SubResource("CapsuleShape2D_wbmgw")
 
-[node name="Pattern1" type="Node2D" parent="." groups=["pattern"]]
+[node name="Pattern1" type="Node2D" parent="."]
 script = ExtResource("4_n0hsn")
 
 [node name="shotTimer1" type="Timer" parent="Pattern1"]
@@ -96,7 +96,7 @@ bus = &"SFX"
 stream = ExtResource("5_rgjsn")
 bus = &"SFX"
 
-[node name="Pattern2" type="Node2D" parent="." groups=["pattern", "rotater2"]]
+[node name="Pattern2" type="Node2D" parent="." groups=["rotater2"]]
 script = ExtResource("4_igsdx")
 
 [node name="shotTimer2" type="Timer" parent="Pattern2"]
@@ -104,17 +104,17 @@ script = ExtResource("4_igsdx")
 [node name="blast" type="AudioStreamPlayer" parent="Pattern2"]
 stream = ExtResource("8_yg8a4")
 
-[node name="Pattern3" type="Node2D" parent="." groups=["pattern"]]
+[node name="Pattern3" type="Node2D" parent="."]
 script = ExtResource("6_tapji")
 
 [node name="shotTimer3" type="Timer" parent="Pattern3"]
 
-[node name="Pattern4" type="Node2D" parent="." groups=["pattern"]]
+[node name="Pattern4" type="Node2D" parent="."]
 script = ExtResource("7_7j4u6")
 
 [node name="shotTimer4" type="Timer" parent="Pattern4"]
 
-[node name="Pattern5" type="Node2D" parent="." groups=["pattern"]]
+[node name="Pattern5" type="Node2D" parent="."]
 script = ExtResource("3_icjyh")
 
 [node name="shotTimer5" type="Timer" parent="Pattern5"]

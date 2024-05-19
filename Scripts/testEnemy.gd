@@ -6,10 +6,6 @@ extends Enemy
 @onready var pattern4 = $Pattern4
 @onready var pattern5 = $Pattern5
 
-var dieParticle = false
-
-const deathParticles = preload("res://Scenes/victoria_death_particles.tscn")
-
 ## For testing only one pattern
 var PATTERN_DEBUG_MODE = false
 var debugPattern = pattern3
@@ -54,25 +50,20 @@ func bossShoot(player, multiplier):
 		#var random: int = 3 #this is just here cause debugger is broke rn
 		match random:
 			1: 
-				if pattern1 != null:
-					pattern1.start(player, multiplier)
-					await(pattern1.patternDone)
+				pattern1.start(player, multiplier)
+				await(pattern1.patternDone)
 			2:
-				if pattern2 != null:
-					pattern2.start(player, multiplier)
-					await(pattern2.patternDone)
+				pattern2.start(player, multiplier)
+				await(pattern2.patternDone)
 			3: 
-				if pattern3 != null:
-					pattern3.start(player, multiplier)
-					await(pattern3.patternDone)
+				pattern3.start(player, multiplier)
+				await(pattern3.patternDone)
 			4:
-				if pattern4 != null:
-					pattern4.start(player, multiplier)
-					await(pattern4.patternDone)
+				pattern4.start(player, multiplier)
+				await(pattern4.patternDone)
 			5:
-				if pattern5 != null:
-					pattern5.start(player, multiplier)
-					await(pattern5.patternDone)
+				pattern5.start(player, multiplier)
+				await(pattern5.patternDone)
 	await(get_tree().create_timer(2).timeout)
 	shooting = false
 
@@ -118,20 +109,6 @@ func _physics_process(delta):
 			nodes.queue_free()
 		die()
 
-
-func die():
-	if !dieParticle:
-		var particle = deathParticles.instantiate()
-		particle.position = global_position
-		particle.rotation = rotation
-		particle.emitting = true
-		get_tree().current_scene.add_child(particle)
-		dieParticle = !dieParticle
-		for nodes in get_tree().get_nodes_in_group("pattern"):
-			nodes.queue_free()
-		visible = false
-	await(get_tree().create_timer(3).timeout)
-	get_tree().change_scene_to_file("res://Scenes/levels/testCowboy.tscn")
 
 
 func _on_hitboxarea_body_entered(body):

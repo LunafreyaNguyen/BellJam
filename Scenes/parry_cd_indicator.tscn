@@ -46,7 +46,6 @@ animations = [{
 }]
 
 [node name="ParryCDIndicator" type="AnimatedSprite2D"]
-texture_filter = 1
 rotation = -1.5708
 scale = Vector2(12.5, 6.25)
 sprite_frames = SubResource("SpriteFrames_ab3rt")
