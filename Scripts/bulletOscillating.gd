@@ -6,9 +6,8 @@ var oscillating = true
 var scaleRate = Vector2(0.0, 0.0)
 # On spawn, set direction to where the player is right now
 func _ready():
-	debounce = false
 	sprite.play("shot")
-	speed = 300
+	speed = 500
 	area_direction = Vector2(0.0, 0.0)
 	oscillating_timer.start()
 
@@ -16,23 +15,13 @@ func _ready():
 func _process(delta):
 	timer += delta
 	position += transform.x * speed * delta
-	if(oscillating_timer.wait_time > 0):
-		if(oscillating):  
-			scale += scaleRate
-		else: 
-			scale -= scaleRate
+	speed = speed - (300 * delta)
 	if(timer > 5.0):
 		queue_free()
-	if(position.x < 500 || position.x > 1420):
-		queue_free()
-	if(position.y < 0 || position.y > 1080):
-		queue_free()
+
 
 func _on_wait_timer_timeout():
-	oscillating_timer.stop()
-	oscillating = !oscillating
-	speed *= -1
-	oscillating_timer.start()
+	pass
 
 
 # Make it hurt

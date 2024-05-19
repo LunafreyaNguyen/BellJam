@@ -3,16 +3,19 @@ extends Node
 const bullet_pointed = preload("res://Scenes/bullets/bulletHeart.tscn")
 @onready var shotTimer = $shotTimer8 as Timer
 
+var cowboy
 var rotateSpeed = 4
 var shootWaitTime = 0.08
 var spawnPointCount = 6
 var radius = 75
 var waves = 0
-
+var patternOn = true
+signal patternDone
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rotateSpawn(rotateSpeed, 1)
+	cowboy = get_tree().get_first_node_in_group("Enemy")
 
 
 func _on_shot_timer_timeout():
@@ -26,14 +29,16 @@ func _on_shot_timer_timeout():
 		waves -= 1
 	else:
 		for s in self.get_children():
-			if s != shotTimer:
+			if s != shotTimer && is_instance_valid(s):
 				s.queue_free()
+				await(get_tree().create_timer(2).timeout)
+				emit_signal("patternDone")
 
 
 func start(_player, multiplier):
+	cowboy.targetLocation = Vector2(960, 200)
 	waves = 20 * (multiplier / 2)
 	var step = 2 * PI / spawnPointCount
-
 	for x in range(spawnPointCount):
 		if(x < 4):
 			var spawnPoint = Node2D.new()
@@ -52,9 +57,11 @@ func getWaves():
 func setWaves(num):
 	waves = num
 
+
 func rotateSpawn(rotate, time):
 	var newRotation = self.rotation_degrees + (rotate * time)
 	self.rotation_degrees = fmod(newRotation, 360)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

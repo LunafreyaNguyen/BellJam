@@ -64,7 +64,7 @@ func bossShoot(player, multiplier):
 			5:
 				pattern5.start(player, multiplier)
 				await(pattern5.patternDone)
-	await(get_tree().create_timer(.8).timeout)
+	await(get_tree().create_timer(2).timeout)
 	shooting = false
 
 func _physics_process(delta):
@@ -88,16 +88,12 @@ func _physics_process(delta):
 		breakTimer = 2
 	t += delta * multiplier
 	
-	# Once Victoria is close enough to the location
-	if self.position.distance_to(targetLocation) < 30:
-		#var random:int = rng.randi_range(0, locations.size() - 1)
-		#targetLocation = locations[random].position
+	# Once close enough to the location, shoot if player exists and no pattern currently being shot
+	if self.position.distance_to(targetLocation) < 5:
 		if player != null && !player.invulnerable:
 			if !shooting:
 				bossShoot(player, multiplier)
-	# Move to new location if the wave is done shooting, or have no movement cooldown or if she's in berserker mode
-	#elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves()) <= 0 || health < 150:
-	#	self.position = self.position.lerp(targetLocation, t)
+	# Faces the boss towards the player
 	bossMovement(player)
 	if shooting:
 		self.position = self.position.lerp(targetLocation, t*4)

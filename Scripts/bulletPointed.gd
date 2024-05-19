@@ -5,7 +5,6 @@ extends EnemyBullet
 
 # On spawn, set direction to where the player is right now
 func _ready():
-	debounce = false
 	sprite.play("shot")
 	speed = 0
 	area_direction = Vector2(0, 0)
@@ -18,10 +17,6 @@ func _process(delta):
 	if(release_timer.time_left) > 0:
 		look_at(player.position)
 	if(timer > 4.0):
-		queue_free()
-	if(position.x < 500 || position.x > 1420):
-		queue_free()
-	if(position.y < 0 || position.y > 1080):
 		queue_free()
 
 func _on_timer_timeout():

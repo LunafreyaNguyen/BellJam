@@ -2,7 +2,6 @@ extends Node
 
 const bulletCircle = preload("res://Scenes/bullets/enemyBullet.tscn")
 @onready var shotTimer = $shotTimer5 as Timer
-@onready var boss = get_tree().get_nodes_in_group("Enemy")
 
 var victoria
 var rotateSpeed = 45
@@ -53,8 +52,10 @@ func start(_player, multiplier):
 func getWaves():
 	return waves
 
+
 func setWaves(num):
 	waves = num
+
 
 func rotateSpawn(rotate, time):
 	var newRotation = self.rotation_degrees + (rotate * time)

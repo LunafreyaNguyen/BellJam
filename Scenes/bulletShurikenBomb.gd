@@ -71,7 +71,3 @@ func hit(body):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += transform.x * delta * speed
-	if(position.x < 500 || position.x > 1420):
-		queue_free()
-	if(position.y < 0 || position.y > 1080):
-		queue_free()

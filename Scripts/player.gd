@@ -147,6 +147,8 @@ func hit():
 			for s in get_tree().get_nodes_in_group("EnemyBullet"):
 				s.queue_free()
 			get_tree().get_first_node_in_group("GameOverScreen").visible = true
+			get_tree().get_first_node_in_group("GameOverMusic").play()
+			get_tree().get_first_node_in_group("LevelOST").stop()
 			styleProgress = 0
 		else:
 			if currStyle >= 2:
@@ -211,26 +213,30 @@ func _physics_process(delta):
 	move_and_slide()
 	if timer > fireRate:
 		if Input.get_action_raw_strength("shoot") && !dead:
-			var temp1 = Bullet.instantiate()
-			var temp2 = Bullet.instantiate()
-			var temp3 = Bullet.instantiate()
-			add_sibling(temp1)
-			add_sibling(temp2)
-			add_sibling(temp3)
-			temp1.set_rotation_degrees(-90)
-			temp2.set_rotation_degrees(-90)
-			temp3.set_rotation_degrees(-90)
-			if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
-				bulletSpawnL.position.x = -40
-				bulletSpawnR.position.x = 40
-			else:
-				bulletSpawnL.position.x = 100
-				bulletSpawnR.position.x = -100
-			if !(Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false):
-				temp2.set_rotation_degrees(-80)
-				temp3.set_rotation_degrees(-100)
-				
-			temp1.global_position = bulletSpawnM.get("global_position")
-			temp2.global_position = bulletSpawnL.get("global_position")
-			temp3.global_position = bulletSpawnR.get("global_position")
-			timer = 0
+			shoot_D()
+
+func shoot_D():
+	if Input.get_action_raw_strength("shoot") && !dead:
+		var temp1 = Bullet.instantiate()
+		var temp2 = Bullet.instantiate()
+		var temp3 = Bullet.instantiate()
+		add_sibling(temp1)
+		add_sibling(temp2)
+		add_sibling(temp3)
+		temp1.set_rotation_degrees(-90)
+		temp2.set_rotation_degrees(-90)
+		temp3.set_rotation_degrees(-90)
+		if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
+			bulletSpawnL.position.x = -40
+			bulletSpawnR.position.x = 40
+		else:
+			bulletSpawnL.position.x = 100
+			bulletSpawnR.position.x = -100
+		if !(Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false):
+			temp2.set_rotation_degrees(-80)
+			temp3.set_rotation_degrees(-100)
+			
+		temp1.global_position = bulletSpawnM.get("global_position")
+		temp2.global_position = bulletSpawnL.get("global_position")
+		temp3.global_position = bulletSpawnR.get("global_position")
+		timer = 0

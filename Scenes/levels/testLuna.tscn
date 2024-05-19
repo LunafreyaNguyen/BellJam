@@ -22,7 +22,7 @@ Bullet = ExtResource("3_8hume")
 [node name="LevelUi" parent="." instance=ExtResource("4_vt22u")]
 metadata/_edit_group_ = true
 
-[node name="LevelOST" type="AudioStreamPlayer" parent="."]
+[node name="LevelOST" type="AudioStreamPlayer" parent="." groups=["LevelOST"]]
 stream = ExtResource("5_ouqk8")
 volume_db = -10.0
 bus = &"Music"

@@ -9,7 +9,7 @@ func _ready():
 
 
 func parry():
-	parryImage.visible = true
+	#parryImage.visible = true
 	modulate.a = 1
 	success.play()
 	success2.play()

@@ -14,19 +14,18 @@ var rng = RandomNumberGenerator.new()
 var targetLocation
 var locations = []
 var breakTimer
-var totalPatterns = 3
+var lastPattern = 1
+var shooting = false
 
-# To be changed and made custom
 func _ready():
-	speed = 200
 	health = 1000
 	for s in get_tree().get_first_node_in_group("locations").get_children():
 		locations.push_back(s)
 	targetLocation = locations[0].position
 
 
+# Rotate to player
 func bossMovement(player):
-	# These 3 little lines of code handle movement! Don't ask me why velocity has to be set this way.
 	if player != null && health > 0:
 		if(self.position.x < player.get("position").x):
 			sprite.set_rotation(.1)
@@ -34,26 +33,36 @@ func bossMovement(player):
 			sprite.set_rotation(-.1)
 		else:
 			sprite.set_rotation(0)
-	move_and_slide()
 	
 	
+# Picks the pattern
 func bossShoot(player, multiplier):
+	shooting = true
 	if(PATTERN_DEBUG_MODE):
 		debugPattern.start(player, multiplier)
 	else:
-		var random:int = rng.randi_range(2, 4)
+		var random:int = rng.randi_range(1, 4)
+		while random == lastPattern:
+			random = rng.randi_range(1, 4)
+		lastPattern = random
 		#var random: int = 3 #this is just here cause debugger is broke rn
-		
 		match random:
 			1: 
 				pattern1.start(player, multiplier)
+				await(pattern1.patternDone)
 			2:
 				pattern2.start(player, multiplier)
+				await(pattern2.patternDone)
 			3: 
 				pattern3.start(player, multiplier)
-			4: 
+				await(pattern3.patternDone)
+			4:
 				pattern4.start(player, multiplier)
-
+				await(pattern4.patternDone)
+	await(get_tree().create_timer(2).timeout)
+	shooting = false
+	
+	
 func _physics_process(delta):
 	timer += delta
 	
@@ -75,28 +84,30 @@ func _physics_process(delta):
 		breakTimer = 2
 	t += delta * multiplier
 	
-	if self.position.distance_to(targetLocation) < 30:
-		var random:int = rng.randi_range(0, locations.size() - 1)
-		targetLocation = locations[random].position
+	# Once close enough to the location, shoot if player exists and no pattern currently being shot
+	if self.position.distance_to(targetLocation) < 5:
 		if player != null && !player.invulnerable:
-			if (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves() + pattern4.getWaves()) <= 10:
-				timer = 0
+			if !shooting:
 				bossShoot(player, multiplier)
-		else:
-			pattern1.setWaves(0)
-			pattern2.setWaves(0)
-			pattern3.setWaves(0)
-			pattern4.setWaves(0)
-	elif (pattern1.getWaves() + pattern2.getWaves() + pattern3.getWaves() + pattern4.getWaves()) <= 0 || health < 200:
-		self.position = self.position.lerp(targetLocation, t)
-	
-	# To be modified and made custom
+	# Faces the boss towards the player
 	bossMovement(player)
-	
-	if get_tree().get_nodes_in_group("EnemyBullet").size() > 500:
+	if shooting:
+		self.position = self.position.lerp(targetLocation, t*4)
+	else:
+		self.position = self.position.lerp(targetLocation, t)
+	# Delete some nodes if there are over a thousand of them
+	if get_tree().get_nodes_in_group("EnemyBullet").size() > 2000:
 		get_tree().get_nodes_in_group("EnemyBullet")[0].queue_free()
 	
+	# If boss's health is below 0
 	if health <= 0:
 		for nodes in get_tree().get_nodes_in_group("EnemyBullet"):
 			nodes.queue_free()
 		die()
+
+func _on_hitboxarea_body_entered(body):
+	if body.is_in_group("Player"):
+		if body.isInvulnerable():
+			return
+		else:
+			body.hit()

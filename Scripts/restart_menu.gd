@@ -6,6 +6,7 @@ var main : String = "res://Scenes/main_menu.tscn"
 @onready var main_menu_button = $PanelContainer/MarginContainer/VBoxContainer/MainMenu as Button
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animation_player.play("RESET")

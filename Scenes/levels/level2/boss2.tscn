@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0q8pw85ftlds"]
+[gd_scene load_steps=14 format=3 uid="uid://d0q8pw85ftlds"]
 
 [ext_resource type="Script" path="res://Scripts/boss2.gd" id="1_koumo"]
 [ext_resource type="Shader" uid="uid://cajjvk3dmacsi" path="res://themes/hit_flash.tres" id="2_roujl"]
@@ -15,6 +15,10 @@ shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8efj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5mbnn"]
+radius = 39.0
+height = 91.0
 
 [sub_resource type="Animation" id="Animation_8i8kt"]
 length = 0.001
@@ -67,6 +71,12 @@ scale = Vector2(4.5, 4.5)
 shape = SubResource("CircleShape2D_x8efj")
 debug_color = Color(0.729412, 0, 0.2, 0.639216)
 
+[node name="hitboxarea" type="Area2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="hitboxarea"]
+position = Vector2(3.5, 7.5)
+shape = SubResource("CapsuleShape2D_5mbnn")
+
 [node name="Pattern5" type="Node2D" parent="."]
 script = ExtResource("4_wv2ph")
 
@@ -92,6 +102,7 @@ libraries = {
 "": SubResource("AnimationLibrary_mnft2")
 }
 
+[connection signal="body_entered" from="hitboxarea" to="." method="_on_hitboxarea_body_entered"]
 [connection signal="timeout" from="Pattern5/shotTimer5" to="Pattern5" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern6/shotTimer6" to="Pattern6" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern7/shotTimer7" to="Pattern7" method="_on_shot_timer_timeout"]

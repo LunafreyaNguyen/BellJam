@@ -1,48 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0t0o0k87xa3j"]
+[gd_scene load_steps=7 format=3 uid="uid://d0t0o0k87xa3j"]
 
 [ext_resource type="Script" path="res://Scripts/bulletLargeBall2.gd" id="1_q03i3"]
-[ext_resource type="Texture2D" uid="uid://digduuln6sxfe" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_02.png" id="2_f7r66"]
+[ext_resource type="Texture2D" uid="uid://btsiljlwurm26" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_05.png" id="2_qdnsh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wx118"]
-radius = 14.2292
+radius = 30.0074
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kmw6g"]
-atlas = ExtResource("2_f7r66")
-region = Rect2(0, 17, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_giv4y"]
+atlas = ExtResource("2_qdnsh")
+region = Rect2(512, 288, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y2d6u"]
-atlas = ExtResource("2_f7r66")
-region = Rect2(16, 17, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sgaly"]
-atlas = ExtResource("2_f7r66")
-region = Rect2(32, 17, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mp6fv"]
-atlas = ExtResource("2_f7r66")
-region = Rect2(48, 17, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptbd6"]
-atlas = ExtResource("2_f7r66")
-region = Rect2(64, 17, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy4xr"]
+atlas = ExtResource("2_qdnsh")
+region = Rect2(544, 288, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bw4vl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kmw6g")
+"texture": SubResource("AtlasTexture_giv4y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y2d6u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sgaly")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mp6fv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ptbd6")
+"texture": SubResource("AtlasTexture_hy4xr")
 }],
 "loop": true,
 "name": &"shot",
@@ -50,6 +29,7 @@ animations = [{
 }]
 
 [node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_q03i3")
@@ -66,6 +46,7 @@ texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_bw4vl")
 animation = &"shot"
+frame_progress = 0.875018
 
 [node name="Wait Timer" type="Timer" parent="."]
 
