@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/boss2.gd" id="1_koumo"]
 [ext_resource type="Shader" uid="uid://cajjvk3dmacsi" path="res://themes/hit_flash.tres" id="2_roujl"]
-[ext_resource type="Texture2D" uid="uid://dhgg5sqcfnkbm" path="res://Art/Portraits/cowboy.png" id="3_ifp5p"]
+[ext_resource type="Texture2D" uid="uid://dhgg5sqcfnkbm" path="res://Art/Portraits/bonnie.png" id="3_ifp5p"]
 [ext_resource type="Script" path="res://Scenes/levels/level2/patterns/pattern5.gd" id="4_wv2ph"]
 [ext_resource type="Script" path="res://Scenes/levels/level2/patterns/pattern6.gd" id="5_eumd0"]
 [ext_resource type="Script" path="res://Scenes/levels/level2/patterns/pattern7.gd" id="6_mjcbs"]

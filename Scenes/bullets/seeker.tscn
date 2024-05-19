@@ -44,6 +44,7 @@ animations = [{
 radius = 29.0172
 
 [node name="Bullet" type="Area2D" groups=["bullet"]]
+modulate = Color(1, 1, 1, 0.498039)
 script = ExtResource("1_7lfj1")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

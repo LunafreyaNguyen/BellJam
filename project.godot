@@ -30,7 +30,7 @@ SaveManager="*res://autoloads/SaveManager.gd"
 
 [dialogue_manager]
 
-general/custom_test_scene_path="res://Dialogue/Ojou/ojouIntro.tscn"
+general/custom_test_scene_path="res://Dialogue/Ojou/OjouOutro.tscn"
 general/balloon_path="res://Dialogue/Ojou/balloon.tscn"
 
 [display]
@@ -100,4 +100,4 @@ exit={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Ojou/test.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Ojou/ojouIntro.dialogue", "res://Dialogue/Ojou/ojouOutro.dialogue", "res://Dialogue/Cowboy/cowboyIntro.dialogue")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c71mrqmshgcoo"]
+
+[ext_resource type="Texture2D" uid="uid://dhgg5sqcfnkbm" path="res://Art/Portraits/bonnie.png" id="1_f6l5w"]
+
+[node name="Victoria" type="Node2D"]
+position = Vector2(0, 106)
+scale = Vector2(0.45, 0.45)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 71.1111
+offset_top = -301.889
+offset_right = 1789.11
+offset_bottom = 2530.11
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_f6l5w")

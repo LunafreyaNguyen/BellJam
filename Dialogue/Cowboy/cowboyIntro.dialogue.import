@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://b6ndltkji0cs3"
+path="res://.godot/imported/cowboyIntro.dialogue-699a1290bb9a205505ce08608aa64e55.tres"
+
+[deps]
+
+source_file="res://Dialogue/Cowboy/cowboyIntro.dialogue"
+dest_files=["res://.godot/imported/cowboyIntro.dialogue-699a1290bb9a205505ce08608aa64e55.tres"]
+
+[params]
+
+defaults=true

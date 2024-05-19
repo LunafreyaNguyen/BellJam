@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://p37gwew3b34o"]
+
+[ext_resource type="Script" path="res://Dialogue/Cowboy/cowboyIntro.gd" id="1_3njca"]
+[ext_resource type="Resource" uid="uid://b6ndltkji0cs3" path="res://Dialogue/Cowboy/cowboyIntro.dialogue" id="2_pm6oe"]
+[ext_resource type="AudioStream" uid="uid://dfaqgny2s6v6r" path="res://Sounds/Music/The-ancient-cry_loop.ogg" id="3_50ypw"]
+
+[node name="DialogueSceneTest" type="Node2D"]
+script = ExtResource("1_3njca")
+dialogue_resource = ExtResource("2_pm6oe")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["ost"]]
+stream = ExtResource("3_50ypw")
+volume_db = -10.0
+bus = &"Music"

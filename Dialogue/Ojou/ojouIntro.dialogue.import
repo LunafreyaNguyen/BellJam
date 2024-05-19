@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://bfy7itnfon1p3"
+path="res://.godot/imported/ojouIntro.dialogue-5c6dac8e3efbb2137e03d620abaadd7a.tres"
+
+[deps]
+
+source_file="res://Dialogue/Ojou/ojouIntro.dialogue"
+dest_files=["res://.godot/imported/ojouIntro.dialogue-5c6dac8e3efbb2137e03d620abaadd7a.tres"]
+
+[params]
+
+defaults=true

@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
 [ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="2_k7t6b"]
-[ext_resource type="Texture2D" uid="uid://bkjkwkfnt6nbw" path="res://Art/Portraits/cecilia_blue.png" id="2_ov7fe"]
 [ext_resource type="SpriteFrames" uid="uid://btp10iu0jv7px" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/parry.tres" id="3_06qht"]
 [ext_resource type="Texture2D" uid="uid://c4j30ljqrix6w" path="res://Art/circle_hitbox.png" id="3_vd8fv"]
 [ext_resource type="PackedScene" uid="uid://63wjohi41umf" path="res://Scenes/bullets/laser.tscn" id="3_x80ch"]
 [ext_resource type="PackedScene" uid="uid://cnv1spnvu1d63" path="res://Scenes/bullets/seeker.tscn" id="4_gx27j"]
 [ext_resource type="PackedScene" uid="uid://04tmwydsgolh" path="res://Scenes/focus_bar.tscn" id="4_omtao"]
 [ext_resource type="AudioStream" uid="uid://2np36aqyko0r" path="res://Sounds/SFX/death.mp3" id="5_2e52b"]
+[ext_resource type="Texture2D" uid="uid://dmuxwam1niunl" path="res://Art/sprite_cecilia.png" id="5_8vljl"]
 [ext_resource type="AudioStream" uid="uid://cgdxsvb1eumry" path="res://Sounds/SFX/sci-fi-bell-1.ogg" id="5_k7elg"]
 [ext_resource type="Script" path="res://Scripts/rankUpNoise.gd" id="6_bb4ub"]
 [ext_resource type="AudioStream" uid="uid://k1dr1rd3m31w" path="res://Sounds/SFX/fire_punch_finisher_06.wav" id="8_ag3ff"]
@@ -29,8 +29,8 @@ Laser = ExtResource("3_x80ch")
 Seeker = ExtResource("4_gx27j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("2_ov7fe")
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("5_8vljl")
 
 [node name="ParryHitbox" type="AnimatedSprite2D" parent="."]
 z_index = 2
@@ -42,7 +42,7 @@ frame = 2
 frame_progress = 0.0528811
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(2.08165e-12, -15)
+position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.26, 0.26)
 shape = SubResource("CircleShape2D_5owib")
 debug_color = Color(0.988235, 0, 0, 0.419608)
@@ -50,7 +50,7 @@ debug_color = Color(0.988235, 0, 0, 0.419608)
 [node name="HitBox" type="Sprite2D" parent="CollisionShape2D" groups=["parryHitboxCircle"]]
 modulate = Color(0.239216, 0.423529, 1, 1)
 show_behind_parent = true
-z_index = 1
+z_index = 3
 position = Vector2(-1.90735e-06, -0.333381)
 scale = Vector2(0.26, 0.26)
 texture = ExtResource("3_vd8fv")
@@ -120,7 +120,7 @@ volume_db = -10.0
 
 [node name="ParryFollow" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(2.08165e-12, 100)
+position = Vector2(0, -13.3333)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_vd8fv")
 

@@ -17,6 +17,7 @@ func ready():
 func animationPlay():
 	var tween = get_tree().create_tween()
 	sprite.play()
+	
 
 func _process(delta):
 	timer += delta

@@ -1,0 +1,27 @@
+~ start
+do set_background("hell")
+do add_portrait("cecilia", 0)
+do add_portrait("victoria", 1)
+Victoria: My, you're putting up quite the fight, aren't you?
+Cecilia: Heh, and that's only the tip of the iceberg!
+Victoria: And as passionate as ever~!
+Victoria: OH HOH HOH!
+Victoria: I guess I have no choice...
+Cecilia: Finally taking it seriously, huh?
+Victoria: Oh, don't misunderstand me- it is quite clear to me this encounter is inefficacious to stopping you.
+Cecelia: Then bring it on! Your final, ultimate technique!
+Victoria: .........?
+Cecilia: Well?
+Victoria: Do you know what "inefficacious" means?
+Cecilia: Uh... Yeah..? Totally...
+Victoria: I am going to let you pass.
+Cecilia: Oh. Then you should have just said that in the first place!
+Victoria: Oh my...
+do remove_portrait("cecilia")
+Victoria: ...
+Victoria: Gracious, looks like we've made quite the mess.
+Victoria: The collateral damage must have spread far out past the gate. Oops!
+Victoria: Not my problem! OH HOH HOH!
+do remove_portrait("victoria")
+do set_background("blackscreen")
+=> END

@@ -26,7 +26,7 @@ const styleC = preload("res://Art/style/C.png")
 const styleD = preload("res://Art/style/D.png")
 
 @onready var styles = [styleD, styleC, styleB, styleA, styleS]
-@onready var currStyle = 0
+@onready var currStyle = 4
 @onready var styleProgress = 0
 @onready var styleConstant = get_tree().get_first_node_in_group("styleConstant")
 @onready var styleExplosion = get_tree().get_first_node_in_group("styleExplosion")
@@ -71,8 +71,10 @@ func get_input():
 		velocity = input_direction * speed
 		if(input_direction.x > 0):
 			sprite.set_rotation(.3)
+			parry_cd_indicator.set_rotation(.1)
 		elif(input_direction.x < 0):
 			sprite.set_rotation(-.3)
+			parry_cd_indicator.set_rotation(-.1)
 		else:
 			sprite.set_rotation(0)
 		sprite.modulate.a = 1.0
@@ -210,8 +212,7 @@ func _physics_process(delta):
 	styleConstant.set_amount(currStyle * 100 + 100)
 	timer += delta
 	if(parry_cd_indicator != null):
-		parry_cd_indicator.global_position = parry_cd_indicator.global_position.lerp(parry_follow.global_position, delta * FOLLOW_SPEED)
-		parry_cd_indicator.look_at(self.position)
+		parry_cd_indicator.global_position = parry_cd_indicator.global_position.lerp(parry_follow.global_position, delta * 8)
 	get_input()
 	move_and_slide()
 	shotTimer += delta

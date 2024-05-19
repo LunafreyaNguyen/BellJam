@@ -131,7 +131,7 @@ func die():
 			nodes.queue_free()
 		visible = false
 	await(get_tree().create_timer(3).timeout)
-	get_tree().change_scene_to_file("res://Scenes/levels/testCowboy.tscn")
+	get_tree().change_scene_to_file("res://Dialogue/Ojou/OjouOutro.tscn")
 
 
 func _on_hitboxarea_body_entered(body):

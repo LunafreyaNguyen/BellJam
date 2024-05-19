@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cujblggxj07nk" path="res://Art/ring_progress.png" id="1_5n8k6"]
 [ext_resource type="Texture2D" uid="uid://cmqn5qvitx46s" path="res://Art/style/S.png" id="1_b3qfm"]
 [ext_resource type="Texture2D" uid="uid://bvsoif6pbwr5a" path="res://Art/Portraits/cecilia_blue_portrait.png" id="1_jddd0"]
-[ext_resource type="Texture2D" uid="uid://0t02phsf1afw" path="res://Art/Portraits/cecilia_red_portrait.png" id="2_b5iqx"]
 [ext_resource type="Texture2D" uid="uid://dxrdyo3alngeu" path="res://Art/style/fire.tres" id="2_tiw7j"]
 [ext_resource type="Shader" path="res://Scenes/levels/level1.gdshader" id="3_nww4t"]
 [ext_resource type="Texture2D" uid="uid://dnagh4vipv6k4" path="res://Art/style/particle.png" id="3_o56cd"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dikdo3e8tumnv" path="res://Art/Backgrounds/background.jpg" id="4_j51tj"]
 [ext_resource type="Script" path="res://Scenes/levels/scrolling.gd" id="5_0mi4d"]
 [ext_resource type="Texture2D" uid="uid://cokbuswnaal1s" path="res://Art/Portraits/victoriaPortrait.png" id="7_y6jk0"]
+[ext_resource type="Texture2D" uid="uid://cppbcsev7medj" path="res://Art/Portraits/cecilia_blue_portraitWEH.png" id="8_yt712"]
 [ext_resource type="Texture2D" uid="uid://deoo4x6t7ijbq" path="res://Art/backgroundUI.png" id="9_uuk7e"]
 [ext_resource type="PackedScene" uid="uid://dqfsocl4gcwu2" path="res://Scenes/parrySlash.tscn" id="11_mavus"]
 [ext_resource type="PackedScene" uid="uid://k24dibp6p0qs" path="res://Scenes/bounds.tscn" id="14_yg6ij"]
@@ -161,7 +161,6 @@ expand_mode = 1
 stretch_mode = 2
 
 [node name="EnemyArt2" type="TextureRect" parent="ArtBG"]
-visible = false
 z_index = 5
 z_as_relative = false
 layout_mode = 1
@@ -173,9 +172,8 @@ offset_left = -1920.0
 offset_right = -1420.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("2_b5iqx")
+texture = ExtResource("8_yt712")
 expand_mode = 1
-flip_h = true
 
 [node name="background" type="TextureRect" parent="ArtBG" groups=["PlayerPortrait"]]
 z_as_relative = false
@@ -202,7 +200,8 @@ texture = ExtResource("4_j51tj")
 stretch_mode = 1
 script = ExtResource("5_0mi4d")
 
-[node name="ParrySlash" parent="." groups=["parrySlash"] instance=ExtResource("11_mavus")]
+[node name="ParrySlash" parent="." instance=ExtResource("11_mavus")]
+visible = false
 z_index = 10
 
 [node name="Bounds" parent="." instance=ExtResource("14_yg6ij")]

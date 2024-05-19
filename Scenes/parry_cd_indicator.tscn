@@ -1,55 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmd0ct53py3wx"]
+[gd_scene load_steps=2 format=3 uid="uid://dmd0ct53py3wx"]
 
-[ext_resource type="Texture2D" uid="uid://digduuln6sxfe" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_02.png" id="1_x8xux"]
+[ext_resource type="Texture2D" uid="uid://cgd35rpdbvh7p" path="res://Art/sprite_cecilia_sword.png" id="1_iqmj6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_61b5y"]
-atlas = ExtResource("1_x8xux")
-region = Rect2(0, 257, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_80crh"]
-atlas = ExtResource("1_x8xux")
-region = Rect2(16, 257, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ewss"]
-atlas = ExtResource("1_x8xux")
-region = Rect2(32, 257, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lmn8w"]
-atlas = ExtResource("1_x8xux")
-region = Rect2(48, 257, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n464y"]
-atlas = ExtResource("1_x8xux")
-region = Rect2(64, 257, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ab3rt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_61b5y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_80crh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2ewss")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lmn8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n464y")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 15.0
-}]
-
-[node name="ParryCDIndicator" type="AnimatedSprite2D"]
+[node name="ParryCDIndicator" type="Sprite2D"]
+z_index = 2
 texture_filter = 1
-rotation = -1.5708
-scale = Vector2(12.5, 6.25)
-sprite_frames = SubResource("SpriteFrames_ab3rt")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.289946
+rotation = 0.403171
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_iqmj6")
