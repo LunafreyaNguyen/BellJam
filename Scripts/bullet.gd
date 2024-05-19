@@ -21,9 +21,6 @@ func _process(delta):
 
 func _on_body_entered(body):	
 	# Stops an error that crashes the game.
-	if debounce == true:
-		return
-	debounce = true
 	hit(body)
 
 # Delete the bullet, lower enemy's HP

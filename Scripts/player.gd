@@ -17,6 +17,7 @@ const deathParticles = preload("res://Scenes/death_particles.tscn")
 @onready var rankDownNoise = $SFX/rankDownNoise
 @onready var rankDown2Noise = $SFX/rankDown2Noise
 @onready var deathNoise = $SFX/deathNoise
+@onready var poof = $SFX/poof
 
 const styleS = preload("res://Art/style/S.png")
 const styleA = preload("res://Art/style/A.png")
@@ -25,7 +26,7 @@ const styleC = preload("res://Art/style/C.png")
 const styleD = preload("res://Art/style/D.png")
 
 @onready var styles = [styleD, styleC, styleB, styleA, styleS]
-@onready var currStyle = 1
+@onready var currStyle = 0
 @onready var styleProgress = 0
 @onready var styleConstant = get_tree().get_first_node_in_group("styleConstant")
 @onready var styleExplosion = get_tree().get_first_node_in_group("styleExplosion")
@@ -45,8 +46,7 @@ const FOLLOW_SPEED : float = 3.0
 @onready var parryCooldown = $ParryCooldown
 @onready var parryShine = $SFX/parryShine
 @onready var laugh = $SFX/laugh
-
-var seekerShoot = 0
+var shotTimer = 0
 signal parryCancel
 
 # Character's stats
@@ -214,8 +214,12 @@ func _physics_process(delta):
 		parry_cd_indicator.look_at(self.position)
 	get_input()
 	move_and_slide()
+	shotTimer += delta
 	if timer > fireRate:
 		if Input.get_action_raw_strength("shoot") && !dead:
+			if shotTimer > .1:
+				poof.play()
+				shotTimer = 0
 			if currStyle == 0:
 				shoot_D()
 			elif currStyle == 1:
@@ -329,19 +333,18 @@ func shoot_B():
 
 func shoot_A():
 	fireRate = .01
-	seekerShoot += 1
-	if(seekerShoot > 20):
-		var temp1 = Seeker.instantiate()
-		var temp2 = Seeker.instantiate()
-		add_sibling(temp1)
-		add_sibling(temp2)
-		temp1.set_rotation_degrees(-80)
-		temp2.set_rotation_degrees(-100)
-		temp1.animationPlay()
-		temp2.animationPlay()
-		temp1.global_position = bulletSpawnL.get("global_position")
-		temp2.global_position = bulletSpawnR.get("global_position")
-		seekerShoot = 0
+	var tempSeeker1 = Seeker.instantiate()
+	var tempSeeker2 = Seeker.instantiate()
+	add_sibling(tempSeeker1)
+	add_sibling(tempSeeker2)
+	bulletSpawnL.position.x = 120
+	bulletSpawnR.position.x = -120
+	tempSeeker1.set_rotation_degrees(0)
+	tempSeeker2.set_rotation_degrees(-180)
+	tempSeeker1.animationPlay()
+	tempSeeker2.animationPlay()
+	tempSeeker1.global_position = bulletSpawnL.get("global_position")
+	tempSeeker2.global_position = bulletSpawnR.get("global_position")
 	if Input.get_action_raw_strength("shoot") && !dead:
 		var temp1 = Laser.instantiate()
 		var temp2 = Laser.instantiate()
@@ -372,41 +375,72 @@ func shoot_A():
 func shoot_S():
 	fireRate = .01
 	if Input.get_action_raw_strength("shoot") && !dead:
-		var temp1 = Laser.instantiate()
-		var temp2 = Laser.instantiate()
-		var temp3 = Laser.instantiate()
-		var temp4 = Laser.instantiate()
-		var temp5 = Laser.instantiate()
-		temp4.progress = .5
-		temp5.progress = .5
-		add_sibling(temp1)
-		add_sibling(temp2)
-		add_sibling(temp3)
-		add_sibling(temp4)
-		add_sibling(temp5)
-		temp1.set_rotation_degrees(-90)
-		temp2.set_rotation_degrees(-90)
-		temp3.set_rotation_degrees(-90)
-		temp4.set_rotation_degrees(-90)
-		temp5.set_rotation_degrees(-90)
 		if Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false:
+			var temp2 = Laser.instantiate()
+			var temp3 = Laser.instantiate()
+			var temp1 = Laser.instantiate()
+			var temp4 = Seeker.instantiate()
+			var temp5 = Seeker.instantiate()
+			temp1.scale = Vector2(3, 3)
+			temp1.progress = .1
+			temp2.progress = .05
+			temp2.scale = Vector2(1.8, 1.8)
+			temp3.progress = .04
+			temp3.scale = Vector2(1.8, 1.8)
+			temp4.progress = .03
+			temp4.scale = Vector2(2, 2)
+			temp5.progress = .03
+			temp5.scale = Vector2(2, 2)
+			temp1.set_rotation_degrees(-90)
+			temp2.set_rotation_degrees(-100)
+			temp3.set_rotation_degrees(-80)
+			temp4.set_rotation_degrees(-110)
+			temp5.set_rotation_degrees(-70)
 			bulletSpawnL.position.x = -50
 			bulletSpawnR.position.x = 50
 			temp2.global_position = bulletSpawnL.get("global_position")
 			temp3.global_position = bulletSpawnR.get("global_position")
+			add_sibling(temp2)
+			add_sibling(temp3)
+			add_sibling(temp1)
+			add_sibling(temp4)
+			add_sibling(temp5)
+			temp1.global_position = bulletSpawnM.get("global_position")
+			bulletSpawnL.position.x = -100
+			bulletSpawnR.position.x = 100
+			temp4.global_position = bulletSpawnL.get("global_position")
+			temp5.global_position = bulletSpawnR.get("global_position")
 		else:
-			bulletSpawnL.position.x = 100
-			bulletSpawnR.position.x = -100
+			var temp2 = Laser.instantiate()
+			var temp3 = Laser.instantiate()
+			var temp1 = Laser.instantiate()
+			temp1.scale = Vector2(2, 2)
+			var temp4 = Seeker.instantiate()
+			var temp5 = Seeker.instantiate()
+			temp1.progress = .06
+			temp2.progress = .04
+			temp2.scale = Vector2(1.1, 1.1)
+			temp3.progress = .04
+			temp3.scale = Vector2(1.1, 1.1)
+			temp4.progress = .03
+			temp4.scale = Vector2(1.5, 1.5)
+			temp5.progress = .03
+			temp5.scale = Vector2(1.5, 1.5)
+			add_sibling(temp2)
+			add_sibling(temp3)
+			add_sibling(temp1)
+			add_sibling(temp4)
+			add_sibling(temp5)
+			temp1.set_rotation_degrees(-90)
+			temp2.set_rotation_degrees(-110)
+			temp3.set_rotation_degrees(-70)
+			temp4.set_rotation_degrees(-140)
+			temp5.set_rotation_degrees(-40)
+			bulletSpawnL.position.x = -50
+			bulletSpawnR.position.x = 50
 			temp2.global_position = bulletSpawnL.get("global_position")
 			temp3.global_position = bulletSpawnR.get("global_position")
-		if !(Input.get_action_raw_strength("focus") && focus_bar.get_burnout_condition() == false):
-			temp2.set_rotation_degrees(-80)
-			temp3.set_rotation_degrees(-100)
-			temp4.set_rotation_degrees(-85)
-			temp5.set_rotation_degrees(-95)
-		bulletSpawnL.position.x = 75
-		bulletSpawnR.position.x = -75
-		temp1.global_position = bulletSpawnM.get("global_position")
-		temp4.global_position = bulletSpawnL.get("global_position")
-		temp5.global_position = bulletSpawnR.get("global_position")
+			temp1.global_position = bulletSpawnM.get("global_position")
+			temp4.global_position = bulletSpawnL.get("global_position")
+			temp5.global_position = bulletSpawnR.get("global_position")
 		timer = 0

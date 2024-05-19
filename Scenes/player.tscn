@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d73ag2vw0tqg"]
+[gd_scene load_steps=18 format=3 uid="uid://d73ag2vw0tqg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
 [ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="2_k7t6b"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://csq28gk8bujq4" path="res://Sounds/SFX/metal_punch_06.wav" id="8_lu8n7"]
 [ext_resource type="AudioStream" uid="uid://baqnc0vp28uau" path="res://Sounds/SFX/aww.mp3" id="9_a28r2"]
 [ext_resource type="AudioStream" uid="uid://dpfi4dxmc52nq" path="res://Sounds/SFX/parryShine.wav" id="11_jhn4f"]
+[ext_resource type="AudioStream" uid="uid://d3sf1ifaydom4" path="res://Sounds/SFX/Poof.wav" id="16_a57sg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owib"]
 radius = 76.956
@@ -33,6 +34,7 @@ texture = ExtResource("2_ov7fe")
 
 [node name="ParryHitbox" type="AnimatedSprite2D" parent="."]
 z_index = 2
+texture_filter = 1
 scale = Vector2(20, 32)
 sprite_frames = ExtResource("3_06qht")
 animation = &"parry"
@@ -111,6 +113,10 @@ bus = &"SFX"
 [node name="parryShine" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("11_jhn4f")
 bus = &"SFX"
+
+[node name="poof" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("16_a57sg")
+volume_db = -10.0
 
 [node name="ParryFollow" type="Sprite2D" parent="."]
 visible = false

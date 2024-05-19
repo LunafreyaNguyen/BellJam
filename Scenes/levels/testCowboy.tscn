@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_rdjpj"]
 [ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="2_mryl3"]
-[ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="3_m22g2"]
+[ext_resource type="Texture2D" uid="uid://bw676d52hh5jm" path="res://Art/Portraits/cowboyPortrait.png" id="4_gj4gr"]
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="4_vkup7"]
 [ext_resource type="Texture2D" uid="uid://ceb218b5me644" path="res://Art/Backgrounds/backgroundcowboy.jpeg" id="5_hm6e6"]
 [ext_resource type="AudioStream" uid="uid://begtlj6k05yh7" path="res://Sounds/Music/Battle-TheOath_loop.ogg" id="5_kpe3m"]
@@ -18,10 +18,12 @@ script = ExtResource("1_rdjpj")
 
 [node name="Player" parent="." instance=ExtResource("2_mryl3")]
 position = Vector2(960, 810)
-Bullet = ExtResource("3_m22g2")
 
 [node name="LevelUi" parent="." instance=ExtResource("4_vkup7")]
 metadata/_edit_group_ = true
+
+[node name="EnemyArt" parent="LevelUi/ArtBG" index="2"]
+texture = ExtResource("4_gj4gr")
 
 [node name="GameBG" parent="LevelUi/ArtBG" index="5"]
 anchors_preset = 0
@@ -35,6 +37,9 @@ grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.575, 0.575)
 texture = ExtResource("5_hm6e6")
+
+[node name="ParrySlash" parent="LevelUi" index="1"]
+visible = false
 
 [node name="LevelOST" type="AudioStreamPlayer" parent="." groups=["LevelOST"]]
 stream = ExtResource("5_kpe3m")

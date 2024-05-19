@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/boss2.gd" id="1_koumo"]
 [ext_resource type="Shader" uid="uid://cajjvk3dmacsi" path="res://themes/hit_flash.tres" id="2_roujl"]
-[ext_resource type="Texture2D" uid="uid://dobc16qqpsir2" path="res://Art/givemeyourballs.webp" id="3_cunh4"]
+[ext_resource type="Texture2D" uid="uid://dhgg5sqcfnkbm" path="res://Art/Portraits/cowboy.png" id="3_ifp5p"]
 [ext_resource type="Script" path="res://Scenes/levels/level2/patterns/pattern5.gd" id="4_wv2ph"]
 [ext_resource type="Script" path="res://Scenes/levels/level2/patterns/pattern6.gd" id="5_eumd0"]
 [ext_resource type="Script" path="res://Scenes/levels/level2/patterns/pattern7.gd" id="6_mjcbs"]
@@ -63,7 +63,8 @@ script = ExtResource("1_koumo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_km27d")
-texture = ExtResource("3_cunh4")
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_ifp5p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -52,7 +52,7 @@ texture_filter = 1
 position = Vector2(-14, -4)
 scale = Vector2(4.25005, 6.63535)
 sprite_frames = SubResource("SpriteFrames_udt4h")
-frame_progress = 0.257765
+frame_progress = 0.897952
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wx118")
@@ -61,7 +61,6 @@ debug_color = Color(0.968627, 0, 0, 0.419608)
 [node name="Poof" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yncjd")
 volume_db = -20.0
-autoplay = true
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yncjd")

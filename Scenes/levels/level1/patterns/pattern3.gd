@@ -35,7 +35,7 @@ func _on_shot_timer_timeout():
 
 func start(_player, multiplier):
 	var random:int = rng.randi_range(1, 5)
-	victoria.targetLocation = Vector2(500 + (100 * random), 300)
+	victoria.targetLocation = Vector2(500 + (100 * random), 100)
 	waves = 5 * (multiplier / 2)
 	var step = 2 * PI / spawnPointCount
 

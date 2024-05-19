@@ -18,10 +18,10 @@ var lastPattern = 1
 var shooting = false
 
 func _ready():
-	health = 1000
+	health = 15000
 	for s in get_tree().get_first_node_in_group("locations").get_children():
 		locations.push_back(s)
-	targetLocation = locations[0].position
+	targetLocation = locations[4].position
 
 
 # Rotate to player

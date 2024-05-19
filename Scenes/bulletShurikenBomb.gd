@@ -8,7 +8,7 @@ const bulletShuriken = preload("res://Scenes/bullets/bulletShuriken.tscn")
 
 var rotateSpeed = 40
 var shootWaitTime = 2
-var spawnPointCount = 50
+var spawnPointCount = 40
 var radius = 1
 var waves = 1
 

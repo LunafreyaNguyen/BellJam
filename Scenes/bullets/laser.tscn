@@ -40,8 +40,8 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wx118"]
-radius = 29.0172
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf7jv"]
+size = Vector2(66, 64)
 
 [node name="Bullet" type="Area2D" groups=["bullet"]]
 script = ExtResource("1_qf4al")
@@ -52,16 +52,16 @@ texture_filter = 1
 position = Vector2(-4, 1)
 scale = Vector2(4.25005, 6.63535)
 sprite_frames = SubResource("SpriteFrames_udt4h")
-frame_progress = 0.537552
+frame_progress = 0.872171
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wx118")
+position = Vector2(-4, 1)
+shape = SubResource("RectangleShape2D_nf7jv")
 debug_color = Color(0.968627, 0, 0, 0.419608)
 
 [node name="Poof" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1hp63")
 volume_db = -20.0
-autoplay = true
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1hp63")
