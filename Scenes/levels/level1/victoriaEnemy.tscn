@@ -129,6 +129,6 @@ libraries = {
 [connection signal="timeout" from="Pattern1/shotTimer1" to="Pattern1" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern2/shotTimer2" to="Pattern2" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern3/shotTimer3" to="Pattern3" method="_on_shot_timer_timeout"]
-[connection signal="timeout" from="Pattern4/shotTimer4" to="Pattern4" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern4/shotTimer4" to="Pattern4" method="_on_shot_timer_4_timeout"]
+[connection signal="timeout" from="Pattern4/shotTimer4" to="Pattern4" method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="Pattern5/shotTimer5" to="Pattern5" method="_on_shot_timer_timeout"]

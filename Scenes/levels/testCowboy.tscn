@@ -38,9 +38,6 @@ grow_vertical = 1
 scale = Vector2(0.575, 0.575)
 texture = ExtResource("5_hm6e6")
 
-[node name="ParrySlash" parent="LevelUi" index="1"]
-visible = false
-
 [node name="LevelOST" type="AudioStreamPlayer" parent="." groups=["LevelOST"]]
 stream = ExtResource("5_kpe3m")
 volume_db = -10.0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/boss2.gd" id="1_koumo"]
 [ext_resource type="Shader" uid="uid://cajjvk3dmacsi" path="res://themes/hit_flash.tres" id="2_roujl"]
-[ext_resource type="Texture2D" uid="uid://dhgg5sqcfnkbm" path="res://Art/Portraits/bonnie.png" id="3_ifp5p"]
+[ext_resource type="Texture2D" uid="uid://b57c5q6qij6tb" path="res://Scenes/sprite_cowboy.png" id="3_gu8ck"]
 [ext_resource type="Script" path="res://Scenes/levels/level2/patterns/pattern5.gd" id="4_wv2ph"]
 [ext_resource type="Script" path="res://Scenes/levels/level2/patterns/pattern6.gd" id="5_eumd0"]
 [ext_resource type="Script" path="res://Scenes/levels/level2/patterns/pattern7.gd" id="6_mjcbs"]
@@ -17,8 +17,8 @@ shader_parameter/tint = Color(1, 1, 1, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8efj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5mbnn"]
-radius = 39.0
-height = 91.0
+radius = 25.0
+height = 115.0
 
 [sub_resource type="Animation" id="Animation_8i8kt"]
 length = 0.001
@@ -63,8 +63,8 @@ script = ExtResource("1_koumo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_km27d")
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("3_ifp5p")
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("3_gu8ck")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -75,7 +75,6 @@ debug_color = Color(0.729412, 0, 0.2, 0.639216)
 [node name="hitboxarea" type="Area2D" parent="."]
 
 [node name="hitbox" type="CollisionShape2D" parent="hitboxarea"]
-position = Vector2(3.5, 7.5)
 shape = SubResource("CapsuleShape2D_5mbnn")
 
 [node name="Pattern5" type="Node2D" parent="."]
