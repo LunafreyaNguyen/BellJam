@@ -1,12 +1,11 @@
 extends EnemyBullet
 
-@onready var player = get_tree().get_first_node_in_group("Player")
 @onready var release_timer = $"Wait Timer" as Timer
 
 # On spawn, set direction to where the player is right now
 func _ready():
 	sprite.play("shot")
-	speed = 200
+	speed = 500
 	area_direction = Vector2(0, 0)
 	release_timer.start()
 
@@ -14,9 +13,11 @@ func _ready():
 func _process(delta):
 	timer += delta
 	position += transform.x * speed * delta
+	if speed > -1200:
+		speed += -750 * delta
 	if(release_timer.time_left) > 0:
 		pass
-	if(timer > 4.0):
+	if(timer > 10.0):
 		queue_free()
 
 func _on_wait_timer_timeout():

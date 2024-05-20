@@ -14,6 +14,6 @@ func on_exit_pressed()-> void:
 	SettingsSignalBus.emit_set_settings_dictionary(SettingContainer.create_storage_dictionary())
 	set_process(false)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("exit"):
 		on_exit_pressed()

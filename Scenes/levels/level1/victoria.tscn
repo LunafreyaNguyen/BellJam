@@ -1,0 +1,134 @@
+[gd_scene load_steps=18 format=3 uid="uid://b1lmuathlmt5p"]
+
+[ext_resource type="Script" path="res://Scenes/levels/level1/victoria.gd" id="1_1618a"]
+[ext_resource type="Shader" uid="uid://cajjvk3dmacsi" path="res://themes/hit_flash.tres" id="2_rxrf5"]
+[ext_resource type="Texture2D" uid="uid://bsns0j3okfqlu" path="res://Art/sprite_victoria.png" id="3_csa87"]
+[ext_resource type="Script" path="res://Scenes/levels/level1/patterns/patternOjou.gd" id="4_023um"]
+[ext_resource type="AudioStream" uid="uid://duksdwmkasgj2" path="res://Sounds/SFX/chargeImpact.mp3" id="5_un5ii"]
+[ext_resource type="AudioStream" uid="uid://xh8thdjthkc2" path="res://Sounds/SFX/chargeStart.mp3" id="6_3ckrs"]
+[ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern2.gd" id="7_5j4l1"]
+[ext_resource type="AudioStream" uid="uid://dr4qsgmdbmhwe" path="res://Sounds/SFX/blast1.mp3" id="8_l1rjs"]
+[ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern3.gd" id="9_c1hef"]
+[ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern4.gd" id="10_k6i0m"]
+[ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern1.gd" id="11_1qpcj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqbh"]
+radius = 8.33333
+height = 24.4444
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_km27d"]
+resource_local_to_scene = true
+shader = ExtResource("2_rxrf5")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbmgw"]
+radius = 39.0
+height = 116.0
+
+[sub_resource type="Animation" id="Animation_8i8kt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lq2vk"]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mnft2"]
+_data = {
+"RESET": SubResource("Animation_8i8kt"),
+"hurt": SubResource("Animation_lq2vk")
+}
+
+[node name="Victoria" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_1618a")
+
+[node name="hurtbox" type="CollisionShape2D" parent="."]
+scale = Vector2(4.5, 4.5)
+shape = SubResource("CapsuleShape2D_kyqbh")
+debug_color = Color(0.729412, 0, 0.2, 0.639216)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_km27d")
+position = Vector2(7, -1.5)
+scale = Vector2(0.144909, 0.144909)
+texture = ExtResource("3_csa87")
+
+[node name="hitboxarea" type="Area2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="hitboxarea"]
+position = Vector2(1.5, -2)
+shape = SubResource("CapsuleShape2D_wbmgw")
+
+[node name="Pattern1" type="Node2D" parent="." groups=["pattern"]]
+script = ExtResource("4_023um")
+
+[node name="shotTimer1" type="Timer" parent="Pattern1"]
+
+[node name="chargeImpact" type="AudioStreamPlayer" parent="Pattern1"]
+stream = ExtResource("5_un5ii")
+bus = &"SFX"
+
+[node name="chargeStart" type="AudioStreamPlayer" parent="Pattern1"]
+stream = ExtResource("6_3ckrs")
+bus = &"SFX"
+
+[node name="Pattern2" type="Node2D" parent="." groups=["pattern", "rotater2"]]
+script = ExtResource("7_5j4l1")
+
+[node name="shotTimer2" type="Timer" parent="Pattern2"]
+
+[node name="blast" type="AudioStreamPlayer" parent="Pattern2"]
+stream = ExtResource("8_l1rjs")
+
+[node name="Pattern3" type="Node2D" parent="." groups=["pattern"]]
+script = ExtResource("9_c1hef")
+
+[node name="shotTimer3" type="Timer" parent="Pattern3"]
+
+[node name="Pattern4" type="Node2D" parent="." groups=["pattern"]]
+script = ExtResource("10_k6i0m")
+
+[node name="shotTimer4" type="Timer" parent="Pattern4"]
+
+[node name="Pattern5" type="Node2D" parent="." groups=["pattern"]]
+script = ExtResource("11_1qpcj")
+
+[node name="shotTimer5" type="Timer" parent="Pattern5"]
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mnft2")
+}
+
+[connection signal="body_entered" from="hitboxarea" to="." method="_on_hitboxarea_body_entered"]
+[connection signal="timeout" from="Pattern1/shotTimer1" to="Pattern1" method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="Pattern2/shotTimer2" to="Pattern2" method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="Pattern3/shotTimer3" to="Pattern3" method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="Pattern4/shotTimer4" to="Pattern4" method="_on_shot_timer_4_timeout"]
+[connection signal="timeout" from="Pattern4/shotTimer4" to="Pattern4" method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="Pattern5/shotTimer5" to="Pattern5" method="_on_shot_timer_timeout"]

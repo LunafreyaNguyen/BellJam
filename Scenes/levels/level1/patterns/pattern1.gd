@@ -34,7 +34,7 @@ func _on_shot_timer_timeout():
 				emit_signal("patternDone")
 
 
-func start(_player, multiplier):
+func start(multiplier):
 	victoria.targetLocation = Vector2(960, 200)
 	waves = 20 * (multiplier / 2)
 	var step = 2 * PI / spawnPointCount

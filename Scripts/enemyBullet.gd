@@ -5,12 +5,15 @@ class_name EnemyBullet
 
 @export var player_name = "Player"
 @onready var absolute_parent = get_parent()
+@onready var player = get_tree().get_first_node_in_group("Player")
+@onready var styleProgress = player.styleProgress
+@onready var graze = player.graze
 
 @export_group("Stats")
 var speed = 150.0
 var area_direction = Vector2(0, 0)
-
-
+var grazed = false
+var grazeDistance = 200
 var timer = 0
 # On spawn, set direction to where the player is right now
 func _ready():

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cb4khlnb32f8i"]
 
 [ext_resource type="Script" path="res://Scripts/gameover.gd" id="1_6u3ub"]
-[ext_resource type="Texture2D" uid="uid://cjrhaldmfjgxr" path="res://Art/gameOVER.png" id="1_oy6l3"]
-[ext_resource type="PackedScene" path="res://Scenes/restart_menu.tscn" id="3_6787e"]
+[ext_resource type="Texture2D" uid="uid://bg650ynedlxxc" path="res://Art/gameOVER.png" id="1_oy6l3"]
+[ext_resource type="PackedScene" uid="uid://mm46nrem1am1" path="res://Scenes/restart_menu.tscn" id="3_6787e"]
 [ext_resource type="AudioStream" uid="uid://10y47omgj3xf" path="res://Sounds/Music/reminiscence_loop.ogg" id="3_xf2pg"]
 
 [node name="Gameover" type="Control" groups=["GameOverScreen"]]

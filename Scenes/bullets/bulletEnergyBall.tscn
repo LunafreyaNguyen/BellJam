@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxql8l3o1802"]
+
+[ext_resource type="Script" path="res://Scripts/bulletEnergyBall.gd" id="1_k7af2"]
+[ext_resource type="Texture2D" uid="uid://btdj21v0phgk1" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_03.png" id="2_3hepd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx118"]
+radius = 30.0074
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsba6"]
+atlas = ExtResource("2_3hepd")
+region = Rect2(448, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1h4n"]
+atlas = ExtResource("2_3hepd")
+region = Rect2(480, 288, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bw4vl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsba6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1h4n")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 15.0
+}]
+
+[node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_k7af2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
+light_mask = 0
+z_index = 2
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_wx118")
+debug_color = Color(0.968627, 0, 0, 1)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
+z_index = 1
+texture_filter = 1
+scale = Vector2(3.08817, 3.08817)
+sprite_frames = SubResource("SpriteFrames_bw4vl")
+animation = &"shot"
+frame_progress = 0.732032
+
+[node name="Wait Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Wait Timer" to="." method="_on_wait_timer_timeout"]

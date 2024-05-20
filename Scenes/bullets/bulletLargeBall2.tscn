@@ -29,13 +29,14 @@ animations = [{
 }]
 
 [node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
-scale = Vector2(0.5, 0.5)
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_q03i3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
+light_mask = 0
+z_index = 2
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_wx118")
 debug_color = Color(0.968627, 0, 0, 1)
@@ -50,4 +51,5 @@ frame_progress = 0.875018
 
 [node name="Wait Timer" type="Timer" parent="."]
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Wait Timer" to="." method="_on_wait_timer_timeout"]

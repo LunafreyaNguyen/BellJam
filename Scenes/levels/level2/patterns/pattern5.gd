@@ -5,11 +5,12 @@ const bullet_pointed = preload("res://Scenes/bullets/bulletPointed.tscn")
 
 var cowboy
 var rotateSpeed = 15
-var shootWaitTime = 0.45
+var shootWaitTime = 0.2
 var spawnPointCount = 6
 var radius = 100
 var waves = 0
 var patternOn = true
+@onready var rng = RandomNumberGenerator.new()
 signal patternDone
 
 # Called when the node enters the scene tree for the first time.
@@ -31,24 +32,33 @@ func _on_shot_timer_timeout():
 			if s != shotTimer && is_instance_valid(s):
 				s.queue_free()
 				await(get_tree().create_timer(2).timeout)
-				emit_signal("patternDone")
 
 
-func start(_player, multiplier):
-	cowboy.targetLocation = Vector2(960, 200)
-	waves = 1 * (multiplier / 2)
+func start(multiplier):
+	cowboy.targetLocation = Vector2(rng.randi_range(700, 1300), 200)
+	await(get_tree().create_timer(.5).timeout)
+	shootSix()
+	await(get_tree().create_timer(1).timeout)
+	cowboy.targetLocation = Vector2(rng.randi_range(700, 1300), 200)
+	await(get_tree().create_timer(.5).timeout)
+	shootSix()
+	await(get_tree().create_timer(1).timeout)
+	await(get_tree().create_timer(4).timeout)
+	emit_signal("patternDone")
+
+
+func shootSix():
+	waves = 6
 	var step = 2 * PI / spawnPointCount
 	for x in range(spawnPointCount):
-		if(x < 3):
-			var spawnPoint = Node2D.new()
-			var pos = Vector2(radius, 0).rotated(step * x)
-			spawnPoint.position = pos
-			spawnPoint.rotation = pos.angle()
-			self.add_child(spawnPoint)
+		var spawnPoint = Node2D.new()
+		var pos = Vector2(radius, 0).rotated(step * x)
+		spawnPoint.position = pos
+		spawnPoint.rotation = pos.angle()
+		self.add_child(spawnPoint)
 	
 	shotTimer.wait_time = shootWaitTime
 	shotTimer.start()
-
 
 func getWaves():
 	return waves

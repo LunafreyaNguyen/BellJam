@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/bulletShuriken.gd" id="1_u33tl"]
 [ext_resource type="Texture2D" uid="uid://df2id3wsjfl64" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_01.png" id="2_465rv"]
-[ext_resource type="Texture2D" uid="uid://860m4hqktw6e" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_07.png" id="3_tru1a"]
+[ext_resource type="Texture2D" uid="uid://btdj21v0phgk1" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_03.png" id="3_ls1kt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wx118"]
 radius = 14.2292
@@ -35,20 +35,20 @@ region = Rect2(512, 192, 32, 32)
 atlas = ExtResource("2_465rv")
 region = Rect2(544, 192, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jyfcg"]
-atlas = ExtResource("3_tru1a")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve3vi"]
+atlas = ExtResource("3_ls1kt")
 region = Rect2(496, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7k70k"]
-atlas = ExtResource("3_tru1a")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ko4w"]
+atlas = ExtResource("3_ls1kt")
 region = Rect2(512, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rlcoe"]
-atlas = ExtResource("3_tru1a")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvg8g"]
+atlas = ExtResource("3_ls1kt")
 region = Rect2(528, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_532l6"]
-atlas = ExtResource("3_tru1a")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kft10"]
+atlas = ExtResource("3_ls1kt")
 region = Rect2(544, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvttx"]
@@ -86,16 +86,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jyfcg")
+"texture": SubResource("AtlasTexture_ve3vi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7k70k")
+"texture": SubResource("AtlasTexture_0ko4w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rlcoe")
+"texture": SubResource("AtlasTexture_tvg8g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_532l6")
+"texture": SubResource("AtlasTexture_kft10")
 }],
 "loop": true,
 "name": &"shot3",
@@ -117,9 +117,11 @@ debug_color = Color(0.968627, 0, 0, 0.419608)
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
 z_index = 1
 texture_filter = 1
+position = Vector2(-0.666667, 0)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_tvttx")
 animation = &"shot3"
-frame_progress = 0.995301
+frame = 1
+frame_progress = 0.991319
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

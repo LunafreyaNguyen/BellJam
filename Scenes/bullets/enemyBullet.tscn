@@ -79,7 +79,6 @@ radius = 14.2292
 [node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 0
-monitorable = false
 script = ExtResource("1_rupjb")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]

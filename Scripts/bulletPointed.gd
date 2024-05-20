@@ -1,6 +1,5 @@
 extends EnemyBullet
 
-@onready var player = get_tree().get_first_node_in_group("Player")
 @onready var release_timer = $"Wait Timer" as Timer
 
 # On spawn, set direction to where the player is right now

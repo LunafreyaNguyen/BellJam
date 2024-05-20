@@ -11,6 +11,6 @@ func _ready() -> void:
 	get_tree().current_scene.add_child(balloon)
 	balloon.start(dialogue_resource, dialogue_title)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.get_action_strength("pause") || balloon == null:
-		get_tree().change_scene_to_file("res://Scenes/levels/testluna.tscn")
+		get_tree().change_scene_to_file("res://Scenes/levels/testLuna.tscn")

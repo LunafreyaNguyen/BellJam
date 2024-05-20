@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d73ag2vw0tqg"]
+[gd_scene load_steps=19 format=3 uid="uid://d73ag2vw0tqg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lohyg"]
 [ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="2_k7t6b"]
@@ -15,10 +15,11 @@
 [ext_resource type="AudioStream" uid="uid://csq28gk8bujq4" path="res://Sounds/SFX/metal_punch_06.wav" id="8_lu8n7"]
 [ext_resource type="AudioStream" uid="uid://baqnc0vp28uau" path="res://Sounds/SFX/aww.mp3" id="9_a28r2"]
 [ext_resource type="AudioStream" uid="uid://dpfi4dxmc52nq" path="res://Sounds/SFX/parryShine.wav" id="11_jhn4f"]
+[ext_resource type="AudioStream" uid="uid://dr4qsgmdbmhwe" path="res://Sounds/SFX/blast1.mp3" id="11_y177c"]
 [ext_resource type="AudioStream" uid="uid://d3sf1ifaydom4" path="res://Sounds/SFX/Poof.wav" id="16_a57sg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owib"]
-radius = 76.956
+radius = 58.0473
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -29,7 +30,7 @@ Laser = ExtResource("3_x80ch")
 Seeker = ExtResource("4_gx27j")
 
 [node name="bulletGroup" type="CanvasGroup" parent="." groups=["bulletGroup"]]
-self_modulate = Color(1, 1, 1, 0.5)
+self_modulate = Color(1, 1, 1, 0.682353)
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
 scale = Vector2(0.38, 0.38)
@@ -55,7 +56,7 @@ modulate = Color(0.239216, 0.423529, 1, 1)
 show_behind_parent = true
 z_index = 3
 position = Vector2(-1.90735e-06, -0.333381)
-scale = Vector2(0.26, 0.26)
+scale = Vector2(0.192031, 0.192031)
 texture = ExtResource("3_vd8fv")
 
 [node name="bulletSpawn1" type="Node2D" parent="."]
@@ -91,6 +92,12 @@ stream = ExtResource("5_k7elg")
 volume_db = 5.0
 bus = &"SFX"
 script = ExtResource("6_bb4ub")
+
+[node name="graze" type="AudioStreamPlayer2D" parent="SFX"]
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("11_y177c")
+volume_db = -5.0
+bus = &"SFX"
 
 [node name="rankUp2Noise" type="AudioStreamPlayer2D" parent="SFX"]
 scale = Vector2(0.6, 0.6)

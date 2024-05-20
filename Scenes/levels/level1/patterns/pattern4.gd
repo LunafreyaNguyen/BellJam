@@ -16,7 +16,7 @@ signal patternDone
 var static_pos
 var static_rot 
 
-func start(_player, multiplier):
+func start(_player, _multiplier):
 	victoria = get_tree().get_first_node_in_group("Enemy")
 	victoria.targetLocation = Vector2(1200, 300)
 	#waves = 30 * (multiplier / 2)

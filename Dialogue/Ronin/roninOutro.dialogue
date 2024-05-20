@@ -1,26 +1,22 @@
 ~ start
-do set_background("cowboyTown")
-do add_portrait("bonnie", 1)
-Bonnie: Everybody, get to cover!
-Bonnie: Don't let the ground swallow you up!
-Bonnie: Grr.... This must be the doggone apocalypse...
+do set_background("bamboo")
+do add_portrait("jugemu", 1)
 do add_portrait("cecilia", 0)
-Cecilia: Woah! Can't believe these cracks reached all the way out here!
-Bonnie: Hey, you! Ya know somethin' about them there quakes opening up and swallowin' the town whole?
-Cecilia: Know? Heh, more like caused! Too bad Victoria wasn't much of a challenge...
-Bonnie: What!? So this was all you!?
-Cecilia: Heh, pretty badass right?
-Bonnie: Then it'll be you takin' responsibility too.
-Bonnie: If'n it's a fight you want, it'll be a fight you'll git!
-Cecilia: Huh?
-Bonnie: You aren't very bright, are ya? I'm tellin' ya to draw, pardner.
-- Your MOM isn't very bright, "pardner".
-	Bonnie: ...
-	Bonnie: You're dead, kiddo.
-	=> respect
-- What should I draw? An ugly hat? Oh, stay still- I think I found one.
-	Bonnie: Real funny. I don't wanna hear it from somebody with only one tooth.
-	=> respect
-~ respect
-Cecilia: Heh, let's get it started.
+Jugemu: Alright, enough.
+Cecilia: What, to scared? Not everybody can handle the mortal coil...
+Jugemu: I'm outta sake.
+Cecilia: Ahhh, the sin of alcoholism.
+Jugemu: Honestly, I don't care if you go up those stairs or not.
+Cecilia: Really?
+Jugemu: If anybody asks, I wasn't drinking on the job.
+Cecilia: Sure, I'll pass the message along.
+Jugemu: Oh, and one more thing.
+Cecilia: Heh, I think I know exactly what you're gonna say.
+Jugemu: In that case, I'll leave it to you. I'm going to find a quiet place to nap.
+do remove_portrait("jugemu")
+Cecilia: Heh, thanks!
+Cecilia: And thank you too for playing HELLSHOT KILLBLADE!
+Cecilia: So, it's goodbye for now- but nothing lasts forever! Not even goodbyes!
+Cecilia: And now it's time for me to find out what's up these stairs!
+do remove_portrait("cecilia")
 => END

@@ -15,8 +15,6 @@ func _ready():
 	handle_connecting_signals()
 
 func on_start_pressed() -> void: 
-	bg.texture = load("res://Art/Backgrounds/titlescreen_red_notext.png")
-	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_packed(start_level)
 	
 

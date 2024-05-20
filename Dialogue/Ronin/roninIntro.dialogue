@@ -1,26 +1,27 @@
 ~ start
-do set_background("cowboyTown")
-do add_portrait("bonnie", 1)
-Bonnie: Everybody, get to cover!
-Bonnie: Don't let the ground swallow you up!
-Bonnie: Grr.... This must be the doggone apocalypse...
+do set_background("bamboo")
+do add_portrait("jugemu", 1)
+Jugemu: Finally, some piece and quiet...
+Jugemu: The furthest post is definitely be the best post...
 do add_portrait("cecilia", 0)
-Cecilia: Woah! Can't believe these cracks reached all the way out here!
-Bonnie: Hey, you! Ya know somethin' about them there quakes opening up and swallowin' the town whole?
-Cecilia: Know? Heh, more like caused! Too bad Victoria wasn't much of a challenge...
-Bonnie: What!? So this was all you!?
-Cecilia: Heh, pretty badass right?
-Bonnie: Then it'll be you takin' responsibility too.
-Bonnie: If'n it's a fight you want, it'll be a fight you'll git!
-Cecilia: Huh?
-Bonnie: You aren't very bright, are ya? I'm tellin' ya to draw, pardner.
-- Your MOM isn't very bright, "pardner".
-	Bonnie: ...
-	Bonnie: You're dead, kiddo.
+Cecilia: Two swords... Twice the sin...
+Jugemu: Wh-who!? Wha-?!
+Cecilia: How many lives have you severed with those blades of yours?
+Jugemu: The hell..?
+Jugemu: Listen kid, I don't know what you're talking about, but you're cutting into my alone time.
+Cecilia: Heh, whatever... I was just passin' through anyways.
+Jugemu: Passing through? I'm afraid I can't let you do that.  The Heavenly Stairs are off limits to everybody.
+- Afraid to let me through? Or afraid you can't stop me?
+	Jugemu: The only thing I'm afraid of is running out of sake on a summer day.
 	=> respect
-- What should I draw? An ugly hat? Oh, stay still- I think I found one.
-	Bonnie: Real funny. I don't wanna hear it from somebody with only one tooth.
+- But the Highway to Hell is open to everybody!
+	Jugemu: Well we've got our own rules.
 	=> respect
 ~ respect
-Cecilia: Heh, let's get it started.
+Cecilia: Heh, I'm going up those stairs no matter what.
+Jugemu: ...  It's a few thousand.
+Cecilia: ... Huh?
+Jugemu: You asked me how many lives I've severed with these blades.
+Jugemu: Shall I take another?
+Cecilia: Heheheh... Now it's getting interesting.
 => END

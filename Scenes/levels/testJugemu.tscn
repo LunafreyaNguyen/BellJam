@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://t1pagjnyusr3"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_5ivxq"]
+[ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="2_llmnx"]
+[ext_resource type="Texture2D" uid="uid://c8knwokb2k8cg" path="res://Art/sprite_cecilia_stroke.png" id="3_j8fr2"]
+[ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="4_6n8xs"]
+[ext_resource type="Texture2D" uid="uid://bov2ws6yxk1co" path="res://Art/Portraits/jugemuPortrait.png" id="5_mw05q"]
+[ext_resource type="Texture2D" uid="uid://dkgxm745k5c1t" path="res://Art/Backgrounds/background3.jpeg" id="6_fmnpy"]
+[ext_resource type="AudioStream" uid="uid://c6l0hdt2u40l2" path="res://Sounds/Music/Primal-Prayer_loop.ogg" id="7_keh3i"]
+[ext_resource type="PackedScene" uid="uid://dmd0ct53py3wx" path="res://Scenes/parry_cd_indicator.tscn" id="8_8spop"]
+[ext_resource type="PackedScene" uid="uid://ciicxmib82p8m" path="res://Scenes/levels/level3/jugemu.tscn" id="9_toaur"]
+[ext_resource type="PackedScene" uid="uid://cn3q3lyhuoymk" path="res://Scenes/pause_menu.tscn" id="10_0hi03"]
+[ext_resource type="PackedScene" uid="uid://cb4khlnb32f8i" path="res://Scenes/gameover.tscn" id="11_bwfpy"]
+[ext_resource type="PackedScene" uid="uid://dqfsocl4gcwu2" path="res://Scenes/parrySlash.tscn" id="12_madws"]
+[ext_resource type="PackedScene" uid="uid://k24dibp6p0qs" path="res://Scenes/bounds.tscn" id="13_0226x"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_5ivxq")
+
+[node name="Player" parent="." instance=ExtResource("2_llmnx")]
+position = Vector2(960, 810)
+
+[node name="Sprite2D" parent="Player" index="1"]
+texture = ExtResource("3_j8fr2")
+
+[node name="LevelUi" parent="." instance=ExtResource("4_6n8xs")]
+metadata/_edit_group_ = true
+
+[node name="EnemyArt" parent="LevelUi/ArtBG" index="2"]
+texture = ExtResource("5_mw05q")
+
+[node name="GameBG" parent="LevelUi/ArtBG" index="5"]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 500.0
+offset_right = 2100.0
+offset_bottom = 12780.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.575, 0.575)
+texture = ExtResource("6_fmnpy")
+
+[node name="LevelOST" type="AudioStreamPlayer" parent="." groups=["LevelOST"]]
+stream = ExtResource("7_keh3i")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="ParryCDIndicator" parent="." groups=["parryIndicator"] instance=ExtResource("8_8spop")]
+position = Vector2(960, 679)
+
+[node name="Jugemu" parent="." instance=ExtResource("9_toaur")]
+position = Vector2(964, 184)
+
+[node name="locations" type="Node" parent="." groups=["locations"]]
+
+[node name="mark1" type="Marker2D" parent="locations" groups=["mark1"]]
+position = Vector2(700, 100)
+
+[node name="mark2" type="Marker2D" parent="locations" groups=["mark2"]]
+position = Vector2(1220, 100)
+
+[node name="mark3" type="Marker2D" parent="locations" groups=["mark3"]]
+position = Vector2(700, 400)
+
+[node name="mark4" type="Marker2D" parent="locations" groups=["mark4"]]
+position = Vector2(1220, 400)
+
+[node name="mark5" type="Marker2D" parent="locations" groups=["mark4"]]
+position = Vector2(960, 200)
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
+anchor_mode = 0
+position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Pause Menu" parent="Camera2D/CanvasLayer" instance=ExtResource("10_0hi03")]
+
+[node name="Gameover" parent="Camera2D/CanvasLayer" instance=ExtResource("11_bwfpy")]
+visible = false
+
+[node name="ParrySlash" parent="." instance=ExtResource("12_madws")]
+visible = false
+z_index = 10
+position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Bounds" parent="." instance=ExtResource("13_0226x")]
+
+[editable path="Player"]
+[editable path="LevelUi"]

@@ -63,7 +63,7 @@ func charge(locationNum):
 	await(get_tree().create_timer(.4).timeout)
 	emit_signal("chargeCompleted")
 
-func start(_player, multiplier):
+func start(_player):
 	parried = false
 	# Charge middle, right, left
 	for s in range(0, 3):
@@ -100,7 +100,7 @@ func rotateSpawn(rotate, time):
 	self.rotation_degrees = fmod(newRotation, 360)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if get_tree() == null:
 		queue_free()
 	#rotateSpawn(rotateSpeed, delta)

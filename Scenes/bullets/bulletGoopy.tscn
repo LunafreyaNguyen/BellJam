@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhjxff4vss2bq"]
+
+[ext_resource type="Script" path="res://Scripts/bulletGoopy.gd" id="1_j6iwo"]
+[ext_resource type="Texture2D" uid="uid://860m4hqktw6e" path="res://Art/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_07.png" id="2_ekowv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nopjq"]
+radius = 33.0
+height = 70.0001
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kucag"]
+atlas = ExtResource("2_ekowv")
+region = Rect2(96, 241, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11ioe"]
+atlas = ExtResource("2_ekowv")
+region = Rect2(112, 241, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hjiu"]
+atlas = ExtResource("2_ekowv")
+region = Rect2(128, 241, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyhwo"]
+atlas = ExtResource("2_ekowv")
+region = Rect2(144, 241, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bw4vl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kucag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11ioe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hjiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyhwo")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 15.0
+}]
+
+[node name="Bullet" type="Area2D" groups=["EnemyBullet"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_j6iwo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
+position = Vector2(2.08165e-12, 2.08165e-12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nopjq")
+debug_color = Color(0.968627, 0, 0, 1)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["EnemyBullet"]]
+z_index = 1
+texture_filter = 1
+scale = Vector2(9.24971, 9.24971)
+sprite_frames = SubResource("SpriteFrames_bw4vl")
+animation = &"shot"
+frame_progress = 0.303871
+
+[node name="Wait Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Wait Timer" to="." method="_on_wait_timer_timeout"]

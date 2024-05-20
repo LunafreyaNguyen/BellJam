@@ -3,11 +3,11 @@ extends EnemyBullet
 
 @onready var shotTimer: Timer = $shotTimer
 
-const bulletShuriken = preload("res://Scenes/bullets/bulletShuriken.tscn")
+const bulletShuriken = preload("res://Scenes/bullets/bulletGoopy.tscn")
 
 
 var rotateSpeed = 40
-var shootWaitTime = 2
+var shootWaitTime = 1
 var spawnPointCount = 40
 var radius = 1
 var waves = 1
@@ -17,7 +17,7 @@ var waves = 1
 func _ready():
 	sprite.play("shot3")
 	speed = 100
-	await(get_tree().create_timer(shootWaitTime))
+	await(get_tree().create_timer(shootWaitTime).timeout)
 	start()
 
 
@@ -29,7 +29,7 @@ func _on_shot_timer_timeout():
 				get_tree().root.add_child(bullet)
 				bullet.position = s.global_position
 				bullet.rotation = s.global_rotation
-				bullet.speed = 200
+				bullet.speed = 300
 		waves -= 1
 	else:
 		for s in self.get_children():

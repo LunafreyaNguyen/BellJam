@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="4_vkup7"]
 [ext_resource type="Texture2D" uid="uid://ceb218b5me644" path="res://Art/Backgrounds/backgroundcowboy.jpeg" id="5_hm6e6"]
 [ext_resource type="AudioStream" uid="uid://begtlj6k05yh7" path="res://Sounds/Music/Battle-TheOath_loop.ogg" id="5_kpe3m"]
-[ext_resource type="PackedScene" uid="uid://d0q8pw85ftlds" path="res://Scenes/levels/level2/boss2.tscn" id="6_jfnon"]
+[ext_resource type="PackedScene" uid="uid://d0q8pw85ftlds" path="res://Scenes/levels/level2/bonnie.tscn" id="6_jfnon"]
 [ext_resource type="PackedScene" uid="uid://cn3q3lyhuoymk" path="res://Scenes/pause_menu.tscn" id="7_kxi3b"]
 [ext_resource type="PackedScene" uid="uid://dmd0ct53py3wx" path="res://Scenes/parry_cd_indicator.tscn" id="8_j6ba6"]
 [ext_resource type="PackedScene" uid="uid://cb4khlnb32f8i" path="res://Scenes/gameover.tscn" id="10_gb6ca"]

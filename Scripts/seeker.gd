@@ -2,7 +2,6 @@ extends Area2D
 @onready var sprite = $Sprite2D
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var enemy = get_tree().get_first_node_in_group("Enemy")
-@onready var tween = get_tree().create_tween()
 const speed = 1000.0
 var area_direction = Vector2(0, 0)
 var debounce = false
@@ -11,19 +10,19 @@ var progress = .02
 var timer = 0
 
 func ready():
-	pass
+	if enemy != null:
+		self.look_at(enemy)
 	
 	
 func animationPlay():
-	var tween = get_tree().create_tween()
 	sprite.play()
 	
 
 func _process(delta):
+	rotation = lerp_angle(rotation, rotation + get_angle_to(enemy.position), .2)
 	timer += delta
 	position += transform.x * speed * delta
-	if enemy != null:
-		tween.tween_property(self, "rotation", global_position.angle_to_point(enemy.position), .1)
+
 	if timer > 10:
 		queue_free()
 

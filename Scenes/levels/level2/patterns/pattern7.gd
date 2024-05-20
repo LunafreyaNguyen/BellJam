@@ -10,6 +10,7 @@ var spawnPointCount = 20
 var radius = 75
 var waves = 0
 var patternOn = true
+@onready var rng = RandomNumberGenerator.new()
 signal patternDone
 
 # Called when the node enters the scene tree for the first time.
@@ -35,7 +36,7 @@ func _on_shot_timer_timeout():
 
 
 func start(_player, multiplier):
-	cowboy.targetLocation = Vector2(960, 200)
+	cowboy.targetLocation = Vector2(rng.randi_range(700, 1300), rng.randi_range(300, 600))
 	waves = 1 * (multiplier / 2)
 	var step = 2 * PI / spawnPointCount
 	for x in range(spawnPointCount):

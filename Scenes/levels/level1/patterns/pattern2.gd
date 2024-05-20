@@ -1,6 +1,6 @@
 extends Node
 
-const shuriken = preload("res://Scenes/bullets/bulletShuriken.tscn")
+const shuriken = preload("res://Scenes/bullets/bulletGoopy.tscn")
 @onready var shotTimer = $shotTimer2 as Timer
 @onready var blast = $blast
 

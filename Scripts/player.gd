@@ -27,7 +27,7 @@ const styleC = preload("res://Art/style/C.png")
 const styleD = preload("res://Art/style/D.png")
 
 @onready var styles = [styleD, styleC, styleB, styleA, styleS]
-@onready var currStyle = 4
+@onready var currStyle = 1
 @onready var styleProgress = 0
 @onready var styleConstant = get_tree().get_first_node_in_group("styleConstant")
 @onready var styleExplosion = get_tree().get_first_node_in_group("styleExplosion")
@@ -39,6 +39,7 @@ const styleD = preload("res://Art/style/D.png")
 @export var start_level = load("res://Scenes/levels/testLuna.tscn") as PackedScene
 @onready var parry_timer = $ParryTimer
 @onready var parryHitbox = $ParryHitbox
+@onready var graze = $SFX/graze
 @onready var parry_cd_indicator = get_tree().get_first_node_in_group("parryIndicator")
 @onready var parry_follow = $ParryFollow
 const FOLLOW_SPEED : float = 3.0
@@ -119,14 +120,14 @@ func hit():
 				s.queue_free()
 		if currStyle < 4:
 			currStyle += 1
-			rankUpNoise.playPitch((currStyle/5 + 1), .22)
+			rankUpNoise.playPitch((currStyle/5.0 + 1), .22)
 			rankUp2Noise.play()
 			if(styleExplosion.is_emitting()):
 				styleExplosion.set_emitting(false)
 			styleExplosion.set_emitting(true)
 			changeHitboxSize()
 		else:
-			rankUpNoise.playPitch((currStyle/5 + 1), .22)
+			rankUpNoise.playPitch((currStyle/5.0 + 1), .22)
 			rankUp2Noise.play()
 			styleProgress = 100
 			if(styleExplosion.is_emitting()):
@@ -198,7 +199,7 @@ func _physics_process(delta):
 	if styleProgress > 100:
 		if currStyle < 4:
 			currStyle += 1
-			rankUpNoise.playPitch((currStyle/5 + 1), .22)
+			rankUpNoise.playPitch((currStyle/5.0 + 1), .22)
 			rankUp2Noise.play()
 			styleProgress = 0
 			if(styleExplosion.is_emitting()):
@@ -408,12 +409,12 @@ func shoot_S():
 			temp5.progress = .03
 			temp5.scale = Vector2(4, 4)
 			temp1.set_rotation_degrees(-90)
-			temp2.set_rotation_degrees(-100)
-			temp3.set_rotation_degrees(-80)
+			temp2.set_rotation_degrees(-90)
+			temp3.set_rotation_degrees(-90)
 			temp4.set_rotation_degrees(-140)
 			temp5.set_rotation_degrees(-40)
-			bulletSpawnL.position.x = -50
-			bulletSpawnR.position.x = 50
+			bulletSpawnL.position.x = -60
+			bulletSpawnR.position.x = 60
 			temp2.global_position = bulletSpawnL.get("global_position")
 			temp3.global_position = bulletSpawnR.get("global_position")
 			temp1.global_position = bulletSpawnM.get("global_position")

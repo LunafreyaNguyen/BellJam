@@ -1,26 +1,18 @@
 ~ start
 do set_background("cowboyTown")
-do add_portrait("bonnie", 1)
-Bonnie: Everybody, get to cover!
-Bonnie: Don't let the ground swallow you up!
-Bonnie: Grr.... This must be the doggone apocalypse...
 do add_portrait("cecilia", 0)
-Cecilia: Woah! Can't believe these cracks reached all the way out here!
-Bonnie: Hey, you! Ya know somethin' about them there quakes opening up and swallowin' the town whole?
-Cecilia: Know? Heh, more like caused! Too bad Victoria wasn't much of a challenge...
-Bonnie: What!? So this was all you!?
-Cecilia: Heh, pretty badass right?
-Bonnie: Then it'll be you takin' responsibility too.
-Bonnie: If'n it's a fight you want, it'll be a fight you'll git!
-Cecilia: Huh?
-Bonnie: You aren't very bright, are ya? I'm tellin' ya to draw, pardner.
-- Your MOM isn't very bright, "pardner".
-	Bonnie: ...
-	Bonnie: You're dead, kiddo.
-	=> respect
-- What should I draw? An ugly hat? Oh, stay still- I think I found one.
-	Bonnie: Real funny. I don't wanna hear it from somebody with only one tooth.
-	=> respect
-~ respect
-Cecilia: Heh, let's get it started.
+do add_portrait("bonnie", 1)
+Cecilia: Alright, had enough yet?
+Bonnie: Hmmph. Mighty fine combat prowess you've got there, pardner.
+Cecilia: Heh, you're not so bad yourself.
+Bonnie: Well, it's all in the bullets, ain't it?
+Cecilia: The tip of a bullet and the edge of a blade...
+Cecilia: Either could send a man to reincarnation...
+Bonnie: ???
+Cecilia: Heh... Heheh...
+Bonnie: Well, after our fight, I'm sure you're not heavy enough to have caused them earth cracks there.
+Bonnie: So I'll guess I'll hafta let you go.
+Cecilia: Alright! Time to finally go!
+Bonnie: Take care, pardner. May we meet again.
+Cecilia: Next time we can really see what's faster- your gun or my blade!
 => END

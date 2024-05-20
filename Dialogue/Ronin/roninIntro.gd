@@ -13,4 +13,4 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	if Input.get_action_strength("pause") || balloon == null:
-		get_tree().change_scene_to_file("res://Scenes/levels/testCowboy.tscn")
+		get_tree().change_scene_to_file("res://Scenes/levels/testJugemu.tscn")

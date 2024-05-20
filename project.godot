@@ -30,7 +30,7 @@ SaveManager="*res://autoloads/SaveManager.gd"
 
 [dialogue_manager]
 
-general/custom_test_scene_path="res://Dialogue/Ojou/OjouOutro.tscn"
+general/custom_test_scene_path="res://Dialogue/Cowboy/cowboyIntro.tscn"
 general/balloon_path="res://Dialogue/Ojou/balloon.tscn"
 
 [display]
@@ -46,8 +46,9 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://Scenes/levels/level1/": "yellow",
-"res://Scenes/levels/level2/": "orange"
+"res://Scenes/levels/level1/": "red",
+"res://Scenes/levels/level2/": "purple",
+"res://Scenes/levels/level3/": "teal"
 }
 
 [input]

@@ -1,20 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3ftlxmbxdwc6"]
 
 [ext_resource type="PackedScene" uid="uid://d73ag2vw0tqg" path="res://Scenes/player.tscn" id="1_ghori"]
-[ext_resource type="PackedScene" uid="uid://dxd3k1hjlvmd3" path="res://Scenes/bullets/bullet.tscn" id="2_isrri"]
 [ext_resource type="PackedScene" uid="uid://miabqffkxupx" path="res://Scenes/bullets/enemyBullet.tscn" id="2_svoof"]
 [ext_resource type="PackedScene" uid="uid://caa5w5nl2op15" path="res://Scenes/LevelUI.tscn" id="3_6onmw"]
 [ext_resource type="PackedScene" uid="uid://dmd0ct53py3wx" path="res://Scenes/parry_cd_indicator.tscn" id="4_u3x0d"]
 [ext_resource type="PackedScene" uid="uid://dqfsocl4gcwu2" path="res://Scenes/parrySlash.tscn" id="5_ds53u"]
+[ext_resource type="PackedScene" uid="uid://d0t0o0k87xa3j" path="res://Scenes/bullets/bulletLargeBall2.tscn" id="6_0x7x2"]
 
 [node name="Test" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ghori")]
-position = Vector2(1030, 659)
-Bullet = ExtResource("2_isrri")
+position = Vector2(1031, 670)
+
+[node name="Sprite2D" parent="CharacterBody2D" index="1"]
+position = Vector2(0, 3.33337)
 
 [node name="Bullet" parent="." instance=ExtResource("2_svoof")]
-position = Vector2(769, 674)
+position = Vector2(644, 603)
 
 [node name="LevelUi" parent="." instance=ExtResource("3_6onmw")]
 
@@ -24,9 +26,14 @@ position = Vector2(960, 540)
 [node name="ParryCDIndicator" parent="." groups=["parryIndicator"] instance=ExtResource("4_u3x0d")]
 position = Vector2(960, 679)
 
-[node name="ParrySlash" parent="." groups=["parrySlash"] instance=ExtResource("5_ds53u")]
+[node name="ParrySlash" parent="." instance=ExtResource("5_ds53u")]
 visible = false
 z_index = 10
 position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Bullet2" parent="." instance=ExtResource("6_0x7x2")]
+position = Vector2(838, 172)
+rotation = 3.14159
+collision_layer = 1
 
 [editable path="CharacterBody2D"]
