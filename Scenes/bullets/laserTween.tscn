@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://bopuyk685y4ol"]
+
+[ext_resource type="Script" path="res://Scripts/Laser2D.gd" id="1_s1bhm"]
+[ext_resource type="Texture2D" uid="uid://bkcl3wkm4i1dk" path="res://Art/glowing_circle.png" id="2_d77is"]
+
+[sub_resource type="Gradient" id="Gradient_3pcky"]
+offsets = PackedFloat32Array(0, 0.706114, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_loxmp"]
+gradient = SubResource("Gradient_3pcky")
+
+[sub_resource type="Curve" id="Curve_j2tx2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.697196, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h408t"]
+curve = SubResource("Curve_j2tx2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_62e6s"]
+particle_flag_disable_z = true
+initial_velocity_min = 120.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_h408t")
+color_ramp = SubResource("GradientTexture1D_loxmp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u672o"]
+particle_flag_disable_z = true
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_h408t")
+color_ramp = SubResource("GradientTexture1D_loxmp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5w31b"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 98, 0)
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+
+[sub_resource type="Environment" id="Environment_47lr7"]
+background_mode = 3
+glow_enabled = true
+glow_levels/4 = 1.0
+glow_levels/7 = 1.0
+glow_intensity = 2.0
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 2.0
+
+[node name="Laser" type="RayCast2D"]
+target_position = Vector2(1000, 0)
+script = ExtResource("1_s1bhm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 100, 0)
+default_color = Color(0.5, 3, 6, 1)
+
+[node name="CastingParticle" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_62e6s")
+texture = ExtResource("2_d77is")
+lifetime = 0.3
+
+[node name="ImpactParticle" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_u672o")
+texture = ExtResource("2_d77is")
+lifetime = 0.3
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_5w31b")
+texture = ExtResource("2_d77is")
+lifetime = 0.3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_47lr7")
