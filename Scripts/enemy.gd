@@ -12,7 +12,6 @@ class_name Enemy
 @onready var absolute_parent = get_parent()
 @export var player_name = "Player"
 @onready var sprite = $Sprite2D as Sprite2D
-@onready var hurtbox = $CollisionShape2D as CollisionShape2D
 @onready var hit_anim = $HitFlash as AnimationPlayer
 
 # For use with delta

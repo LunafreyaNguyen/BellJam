@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bov2ws6yxk1co"
-path="res://.godot/imported/roninPortrait.png-488913aaf804947987c3842a46a66330.ctex"
+uid="uid://bsns0j3okfqlu"
+path="res://.godot/imported/sprite_victoria.png-5f38468be7b5ee6cd8200b4860d9ba0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Portraits/roninPortrait.png"
-dest_files=["res://.godot/imported/roninPortrait.png-488913aaf804947987c3842a46a66330.ctex"]
+source_file="res://Art/sprite_victoria.png"
+dest_files=["res://.godot/imported/sprite_victoria.png-5f38468be7b5ee6cd8200b4860d9ba0c.ctex"]
 
 [params]
 

@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var hit_box = $CollisionShape2D/HitBox
 @onready var focus_bar = $"Focus Bar"
+@onready var bulletGroup = $bulletGroup
 
 const deathParticles = preload("res://Scenes/death_particles.tscn")
 
@@ -45,7 +46,6 @@ const FOLLOW_SPEED : float = 3.0
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var parryCooldown = $ParryCooldown
 @onready var parryShine = $SFX/parryShine
-@onready var laugh = $SFX/laugh
 var shotTimer = 0
 signal parryCancel
 
@@ -238,9 +238,9 @@ func shoot_D():
 		var temp1 = Bullet.instantiate()
 		var temp2 = Bullet.instantiate()
 		var temp3 = Bullet.instantiate()
-		add_sibling(temp1)
-		add_sibling(temp2)
-		add_sibling(temp3)
+		bulletGroup.add_child(temp1)
+		bulletGroup.add_child(temp2)
+		bulletGroup.add_child(temp3)
 		temp1.set_rotation_degrees(-90)
 		temp2.set_rotation_degrees(-90)
 		temp3.set_rotation_degrees(-90)
@@ -270,11 +270,11 @@ func shoot_C():
 		var temp5 = Bullet.instantiate()
 		temp4.progress = .5
 		temp5.progress = .5
-		add_sibling(temp1)
-		add_sibling(temp2)
-		add_sibling(temp3)
-		add_sibling(temp4)
-		add_sibling(temp5)
+		bulletGroup.add_child(temp1)
+		bulletGroup.add_child(temp2)
+		bulletGroup.add_child(temp3)
+		bulletGroup.add_child(temp4)
+		bulletGroup.add_child(temp5)
 		temp1.set_rotation_degrees(-90)
 		temp2.set_rotation_degrees(-90)
 		temp3.set_rotation_degrees(-90)
@@ -306,12 +306,15 @@ func shoot_C():
 func shoot_B():
 	fireRate = .01
 	if Input.get_action_raw_strength("shoot") && !dead:
-		var temp1 = Laser.instantiate()
 		var temp2 = Laser.instantiate()
 		var temp3 = Laser.instantiate()
-		add_sibling(temp1)
-		add_sibling(temp2)
-		add_sibling(temp3)
+		var temp1 = Laser.instantiate()
+		temp1.scale = Vector2(1.6, 1.6)
+		temp2.scale = Vector2(1.6, 1.6)
+		temp3.scale = Vector2(1.6, 1.6)
+		bulletGroup.add_child(temp2)
+		bulletGroup.add_child(temp3)
+		bulletGroup.add_child(temp1)
 		temp1.set_rotation_degrees(-90)
 		temp2.set_rotation_degrees(-90)
 		temp3.set_rotation_degrees(-90)
@@ -336,12 +339,14 @@ func shoot_A():
 	fireRate = .01
 	var tempSeeker1 = Seeker.instantiate()
 	var tempSeeker2 = Seeker.instantiate()
-	add_sibling(tempSeeker1)
-	add_sibling(tempSeeker2)
+	tempSeeker1.scale = Vector2(3, 3)
+	tempSeeker2.scale = Vector2(3, 3)
+	bulletGroup.add_child(tempSeeker1)
+	bulletGroup.add_child(tempSeeker2)
 	bulletSpawnL.position.x = 120
 	bulletSpawnR.position.x = -120
-	tempSeeker1.set_rotation_degrees(0)
-	tempSeeker2.set_rotation_degrees(-180)
+	tempSeeker1.set_rotation_degrees(-30)
+	tempSeeker2.set_rotation_degrees(-150)
 	tempSeeker1.animationPlay()
 	tempSeeker2.animationPlay()
 	tempSeeker1.global_position = bulletSpawnL.get("global_position")
@@ -350,9 +355,12 @@ func shoot_A():
 		var temp1 = Laser.instantiate()
 		var temp2 = Laser.instantiate()
 		var temp3 = Laser.instantiate()
-		add_sibling(temp1)
-		add_sibling(temp2)
-		add_sibling(temp3)
+		temp1.scale = Vector2(2, 2)
+		temp2.scale = Vector2(2, 2)
+		temp3.scale = Vector2(2, 2)
+		bulletGroup.add_child(temp2)
+		bulletGroup.add_child(temp3)
+		bulletGroup.add_child(temp1)
 		temp1.set_rotation_degrees(-90)
 		temp2.set_rotation_degrees(-90)
 		temp3.set_rotation_degrees(-90)
@@ -361,6 +369,8 @@ func shoot_A():
 			bulletSpawnR.position.x = 50
 			temp2.global_position = bulletSpawnL.get("global_position")
 			temp3.global_position = bulletSpawnR.get("global_position")
+			tempSeeker1.set_rotation_degrees(-45)
+			tempSeeker2.set_rotation_degrees(-135)
 		else:
 			bulletSpawnL.position.x = 100
 			bulletSpawnR.position.x = -100
@@ -382,6 +392,11 @@ func shoot_S():
 			var temp1 = Laser.instantiate()
 			var temp4 = Seeker.instantiate()
 			var temp5 = Seeker.instantiate()
+			bulletGroup.add_child(temp5)
+			bulletGroup.add_child(temp4)
+			bulletGroup.add_child(temp2)
+			bulletGroup.add_child(temp3)
+			bulletGroup.add_child(temp1)
 			temp1.scale = Vector2(3, 3)
 			temp1.progress = .1
 			temp2.progress = .05
@@ -389,23 +404,18 @@ func shoot_S():
 			temp3.progress = .04
 			temp3.scale = Vector2(1.8, 1.8)
 			temp4.progress = .03
-			temp4.scale = Vector2(2, 2)
+			temp4.scale = Vector2(4, 4)
 			temp5.progress = .03
-			temp5.scale = Vector2(2, 2)
+			temp5.scale = Vector2(4, 4)
 			temp1.set_rotation_degrees(-90)
 			temp2.set_rotation_degrees(-100)
 			temp3.set_rotation_degrees(-80)
-			temp4.set_rotation_degrees(-110)
-			temp5.set_rotation_degrees(-70)
+			temp4.set_rotation_degrees(-140)
+			temp5.set_rotation_degrees(-40)
 			bulletSpawnL.position.x = -50
 			bulletSpawnR.position.x = 50
 			temp2.global_position = bulletSpawnL.get("global_position")
 			temp3.global_position = bulletSpawnR.get("global_position")
-			add_sibling(temp2)
-			add_sibling(temp3)
-			add_sibling(temp1)
-			add_sibling(temp4)
-			add_sibling(temp5)
 			temp1.global_position = bulletSpawnM.get("global_position")
 			bulletSpawnL.position.x = -100
 			bulletSpawnR.position.x = 100
@@ -420,23 +430,23 @@ func shoot_S():
 			var temp5 = Seeker.instantiate()
 			temp1.progress = .06
 			temp2.progress = .04
-			temp2.scale = Vector2(1.1, 1.1)
+			temp2.scale = Vector2(1.8, 1.8)
 			temp3.progress = .04
-			temp3.scale = Vector2(1.1, 1.1)
+			temp3.scale = Vector2(1.8, 1.8)
 			temp4.progress = .03
-			temp4.scale = Vector2(1.5, 1.5)
+			temp4.scale = Vector2(2, 2)
 			temp5.progress = .03
-			temp5.scale = Vector2(1.5, 1.5)
-			add_sibling(temp2)
-			add_sibling(temp3)
-			add_sibling(temp1)
-			add_sibling(temp4)
-			add_sibling(temp5)
+			temp5.scale = Vector2(2, 2)
+			bulletGroup.add_child(temp2)
+			bulletGroup.add_child(temp3)
+			bulletGroup.add_child(temp1)
+			bulletGroup.add_child(temp4)
+			bulletGroup.add_child(temp5)
 			temp1.set_rotation_degrees(-90)
 			temp2.set_rotation_degrees(-110)
 			temp3.set_rotation_degrees(-70)
-			temp4.set_rotation_degrees(-140)
-			temp5.set_rotation_degrees(-40)
+			temp4.set_rotation_degrees(-180)
+			temp5.set_rotation_degrees(0)
 			bulletSpawnL.position.x = -50
 			bulletSpawnR.position.x = 50
 			temp2.global_position = bulletSpawnL.get("global_position")

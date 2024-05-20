@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c71mrqmshgcoo"]
+
+[ext_resource type="Texture2D" uid="uid://2n1a3xni1sxo" path="res://Art/Portraits/jugemu.png" id="1_fou05"]
+
+[node name="Jugemu" type="Node2D"]
+position = Vector2(0, 107)
+scale = Vector2(0.4, 0.4)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 70.0
+offset_top = -267.5
+offset_right = 1961.0
+offset_bottom = 2732.5
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_fou05")

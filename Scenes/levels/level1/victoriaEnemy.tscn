@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/testEnemy.gd" id="1_emw0f"]
 [ext_resource type="Shader" uid="uid://cajjvk3dmacsi" path="res://themes/hit_flash.tres" id="2_asedb"]
-[ext_resource type="Texture2D" uid="uid://oa77q774hbxg" path="res://Art/Portraits/victoria.png" id="3_b4165"]
+[ext_resource type="Texture2D" uid="uid://bsns0j3okfqlu" path="res://Art/sprite_victoria.png" id="3_i3t0y"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern1.gd" id="3_icjyh"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/pattern2.gd" id="4_igsdx"]
 [ext_resource type="Script" path="res://Scenes/levels/level1/patterns/patternOjou.gd" id="4_n0hsn"]
@@ -74,8 +74,9 @@ debug_color = Color(0.729412, 0, 0.2, 0.639216)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_km27d")
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("3_b4165")
+position = Vector2(7, -1.5)
+scale = Vector2(0.144909, 0.144909)
+texture = ExtResource("3_i3t0y")
 
 [node name="hitboxarea" type="Area2D" parent="."]
 

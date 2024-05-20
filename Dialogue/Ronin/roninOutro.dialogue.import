@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://yficx66lrmp6"
+path="res://.godot/imported/roninOutro.dialogue-be383a7cd2a8eb5d3235319d0dd5a7af.tres"
+
+[deps]
+
+source_file="res://Dialogue/Ronin/roninOutro.dialogue"
+dest_files=["res://.godot/imported/roninOutro.dialogue-be383a7cd2a8eb5d3235319d0dd5a7af.tres"]
+
+[params]
+
+defaults=true

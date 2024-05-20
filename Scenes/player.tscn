@@ -28,8 +28,11 @@ Bullet = ExtResource("2_k7t6b")
 Laser = ExtResource("3_x80ch")
 Seeker = ExtResource("4_gx27j")
 
+[node name="bulletGroup" type="CanvasGroup" parent="." groups=["bulletGroup"]]
+self_modulate = Color(1, 1, 1, 0.5)
+
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
-scale = Vector2(0.32, 0.32)
+scale = Vector2(0.38, 0.38)
 texture = ExtResource("5_8vljl")
 
 [node name="ParryHitbox" type="AnimatedSprite2D" parent="."]

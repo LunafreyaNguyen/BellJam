@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://bwsy7n3428gat"
+path="res://.godot/imported/cowboyOutro.dialogue-259d9a7e57e328c26661251db13c9214.tres"
+
+[deps]
+
+source_file="res://Dialogue/Cowboy/cowboyOutro.dialogue"
+dest_files=["res://.godot/imported/cowboyOutro.dialogue-259d9a7e57e328c26661251db13c9214.tres"]
+
+[params]
+
+defaults=true

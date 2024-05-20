@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnu141b5850mr"]
+
+[ext_resource type="Script" path="res://Dialogue/Ronin/roninIntro.gd" id="1_ry36u"]
+[ext_resource type="Resource" uid="uid://b5q3moccpr5tc" path="res://Dialogue/Ronin/roninIntro.dialogue" id="2_rtfad"]
+[ext_resource type="AudioStream" uid="uid://dfaqgny2s6v6r" path="res://Sounds/Music/The-ancient-cry_loop.ogg" id="3_7na37"]
+
+[node name="DialogueSceneTest" type="Node2D"]
+script = ExtResource("1_ry36u")
+dialogue_resource = ExtResource("2_rtfad")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["ost"]]
+stream = ExtResource("3_7na37")
+volume_db = -10.0
+bus = &"Music"
